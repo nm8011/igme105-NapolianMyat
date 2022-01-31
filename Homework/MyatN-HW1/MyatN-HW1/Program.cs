@@ -64,11 +64,16 @@ namespace MyatN_HW1
             if (playGame == "YES" || playGame == "NO")
             {
                 Console.WriteLine("\n*sigh*.... we asked for a 'Y' or an 'N'");
+                if (playGame == "NO")
+                {
+                    Console.WriteLine("\nYou have decided you are not ready to play the game.\nCome again when you are ready. :)");
+                }
                 playGame = playGame.Substring(0, 1);
+                
 
             }
             //test
-            Console.WriteLine(playGame);
+            //Console.WriteLine(playGame);
 
             if (playGame != "Y")
             {
