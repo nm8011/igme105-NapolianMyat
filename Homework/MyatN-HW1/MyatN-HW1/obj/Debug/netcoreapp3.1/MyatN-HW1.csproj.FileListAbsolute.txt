@@ -1,0 +1,13 @@
+D:\Profiles\nm8011\source\repos\Homework\MyatN-HW1\MyatN-HW1\bin\Debug\netcoreapp3.1\MyatN-HW1.exe
+D:\Profiles\nm8011\source\repos\Homework\MyatN-HW1\MyatN-HW1\bin\Debug\netcoreapp3.1\MyatN-HW1.deps.json
+D:\Profiles\nm8011\source\repos\Homework\MyatN-HW1\MyatN-HW1\bin\Debug\netcoreapp3.1\MyatN-HW1.runtimeconfig.json
+D:\Profiles\nm8011\source\repos\Homework\MyatN-HW1\MyatN-HW1\bin\Debug\netcoreapp3.1\MyatN-HW1.runtimeconfig.dev.json
+D:\Profiles\nm8011\source\repos\Homework\MyatN-HW1\MyatN-HW1\bin\Debug\netcoreapp3.1\MyatN-HW1.dll
+D:\Profiles\nm8011\source\repos\Homework\MyatN-HW1\MyatN-HW1\bin\Debug\netcoreapp3.1\MyatN-HW1.pdb
+D:\Profiles\nm8011\source\repos\Homework\MyatN-HW1\MyatN-HW1\obj\Debug\netcoreapp3.1\MyatN-HW1.csproj.AssemblyReference.cache
+D:\Profiles\nm8011\source\repos\Homework\MyatN-HW1\MyatN-HW1\obj\Debug\netcoreapp3.1\MyatN-HW1.AssemblyInfoInputs.cache
+D:\Profiles\nm8011\source\repos\Homework\MyatN-HW1\MyatN-HW1\obj\Debug\netcoreapp3.1\MyatN-HW1.AssemblyInfo.cs
+D:\Profiles\nm8011\source\repos\Homework\MyatN-HW1\MyatN-HW1\obj\Debug\netcoreapp3.1\MyatN-HW1.csproj.CoreCompileInputs.cache
+D:\Profiles\nm8011\source\repos\Homework\MyatN-HW1\MyatN-HW1\obj\Debug\netcoreapp3.1\MyatN-HW1.dll
+D:\Profiles\nm8011\source\repos\Homework\MyatN-HW1\MyatN-HW1\obj\Debug\netcoreapp3.1\MyatN-HW1.pdb
+D:\Profiles\nm8011\source\repos\Homework\MyatN-HW1\MyatN-HW1\obj\Debug\netcoreapp3.1\MyatN-HW1.genruntimeconfig.cache
