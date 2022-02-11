@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "MyatN-HW1/1.0.0": {
+        "runtime": {
+          "MyatN-HW1.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MyatN-HW1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
