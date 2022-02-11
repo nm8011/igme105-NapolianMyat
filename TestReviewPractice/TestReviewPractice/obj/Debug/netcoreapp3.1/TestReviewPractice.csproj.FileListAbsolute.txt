@@ -1,0 +1,13 @@
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\TestReviewPractice\TestReviewPractice\bin\Debug\netcoreapp3.1\TestReviewPractice.exe
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\TestReviewPractice\TestReviewPractice\bin\Debug\netcoreapp3.1\TestReviewPractice.deps.json
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\TestReviewPractice\TestReviewPractice\bin\Debug\netcoreapp3.1\TestReviewPractice.runtimeconfig.json
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\TestReviewPractice\TestReviewPractice\bin\Debug\netcoreapp3.1\TestReviewPractice.runtimeconfig.dev.json
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\TestReviewPractice\TestReviewPractice\bin\Debug\netcoreapp3.1\TestReviewPractice.dll
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\TestReviewPractice\TestReviewPractice\bin\Debug\netcoreapp3.1\TestReviewPractice.pdb
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\TestReviewPractice\TestReviewPractice\obj\Debug\netcoreapp3.1\TestReviewPractice.csproj.AssemblyReference.cache
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\TestReviewPractice\TestReviewPractice\obj\Debug\netcoreapp3.1\TestReviewPractice.AssemblyInfoInputs.cache
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\TestReviewPractice\TestReviewPractice\obj\Debug\netcoreapp3.1\TestReviewPractice.AssemblyInfo.cs
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\TestReviewPractice\TestReviewPractice\obj\Debug\netcoreapp3.1\TestReviewPractice.csproj.CoreCompileInputs.cache
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\TestReviewPractice\TestReviewPractice\obj\Debug\netcoreapp3.1\TestReviewPractice.dll
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\TestReviewPractice\TestReviewPractice\obj\Debug\netcoreapp3.1\TestReviewPractice.pdb
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\TestReviewPractice\TestReviewPractice\obj\Debug\netcoreapp3.1\TestReviewPractice.genruntimeconfig.cache
