@@ -1,0 +1,13 @@
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GuessTheNumber\GuessTheNumber\bin\Debug\netcoreapp3.1\GuessTheNumber.exe
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GuessTheNumber\GuessTheNumber\bin\Debug\netcoreapp3.1\GuessTheNumber.deps.json
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GuessTheNumber\GuessTheNumber\bin\Debug\netcoreapp3.1\GuessTheNumber.runtimeconfig.json
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GuessTheNumber\GuessTheNumber\bin\Debug\netcoreapp3.1\GuessTheNumber.runtimeconfig.dev.json
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GuessTheNumber\GuessTheNumber\bin\Debug\netcoreapp3.1\GuessTheNumber.dll
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GuessTheNumber\GuessTheNumber\bin\Debug\netcoreapp3.1\GuessTheNumber.pdb
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GuessTheNumber\GuessTheNumber\obj\Debug\netcoreapp3.1\GuessTheNumber.csproj.AssemblyReference.cache
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GuessTheNumber\GuessTheNumber\obj\Debug\netcoreapp3.1\GuessTheNumber.AssemblyInfoInputs.cache
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GuessTheNumber\GuessTheNumber\obj\Debug\netcoreapp3.1\GuessTheNumber.AssemblyInfo.cs
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GuessTheNumber\GuessTheNumber\obj\Debug\netcoreapp3.1\GuessTheNumber.csproj.CoreCompileInputs.cache
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GuessTheNumber\GuessTheNumber\obj\Debug\netcoreapp3.1\GuessTheNumber.dll
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GuessTheNumber\GuessTheNumber\obj\Debug\netcoreapp3.1\GuessTheNumber.pdb
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GuessTheNumber\GuessTheNumber\obj\Debug\netcoreapp3.1\GuessTheNumber.genruntimeconfig.cache
