@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Homework",
+    "\\Homework\\MyatN-HW1",
+    "\\Homework\\MyatN-HW1\\MyatN-HW1"
   ],
-  "SelectedNode": "\\MyatN-HW1.sln",
+  "SelectedNode": "\\Homework\\MyatN-HW1\\MyatN-HW1.sln",
   "PreviewInSolutionExplorer": false
 }
