@@ -1,0 +1,13 @@
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GameDesignReview\GameDesignReview\bin\Debug\netcoreapp3.1\GameDesignReview.exe
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GameDesignReview\GameDesignReview\bin\Debug\netcoreapp3.1\GameDesignReview.deps.json
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GameDesignReview\GameDesignReview\bin\Debug\netcoreapp3.1\GameDesignReview.runtimeconfig.json
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GameDesignReview\GameDesignReview\bin\Debug\netcoreapp3.1\GameDesignReview.runtimeconfig.dev.json
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GameDesignReview\GameDesignReview\bin\Debug\netcoreapp3.1\GameDesignReview.dll
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GameDesignReview\GameDesignReview\bin\Debug\netcoreapp3.1\GameDesignReview.pdb
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GameDesignReview\GameDesignReview\obj\Debug\netcoreapp3.1\GameDesignReview.csproj.AssemblyReference.cache
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GameDesignReview\GameDesignReview\obj\Debug\netcoreapp3.1\GameDesignReview.AssemblyInfoInputs.cache
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GameDesignReview\GameDesignReview\obj\Debug\netcoreapp3.1\GameDesignReview.AssemblyInfo.cs
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GameDesignReview\GameDesignReview\obj\Debug\netcoreapp3.1\GameDesignReview.csproj.CoreCompileInputs.cache
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GameDesignReview\GameDesignReview\obj\Debug\netcoreapp3.1\GameDesignReview.dll
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GameDesignReview\GameDesignReview\obj\Debug\netcoreapp3.1\GameDesignReview.pdb
+D:\Profiles\nm8011\source\repos\igme105-NapolianMyat\GameDesignReview\GameDesignReview\obj\Debug\netcoreapp3.1\GameDesignReview.genruntimeconfig.cache
