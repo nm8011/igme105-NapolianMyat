@@ -43,7 +43,7 @@ namespace MyatN_HW1
 
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             //Arrive at door - HW2
-            //	Incorporate the player name in the door note.  
+            //	Incorporate the player name in the door note.  
             Note(name);
 
             //o	Create code to simulate dice rolls.  
@@ -170,6 +170,7 @@ namespace MyatN_HW1
                 //nth code continues
             }
         }
+
         /// <summary>
         /// User arrive to door of house
         /// </summary>
@@ -203,7 +204,6 @@ namespace MyatN_HW1
             //Calculations for over and under the number of required steps created and used in output. 
             int calcNum = Math.Abs(numOfSteps - userNumOfSteps);
 
-
             //user input is greater
             if (userNumOfSteps > numOfSteps)
             {
@@ -222,7 +222,7 @@ namespace MyatN_HW1
         }
         /// <summary>
         /// o	Add a note to the front door that it is locked and needs a key.
-        /// 	Incorporate the player name in the door note.  
+        /// 	Incorporate the player name in the door note.  
         /// </summary>
         /// <param name="name"></param>
         public static void Note(string name)
@@ -238,14 +238,14 @@ namespace MyatN_HW1
         /// <returns></returns>
         public static int RollDice(int min, int max)
         {
-            
+
             Random myrand = new Random();
             int rand1 = myrand.Next(min, max);
             int rand2 = myrand.Next(min, max);
             return rand1 + rand2;
         }
         /// <summary>
-        /// 	If exiting the game, you must allow the game player to see all the messages on the screen that they lost before the window closes.
+        /// 	If exiting the game, you must allow the game player to see all the messages on the screen that they lost before the window closes.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="diceRoll"></param>
@@ -253,7 +253,7 @@ namespace MyatN_HW1
         {
             if (diceRoll > 4)
             {
-                Console.WriteLine("{0} rolled a {1}. Lady Luck shines upon you, the door somehow magically opened for you.",name, diceRoll);
+                Console.WriteLine("{0} rolled a {1}. Lady Luck shines upon you, the door somehow magically opened for you.", name, diceRoll);
                 //continues
             }
             else
@@ -261,27 +261,25 @@ namespace MyatN_HW1
                 Console.Clear();
                 Console.WriteLine("{0} rolled a {1}. After numerous attempts to picklock the door.\n" +
                     "Sensing your vain stubborn efforts, as if to mock you the mysterious entity behind the door exploded the doors\n" +
-                    "blasting you to oblivion. You have died. Game over!",name, diceRoll);
+                    "blasting you to oblivion. You have died. Game over!", name, diceRoll);
                 Environment.Exit(0);
             }
         }
 
         /// <summary>
         /// Prompt whether player wants to quit the game or continue
-        /// 	If exiting the game, you must allow the game player to see all the messages on the screen that they lost before the window closes
+        /// 	If exiting the game, you must allow the game player to see all the messages on the screen that they lost before the window closes
         /// </summary>
         public static void Quit()
         {
-            bool quit = false;
             string response;
-           
+
             Console.WriteLine("Do you wish to quit or continue? Enter 'Q' to quit or anything else to continue");
             response = Console.ReadLine().Trim().Substring(0, 1).ToUpper();
             if (response != "Q")
             {
                 //code continues
                 Console.WriteLine("You've decided to continue. Good Luck Adventurer!");
-                quit = false;
             }
             //doesnt work?
             //else if (string.IsNullOrEmpty(response))
@@ -291,11 +289,10 @@ namespace MyatN_HW1
             //}
             else
             {
-                quit = true;
                 Console.WriteLine("Your persistence is pathetic. You have decided to quit adventuring.");
                 Environment.Exit(0);
             }
-         
+
         }
 
         /// <summary>
@@ -304,21 +301,20 @@ namespace MyatN_HW1
         /// <param name="num"></param>
         public static string StrClass(int num)
         {
-            //	Create a constant string with 8 colors separated by a comma
+            //	Create a constant string with 8 colors separated by a comma
             const string MY_COLORS = "Blue,Red,Orange,Yellow,Green,Purple,Violet,Brown";
             int find = MY_COLORS.IndexOf(",");
             string tempword = MY_COLORS.Substring(find + 1, MY_COLORS.Length - find - 1);
             Console.WriteLine(tempword);
 
             int i = 1;
-            while (i>=num)
+            while (i >= num)
             {
                 find = tempword.IndexOf(",");
                 tempword = tempword.Substring(find + 1, tempword.Length);
                 Console.WriteLine(tempword);
-
             }
-            tempword = tempword.Substring(0, find-1);
+            tempword = tempword.Substring(0, find - 1);
             return tempword;
         }
         public static void UpperFloor()
@@ -328,7 +324,7 @@ namespace MyatN_HW1
             string stringColor = StrClass(2);
             Console.WriteLine("You entered through the door. You are at the corridor glowing a bright {0} color.", stringColor);
             Console.WriteLine("You see 5 rooms within your vicinity. You should probably check each of them out\nThey are:\n\t1 The Kitchen\n\t" +
-                "2 The BedRoom\n\t3 The LivingRoom\n\t4 The Library");
+                "2 The BedRoom\n\t3 The LivingRoom\n\t4 The Library\n\t5 The GuestRoom");
             do
             {
                 choice = Console.ReadLine().Trim();
@@ -337,7 +333,8 @@ namespace MyatN_HW1
                     case "1":
                         {
                             Console.WriteLine("You notice in the kitchen some items that could be essential to your adventure. " +
-                                "\nThe kitchen is very bright and lively, but emitting a murderous hue. "); //get weapon
+                                "\nThe kitchen is very bright and lively with a fridge mounted right in the middle. You looked inside the fridge and found\n" +
+                                "an abundant of food and water. You also located a cutting board nearby"); //get shield & food
                             valid = true;
                             break;
                         }
@@ -350,26 +347,38 @@ namespace MyatN_HW1
                         }
                     case "3":
                         {
-                            Console.WriteLine("The Livingroom is neatly organized, you notice out of the corner of your eye a fire poker.\n" +
-                                "That might prove handy. "); //another weapon
+                            Console.WriteLine("The Livingroom is neatly organized, there is a sweet scent in the air. " +
+                                "\nYou notice out of the corner of your eye a fire poker.\n" +
+                                "That might prove handy. "); //weapon
                             break;
                         }
                     case "4":
                         {
-                            Console.WriteLine("The Library");
+                            Console.WriteLine("The Library has a ");
+                            break;
+                        }
+                    case "5":
+                        {
+                            Console.WriteLine("The GuestRoom has an allocated bed. You checked under the bed and found ");
                             break;
                         }
                 }
             }
             while (valid == false);
-        
+            Console.WriteLine("Hi");
+            Console.WriteLine("Hi");
+
+            Console.WriteLine("Hi");
+
+            Console.WriteLine("Hi");
+
+            Console.WriteLine("Hi");
+
         }
-        //You opened 
-        //okayy
-
-
+        //Hopefully works
         //NO CODE OUTSIDE HERE
     }
 }
+
 
 
