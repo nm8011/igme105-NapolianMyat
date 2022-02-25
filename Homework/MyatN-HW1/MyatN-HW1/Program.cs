@@ -1,8 +1,9 @@
 ﻿using System;
 /// <summary>
 /// Napolian Myat
-/// Project: Homework1
+/// Project: Homework2
 /// Date: 01/31/2022
+/// Modified: 02/21/2022
 /// Purpose: For this homework, we will begin creating our Text Adventure using:
 /// •	Use assignment statements
 /// •	Use simple input & output
@@ -21,7 +22,7 @@ namespace MyatN_HW1
             string playGame;    //whether to play game or not
             //Create a constant value for the number of steps required to get from the driveway to the house.
             //(You can select your own positive integer value as the total number of steps as long as it is less than 100).
-            const int numOfSteps = 50;
+            const int NUM_OF_STEPS = 50;
             int userAnsNum;
             int calcNum; //calculations to show the user how far they would have walked past the house and notify them you stopped at the door.    
 
@@ -88,16 +89,16 @@ namespace MyatN_HW1
                 userAnsNum = int.Parse(Console.ReadLine());
 
                 //Calculations for over and under the number of required steps created and used in output. 
-                calcNum = Math.Abs(numOfSteps - userAnsNum);
+                calcNum = Math.Abs(NUM_OF_STEPS - userAnsNum);
 
 
                 //user input is greater
-                if (userAnsNum > numOfSteps)
+                if (userAnsNum > NUM_OF_STEPS)
                 {
                     Console.WriteLine("You would have walked past the door by {0} steps. You have stopped at the door.", calcNum);
                 }
                 //user input less than
-                else if (userAnsNum < numOfSteps)
+                else if (userAnsNum < NUM_OF_STEPS)
                 {
                     Console.WriteLine("You are short of {0} steps. I have increased your steps. Now you are at the door.", calcNum);
                 }
