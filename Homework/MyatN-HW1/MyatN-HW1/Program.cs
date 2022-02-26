@@ -304,18 +304,19 @@ namespace MyatN_HW1
         {
             //	Create a constant string with 8 colors separated by a comma
             const string MY_COLORS = "Blue,Red,Orange,Yellow,Green,Purple,Violet,Brown";
+            string tempword = MY_COLORS;
             int find = MY_COLORS.IndexOf(",");
-            string tempword = MY_COLORS.Substring(find + 1, MY_COLORS.Length - find - 1);
-            Console.WriteLine(tempword);
-
             int i = 1;
-            while (i >= num)
+            while (i < num)
             {
                 find = tempword.IndexOf(",");
-                tempword = tempword.Substring(find + 1, tempword.Length);
-                Console.WriteLine(tempword);
+                tempword = tempword.Substring(find + 1, tempword.Length - find - 1);
+                //test
+                //Console.WriteLine(tempword);
+                i++;
             }
-            tempword = tempword.Substring(0, find - 1);
+            tempword = tempword.Substring(0, tempword.IndexOf(","));
+            //Console.WriteLine(tempword);
             return tempword;
         }
         public static void UpperFloor()
@@ -377,6 +378,8 @@ namespace MyatN_HW1
             while (valid == false);
          
         }
+
+        public static void 
         //Hopefully works
         //NO CODE OUTSIDE HERE
     }
