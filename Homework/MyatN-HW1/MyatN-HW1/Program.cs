@@ -418,6 +418,7 @@ namespace MyatN_HW1
         /// </summary>
         public static void DungeonFloors()
         {
+            //Floor 1
             string response;
             bool exit = false;
             Console.WriteLine("As you enter the dungeon, you pushed the spider webs out of your way.\n" +
@@ -457,6 +458,7 @@ namespace MyatN_HW1
             }
             while (exit == false);
             exit = false;
+           //Floor 2
 
             Console.WriteLine("Wonderful, you made it off the marshmallows, just to find yourself staring at a chocolate fudge river that fills the entire room. \n" +
                 "Now how are we going to get across this to the next room you can see across the river?.");
@@ -500,7 +502,7 @@ namespace MyatN_HW1
             while (exit == false);
 
             exit = false;
-
+            //Floor 3
                 Console.WriteLine("You come across a room littered with treasures and gold. It is sparkling so bright, you could actually be blinded.\n" +
                     "You also noticed a door.");
                 Quit();
@@ -538,13 +540,13 @@ namespace MyatN_HW1
 
             exit = false;
 
-
+            //Floor 4/ Last one to completion
             Console.WriteLine("Good job on making it here this far!. You're the very first surviver.\n");
             Console.WriteLine("Now the room you are at is rumbling, the grotto is collapsing.");
             Quit();
             Console.WriteLine("You must solve the solve the enchantment " +
                 "on the secret door to teleport to the exit.");
-            //will set up randoms but for now ....
+            //will set up randoms later but for now ....
             int answer = 8 * 12;
             do
             {
@@ -580,6 +582,9 @@ namespace MyatN_HW1
                             break;
                         }
                 }
+                //want to add boss stage
+                //add music stage that deals dmg
+                //add room that adds hunger level decreasing health unless food is eaten.
             }
             while (exit == false);
         }
