@@ -28,6 +28,7 @@ namespace MyatN_HW1
             const int numOfSteps = 50;
             //Random
             int diceRoll;
+            int deathDoor = 1; //made it 1 so debugging is not so annoying, suppose to be 4
 
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             //Basic Info - HW1
@@ -53,7 +54,7 @@ namespace MyatN_HW1
             //  *x>4, door opens
             //  *x<=4 player dies
             //if door opens, can proceed, otherwise die
-            CheckDiceRoll(name, diceRoll);
+            DeathDoor(name, diceRoll, deathDoor);
 
             //Ask if player wants to continue or quit
             Quit();
@@ -249,9 +250,9 @@ namespace MyatN_HW1
         /// </summary>
         /// <param name="name"></param>
         /// <param name="diceRoll"></param>
-        public static void CheckDiceRoll(string name, int diceRoll)
+        public static void DeathDoor(string name, int diceRoll, int deathDoor)
         {
-            if (diceRoll > 4)
+            if (diceRoll > deathDoor)
             {
                 Console.WriteLine("{0} rolled a {1}. Lady Luck shines upon you, the door somehow magically opened for you.", name, diceRoll);
                 //continues
@@ -334,7 +335,7 @@ namespace MyatN_HW1
                         {
                             Console.WriteLine("You notice in the kitchen some items that could be essential to your adventure. " +
                                 "\nThe kitchen is very bright and lively with a fridge mounted right in the middle. You looked inside the fridge and found\n" +
-                                "an abundant of food and water. You also located a cutting board nearby"); //get shield & food
+                                "an abundant of food and water. You also located a cutting board nearby"); //get shield & food, water
                             valid = true;
                             break;
                         }
@@ -342,38 +343,39 @@ namespace MyatN_HW1
                         {
                             Console.WriteLine("You entered the Bed Room. The living room has a TV that is playing some channels\n" +
                                 "you are not familiar with, as well as jazz music playing in the background. There is a set of \n" +
-                                "headphones connected to a disc player."); //will need maybe to block noise
+                                "headphones connected to a disc player."); //will need maybe to block noise(dmg from sound), less dmg over time so without, the player
+                            //will lose a certain amount of hp each round or step or whatev(not decided)
                             break;
                         }
                     case "3":
                         {
-                            Console.WriteLine("The Livingroom is neatly organized, there is a sweet scent in the air. " +
-                                "\nYou notice out of the corner of your eye a fire poker.\n" +
-                                "That might prove handy. "); //weapon
+                            Console.WriteLine("The Livingroom is neatly organized, there is a sweet scent in the air. Hey theres some marshmellows attach to a fire poker" +
+                                "\nAs you tried to pick the marshmellows, you got a cut. Luckily you did not lose any health points. You observed that the \n" +
+                                "fire poker is oddly sharp. That might prove handy. "); //weapon, fight against minions and boss later, otherwise fistfights dmg will be halved.
                             break;
                         }
                     case "4":
                         {
-                            Console.WriteLine("The Library has a ");
+                            Console.WriteLine("The Library has a ladder leading up to the top of the shelves. As you checked out the area, you notice a bunch of potions.\n" +
+                                "Theres a note nearby. You read it:" +
+                                "\n\"To whomever it concerns,\n\t" +
+                                "Take great discretion towards what I am about to tell you. The maze you will face will have great amount of danger. I have prepared\n" +
+                                "you some potions for your adventure. However PLEASE PICK ONLY ONE potions for consumption. Anymore will kill an ordinary man.");
+                            //potions will be, 2x dmg increased, health over time/rounds, TBD later
                             break;
                         }
                     case "5":
                         {
-                            Console.WriteLine("The GuestRoom has an allocated bed. You checked under the bed and found ");
+                            Console.WriteLine("The GuestRoom has an allocated bed. You search all over the room for items that will assist your journey. You checked under the bed \n" +
+                                "and found a secret suitcase. You need a key to open it. Good thing a key is right besides the nightstand. You used it to open the case. Perfect match!\n" +
+                                "You checked the contents. There is a sturdy but surprisely nimble cloth inside. Hey! That might make you more resiliant.");//armour, maybe add some options to choose from
+                            //can halves dmg taken?
                             break;
                         }
                 }
             }
             while (valid == false);
-            Console.WriteLine("Hi");
-            Console.WriteLine("Hi");
-
-            Console.WriteLine("Hi");
-
-            Console.WriteLine("Hi");
-
-            Console.WriteLine("Hi");
-
+         
         }
         //Hopefully works
         //NO CODE OUTSIDE HERE
