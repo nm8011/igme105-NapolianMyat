@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Profiles\\nm8011\\source\\repos\\Homework\\MyatN-HW1\\MyatN-HW1\\MyatN-HW1.csproj",
-      "projectName": "MyatN-HW1",
-      "projectPath": "D:\\Profiles\\nm8011\\source\\repos\\Homework\\MyatN-HW1\\MyatN-HW1\\MyatN-HW1.csproj",
+      "projectUniqueName": "D:\\Profiles\\nm8011\\source\\repos\\Testing\\Testing\\Testing.csproj",
+      "projectName": "Testing",
+      "projectPath": "D:\\Profiles\\nm8011\\source\\repos\\Testing\\Testing\\Testing.csproj",
       "packagesPath": "D:\\Profiles\\nm8011\\.nuget\\packages\\",
-      "outputPath": "D:\\Profiles\\nm8011\\source\\repos\\Homework\\MyatN-HW1\\MyatN-HW1\\obj\\",
+      "outputPath": "D:\\Profiles\\nm8011\\source\\repos\\Testing\\Testing\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

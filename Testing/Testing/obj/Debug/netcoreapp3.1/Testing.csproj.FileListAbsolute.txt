@@ -1,0 +1,13 @@
+D:\Profiles\nm8011\source\repos\Testing\Testing\bin\Debug\netcoreapp3.1\Testing.exe
+D:\Profiles\nm8011\source\repos\Testing\Testing\bin\Debug\netcoreapp3.1\Testing.deps.json
+D:\Profiles\nm8011\source\repos\Testing\Testing\bin\Debug\netcoreapp3.1\Testing.runtimeconfig.json
+D:\Profiles\nm8011\source\repos\Testing\Testing\bin\Debug\netcoreapp3.1\Testing.runtimeconfig.dev.json
+D:\Profiles\nm8011\source\repos\Testing\Testing\bin\Debug\netcoreapp3.1\Testing.dll
+D:\Profiles\nm8011\source\repos\Testing\Testing\bin\Debug\netcoreapp3.1\Testing.pdb
+D:\Profiles\nm8011\source\repos\Testing\Testing\obj\Debug\netcoreapp3.1\Testing.csproj.AssemblyReference.cache
+D:\Profiles\nm8011\source\repos\Testing\Testing\obj\Debug\netcoreapp3.1\Testing.AssemblyInfoInputs.cache
+D:\Profiles\nm8011\source\repos\Testing\Testing\obj\Debug\netcoreapp3.1\Testing.AssemblyInfo.cs
+D:\Profiles\nm8011\source\repos\Testing\Testing\obj\Debug\netcoreapp3.1\Testing.csproj.CoreCompileInputs.cache
+D:\Profiles\nm8011\source\repos\Testing\Testing\obj\Debug\netcoreapp3.1\Testing.dll
+D:\Profiles\nm8011\source\repos\Testing\Testing\obj\Debug\netcoreapp3.1\Testing.pdb
+D:\Profiles\nm8011\source\repos\Testing\Testing\obj\Debug\netcoreapp3.1\Testing.genruntimeconfig.cache
