@@ -120,5 +120,23 @@ namespace MyatN_HW1
                 //nth code continues
             }
         }
+
+        /// <summary>
+        /// Create code to simulate dice rolls.You will need 2 random numbers
+        /// and then add the 2 numbers together for the total.  
+        /// </summary>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
+        public static int RollDice(int min, int max)
+        {
+
+            Random myrand = new Random();
+            int rand1 = myrand.Next(min, max);
+            int rand2 = myrand.Next(min, max);
+            return rand1 + rand2;
+        }
+
+        //No methods beyond here
     }
 }
