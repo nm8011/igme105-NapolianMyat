@@ -54,7 +54,7 @@ namespace MyatN_HW1
             // User starts here – ask for basic information such as user name.
             //•	Ask the user for their name, read it in and save it (It is used multiple times throughout the game)
             Console.Write("Please enter your character name: ");
-            name = Console.ReadLine().Trim();
+            Setup.UserInput(name = Console.ReadLine().Trim());
             do
             {
                 //user press 'enter'
@@ -63,7 +63,7 @@ namespace MyatN_HW1
                     //will loop again and ask for valid name
                     valid = false;
                     Console.WriteLine("Sorry, you have not inputted a name. Please input a valid name!");
-                    name = Console.ReadLine().Trim();
+                    Setup.UserInput(name = Console.ReadLine().Trim());
                 }
                 else
                 {
@@ -91,7 +91,7 @@ namespace MyatN_HW1
             Console.WriteLine("Are you ready to play (Y/N)?");
             Console.Write(">");
             Console.ForegroundColor = ConsoleColor.White;
-            playGame = Console.ReadLine().Trim().ToUpper(); //trim/toupper senitize userinput
+            Setup.UserInput(playGame = Console.ReadLine().Trim().ToUpper()); //trim/toupper senitize userinput
 
             //In case player enters yes or no instead of y or n
             if (playGame == "YES" || playGame == "NO")
@@ -135,6 +135,73 @@ namespace MyatN_HW1
             int rand1 = myrand.Next(min, max);
             int rand2 = myrand.Next(min, max);
             return rand1 + rand2;
+        }
+
+
+        /// <summary>
+        /// Prompt whether player wants to quit the game or continue
+        /// 	If exiting the game, you must allow the game player to see all the messages on the screen that they lost before the window closes
+        /// </summary>
+        public static void Quit()
+        {
+            string response;
+            Console.WriteLine("You are faced with a difficult decision.");
+            Console.WriteLine("Do you wish to quit or continue? Enter 'Q' to quit or anything else to continue");
+            Setup.UserInput(response = Console.ReadLine().Trim().Substring(0).ToUpper()); //substring 0 allows for null
+            if (string.IsNullOrEmpty(response)) //if user input is null meaning they press "Enter"
+            {
+                Console.WriteLine("You've decided to continue. Good Luck Adventurer!");
+
+            }
+            else
+            {
+                response = response.Substring(0, 1).ToUpper().Trim();//user senitize
+                if (response != "Q")
+                {
+                    //code continues
+                    Console.WriteLine("You've decided to continue. Good Luck Adventurer!");
+                }
+                else
+                {
+                    Console.WriteLine("Your persistence is pathetic. You have decided to quit adventuring.");
+                    Environment.Exit(0);
+                }
+            }
+
+
+        }
+        /// <summary>
+        /// Will get color
+        /// </summary>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        public static string Color()
+        {
+            int num = Setup.RollDice(1, 6);
+            //	Create a constant string with 8 colors separated by a comma
+            const string MY_COLORS = "Blue,Red,DarkYellow,Green,Magenta";
+            string tempword = MY_COLORS;
+            int find = MY_COLORS.IndexOf(",");
+            int i = 1;
+            while (i < num)
+            {
+                find = tempword.IndexOf(",");
+                tempword = tempword.Substring(find + 1, tempword.Length - find - 1);
+                //test
+                //Console.WriteLine(tempword);
+                i++;
+            }
+            tempword = tempword.Substring(0, tempword.IndexOf(","));
+            //Console.WriteLine(tempword);
+            return tempword;
+        }
+
+        public static void UserInput(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.White;
+
         }
 
         //No methods beyond here

@@ -30,7 +30,8 @@ namespace MyatN_HW1
             //Read the user step input in and convert it to an integer
             int userNumOfSteps = 0;
             bool valid = false; //reset to false
-            string response = Console.ReadLine().Trim();
+            string response;
+            Setup.UserInput(response = Console.ReadLine().Trim());
             do
             {
                 valid = int.TryParse(response, out int result);//takes response and try to parse to int
@@ -38,7 +39,7 @@ namespace MyatN_HW1
                 if (valid == false)//if cannot, ask again
                 {
                     Console.WriteLine("You have not inputted a valid number of steps, please try again.");
-                    response = Console.ReadLine().Trim();
+                    Setup.UserInput(response = Console.ReadLine().Trim());
                 }
                 else// if can, take the value
                 {
@@ -77,5 +78,28 @@ namespace MyatN_HW1
         {
             Console.WriteLine("Hello, {0}. The door is currently locked and can only be opened with a key.", name);
         }
+
+        /// <summary>
+        /// 	If exiting the game, you must allow the game player to see all the messages on the screen that they lost before the window closes.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="diceRoll"></param>
+        public static void DeathDoor(string name, int diceRoll, int deathDoor)
+        {
+            if (diceRoll > deathDoor)
+            {
+                Console.WriteLine("{0} rolled a {1}. Lady Luck shines upon you, the door somehow magically opened for you.", name, diceRoll);
+                //continues
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("{0} rolled a {1}. After numerous attempts to picklock the door.\n" +
+                    "Sensing your vain stubborn efforts, as if to mock you the mysterious entity behind the door exploded the doors\n" +
+                    "blasting you to oblivion. You have died. Game over!", name, diceRoll);
+                Environment.Exit(0);
+            }
+        }
+
     }
 }

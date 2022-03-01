@@ -17,7 +17,7 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
-    class Animal1
+    static class Animal1
     {
     }
 }
