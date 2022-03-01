@@ -55,7 +55,7 @@ namespace MyatN_HW1
             //  *x<=4 player dies
             //if door opens, can proceed, otherwise die
             DeathDoor(name, diceRoll, deathDoor);
-
+            //test
             //Ask if player wants to continue or quit
             Quit();
 
