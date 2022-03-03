@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 /// <summary>
 /// Napolian Myat
-/// Project: Homework2
+/// Project: Homework3
 /// Date: 01/31/2022
-/// Modified: 02/21/2022
+/// Modified: 03/02/2022
 /// Purpose: Extension of hw1
 /// For this homework, we will begin creating our Text Adventure using:
 ///•	Random class
@@ -14,6 +14,9 @@ using System.Text;
 ///•	Nested If Statements
 ///•	Switch Statements
 ///•	Loops
+///•	Method Overloading / Variable Scope
+///•	Method parameters returning Values
+///•	Classes
 /// </summary>
 namespace MyatN_HW1
 {
@@ -26,8 +29,17 @@ namespace MyatN_HW1
         {
             //leave it black
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.WriteLine("Welcome to Mystical Grotto");
-            Console.WriteLine("__________________________________________\n");
+
+            string welcome;
+            int i = 0;
+            welcome = "Welcome to Mystical Grotto";
+
+            while (i < welcome.Length)
+            {
+                RandColor(welcome.Substring(i, 1));
+                i++;
+            }
+            Console.WriteLine("\n__________________________________________\n");
         }
         /// <summary>
         /// Tell player how to play the game
@@ -103,6 +115,14 @@ namespace MyatN_HW1
                     Console.WriteLine("Anywhoo, You have decided you are not ready to play the game.\nCome again when you are ready. :)");
                     Environment.Exit(0); //exits program
                 }
+                else
+                {
+                    Console.WriteLine("You braved yourself forward and decided to commence your adventure.");
+                    Console.WriteLine("You have long since heard of rumors of the mysterious Mystical Grotto where no man has returned from. \n" +
+                        "One day, you have decided to explore the outskirts of the Mansion in which the Mystical Grotto appeared in. \n" +
+                        "You have reached the gates of the Mansion. Looking from outside, you see a lush garden. Despite the Mansion\n" +
+                        "being abandoned for an indeterminate amount of time, it is surprisely kept.");
+                }
                 playGame = playGame.Substring(0, 1);
 
             }
@@ -117,6 +137,11 @@ namespace MyatN_HW1
             }
             else
             {
+                Console.WriteLine("You braved yourself forward and decided to commence your adventure.");
+                Console.WriteLine("You have long since heard of rumors of the mysterious Mystical Grotto where no man has returned from. \n" +
+                        "One day, you have decided to explore the outskirts of the Mansion in which the Mystical Grotto appeared in. \n" +
+                        "You have reached the gates of the Mansion. Looking from outside, you see a lush garden. Despite the Mansion\n" +
+                        "being abandoned for an indeterminate amount of time, it is surprisely kept.");
                 //nth code continues
             }
         }
@@ -135,6 +160,13 @@ namespace MyatN_HW1
             int rand1 = myrand.Next(min, max);
             int rand2 = myrand.Next(min, max);
             return rand1 + rand2;
+        }
+        public static int RollDie(int min, int max)
+        {
+
+            Random myrand = new Random();
+            int rand = myrand.Next(min, max);
+            return rand;
         }
 
 
@@ -175,32 +207,90 @@ namespace MyatN_HW1
         /// </summary>
         /// <param name="num"></param>
         /// <returns></returns>
-        public static string Color()
+        public static void RandColor(string message)
         {
-            int num = Setup.RollDice(1, 6);
-            //	Create a constant string with 8 colors separated by a comma
-            const string MY_COLORS = "Blue,Red,DarkYellow,Green,Magenta";
-            string tempword = MY_COLORS;
-            int find = MY_COLORS.IndexOf(",");
-            int i = 1;
-            while (i < num)
+            //variable
+            int color = Setup.RollDie(1,6);
+            //string
+            //int num = Setup.RollDice(1, 6);
+            ////	Create a constant string with 8 colors separated by a comma
+            //const string MY_COLORS = "Blue,Red,DarkYellow,Green,Magenta";
+            //string tempword = MY_COLORS;
+            //int find = MY_COLORS.IndexOf(",");
+            //int i = 1;
+            //while (i < num)
+            //{
+            //    find = tempword.IndexOf(",");
+            //    tempword = tempword.Substring(find + 1, tempword.Length - find - 1);
+            //    //test
+            //    //Console.WriteLine(tempword);
+            //    i++;
+            //}
+            //tempword = tempword.Substring(0, tempword.IndexOf(","));
+            ////Console.WriteLine(tempword);
+            //return tempword;
+
+            switch(color)
             {
-                find = tempword.IndexOf(",");
-                tempword = tempword.Substring(find + 1, tempword.Length - find - 1);
-                //test
-                //Console.WriteLine(tempword);
-                i++;
+                case 1:
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.Write(message);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    }
+                case 2:
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(message);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    }
+                case 3:
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.Write(message);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    }
+                case 4:
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write(message);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    }
+                case 5:
+                    {
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.Write(message);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    }
+                default:
+                    {
+                        Console.Write("oops");
+                        break;
+                    }
             }
-            tempword = tempword.Substring(0, tempword.IndexOf(","));
-            //Console.WriteLine(tempword);
-            return tempword;
+            
         }
 
+        /// <summary>
+        /// Changes user input color to cyan
+        /// </summary>
+        /// <param name="message"></param>
         public static void UserInput(string message)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(message);
             Console.ForegroundColor = ConsoleColor.White;
+
+        }
+
+
+        public static void GameEnd(string message)
+        {
 
         }
 

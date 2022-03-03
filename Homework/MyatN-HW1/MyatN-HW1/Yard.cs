@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 /// <summary>
 /// Napolian Myat
-/// Project: Homework2
+/// Project: Homework3
 /// Date: 01/31/2022
-/// Modified: 02/21/2022
+/// Modified: 03/02/2022
 /// Purpose: Extension of hw1
 /// For this homework, we will begin creating our Text Adventure using:
 ///•	Random class
@@ -14,11 +14,19 @@ using System.Text;
 ///•	Nested If Statements
 ///•	Switch Statements
 ///•	Loops
+///•	Method Overloading / Variable Scope
+///•	Method parameters returning Values
+///•	Classes
 /// </summary>
 namespace MyatN_HW1
 {
     static class Yard
     {
+        /// <summary>
+        /// Before entering the door, reach the gates
+        /// </summary>
+       
+
         /// <summary>
         /// User arrive to door of house
         /// </summary>
@@ -26,7 +34,7 @@ namespace MyatN_HW1
         public static void GetToDoor(int numOfSteps)
         {
             //Ask the user for how many steps to move.
-            Console.WriteLine("\nHow many steps are you going to move?");
+            Console.WriteLine("\nTo proceed, you must absolve yourself and move your legs. How many steps are you going to move?");
             //Read the user step input in and convert it to an integer
             int userNumOfSteps = 0;
             bool valid = false; //reset to false
