@@ -34,12 +34,19 @@ namespace MyatN_HW1
         public static void GetToDoor(int numOfSteps)
         {
             //Ask the user for how many steps to move.
+            Setup.RandColor("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                             "~                     Yard                  ~\n" +
+                             "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            Setup.ColorChange(3, "You have long since heard of rumors of the mysterious Mystical Grotto where no man has returned from. \n" +
+                    "One day, you have decided to explore the outskirts of the Mansion in which the Mystical Grotto appeared in. \n" +
+                    "You have reached the gates of the Mansion. Looking from outside, you see a lush garden. Despite the Mansion\n" +
+                    "being abandoned for an indeterminate amount of time, it is surprisely kept.");
             Console.WriteLine("\nTo proceed, you must absolve yourself and move your legs. How many steps are you going to move?");
             //Read the user step input in and convert it to an integer
             int userNumOfSteps = 0;
             bool valid = false; //reset to false
             string response;
-            Setup.UserInput(response = Console.ReadLine().Trim());
+            Setup.ColorChange(10, response = Console.ReadLine().Trim());
             do
             {
                 valid = int.TryParse(response, out int result);//takes response and try to parse to int
@@ -47,7 +54,7 @@ namespace MyatN_HW1
                 if (valid == false)//if cannot, ask again
                 {
                     Console.WriteLine("You have not inputted a valid number of steps, please try again.");
-                    Setup.UserInput(response = Console.ReadLine().Trim());
+                    Setup.ColorChange(10, response = Console.ReadLine().Trim());
                 }
                 else// if can, take the value
                 {

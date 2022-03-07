@@ -37,12 +37,13 @@ namespace MyatN_HW1
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             //Basic Info - HW1
             Setup.Welcome(); //Welcome the user
-
+            
             name = Setup.GetName(); //Ask for user name
 
             Setup.Rules(); //Explain the rules
 
-            Setup.PlayGame(); //Ask whether to play the game or not
+            Setup.PlayGame(name); //Ask whether to play the game or not
+            Setup.Clear();
 
             Yard.GetToDoor(numOfSteps); //const num of steps to door
 

@@ -56,7 +56,7 @@ namespace MyatN_HW1
             {
                 Console.WriteLine("\nYou see 5 rooms within your vicinity. You should probably check each of them out\nThey are:\n\t1 The Kitchen\n\t" +
                     "2 The BedRoom\n\t3 The LivingRoom\n\t4 The Library\n\t5 The GuestRoom.\nWhich one do you wish to visit?");
-                Setup.UserInput(choice = Console.ReadLine().Trim());
+                Setup.ColorChange(10, choice = Console.ReadLine().Trim());
                 switch (choice)
                 {
                     case "1":
