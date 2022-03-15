@@ -48,7 +48,7 @@ namespace MyatN_HW1
         public static void UpperFloor()
         {
             string choice;
-            bool exit = false;
+            bool exit;
             string text;
             string stringColor = StrClass(3); //find 3rd word
 
