@@ -43,7 +43,6 @@ namespace MyatN_HW1
             Setup.Rules(); //Explain the rules
 
             Setup.PlayGame(name); //Ask whether to play the game or not
-            Setup.Clear();
 
             Yard.GetToDoor(numOfSteps); //const num of steps to door
 

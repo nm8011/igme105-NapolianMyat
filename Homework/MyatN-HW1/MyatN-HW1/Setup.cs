@@ -65,7 +65,11 @@ namespace MyatN_HW1
             // User starts here – ask for basic information such as user name.
             //•	Ask the user for their name, read it in and save it (It is used multiple times throughout the game)
             Console.Write("Please enter your character name: ");
-            Setup.ColorChange(10, name = Console.ReadLine().Trim());
+            //Console.ForegroundColor = ConsoleColor.Cyan;
+            //name = Console.ReadLine().Trim();
+            //Console.ForegroundColor = ConsoleColor.White;
+
+            name = Setup.UserInput();
             do
             {
                 //user press 'enter'
@@ -99,9 +103,9 @@ namespace MyatN_HW1
             Console.WriteLine("Nice to meet you {0}. I hope you are prepared to perish in a dark damp lair!\n", name);
             //•	Add a section inquiring if the user wants to start playing the game and asking for a Y/ N response.
             Console.WriteLine("Are you ready to play (Y/N)?");
-            Console.Write(">");
+            Console.Write("> ");
             Console.ForegroundColor = ConsoleColor.White;
-            Setup.ColorChange(10, playGame = Console.ReadLine().Trim().ToUpper()); //trim/toupper senitize userinput
+            playGame = UserInput().ToUpper(); //trim/toupper senitize userinput
 
             //In case player enters yes or no instead of y or n
             if (playGame == "YES" || playGame == "NO")
@@ -115,29 +119,37 @@ namespace MyatN_HW1
                 }
                 else
                 {
-                    Console.WriteLine("You braved yourself forward and decided to commence your adventure.");
-                    Console.WriteLine("You have long since heard of rumors of the mysterious Mystical Grotto where no man has returned from. \n" +
-                        "One day, you have decided to explore the outskirts of the Mansion in which the Mystical Grotto appeared in. \n" +
-                        "You have reached the gates of the Mansion. Looking from outside, you see a lush garden. Despite the Mansion\n" +
-                        "being abandoned for an indeterminate amount of time, it is surprisely kept.");
+                    Console.WriteLine("\n*sigh*.... we asked for a 'Y' or an 'N'");
                 }
                 playGame = playGame.Substring(0, 1);
-
             }
+
             //test
             //Console.WriteLine(playGame);
             if (playGame != "Y")
             {
-                Console.Clear();
-                Console.WriteLine("You did not enter 'Y'es. You have decided you are not ready to play the game.\nCome again when you are ready. :)");
-                Environment.Exit(0);
-                //They gave us anything BUT Y
+                playGame = playGame.Substring(0, 1);
+                if (playGame == "Y")
+                {
+                    Console.WriteLine("You did not enter 'Y'es. However, we detected a 'Y' in your input and will take it as a 'Y'es");
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("You did not enter 'Y'es. You have decided you are not ready to play the game.\nCome again when you are ready. :)");
+                    Environment.Exit(0);
+                    //They gave us anything BUT Y
+                }
             }
             else
             {
-                Console.WriteLine("You braved yourself forward and decided to commence your adventure.");
+                Console.WriteLine("Regardless, you braved yourself forward and decided to commence your adventure.");
                 //nth code continues
             }
+
+            playGame = playGame.Substring(0, 1);
+
+            PressToClear(true);
         }
 
         /// <summary>
@@ -163,7 +175,6 @@ namespace MyatN_HW1
             return rand;
         }
 
-
         /// <summary>
         /// Prompt whether player wants to quit the game or continue
         /// 	If exiting the game, you must allow the game player to see all the messages on the screen that they lost before the window closes
@@ -177,7 +188,6 @@ namespace MyatN_HW1
             if (string.IsNullOrEmpty(response)) //if user input is null meaning they press "Enter"
             {
                 Console.WriteLine("You've decided to continue. Good Luck Adventurer!");
-
             }
             else
             {
@@ -192,10 +202,10 @@ namespace MyatN_HW1
                     Console.WriteLine("Your persistence is pathetic. You have decided to quit adventuring.");
                     Environment.Exit(0);
                 }
+                PressToClear(true);
             }
-
-
         }
+
         /// <summary>
         /// Change color
         /// 1.) Blue
@@ -290,10 +300,13 @@ namespace MyatN_HW1
                         Console.Write("oops");
                         break;
                     }
-
             }
-
         }
+
+        /// <summary>
+        /// Rainbow Color print
+        /// </summary>
+        /// <param name="message"></param>
         public static void RandColor(string message)
         {
             int randColor;
@@ -301,26 +314,50 @@ namespace MyatN_HW1
             int i = 0;
             while (i < message.Length)
             {
-                randColor = Setup.RollDie(1, 10);
+                randColor = Setup.RollDie(1, 9);
                 ColorChange(randColor, message.Substring(i, 1));
                 i++;
             }
         }
 
 
-
+        /// <summary>
+        /// Game Over
+        /// </summary>
+        /// <param name="message"></param>
         public static void GameEnd(string message)
         {
 
         }
 
-        public static void Clear()
+        /// <summary>
+        /// Clear input for asthetic purposes
+        /// </summary>
+        public static void PressToClear(bool wantToClear)
         {
+            bool clear = wantToClear;
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
-            Console.Clear();
+
+            //lazy so if I want to use readkey but not clear add bool != true
+            if (clear == true)
+            {
+                Console.Clear();
+            }
         }
 
+        /// <summary>
+        /// UserInput = cyan
+        /// Trim() included
+        /// </summary>
+        /// <returns></returns>
+        public static string UserInput()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            string input = Console.ReadLine().Trim();
+            Console.ForegroundColor = ConsoleColor.White;
+            return input;
+        }
 
         //No methods beyond here
     }
