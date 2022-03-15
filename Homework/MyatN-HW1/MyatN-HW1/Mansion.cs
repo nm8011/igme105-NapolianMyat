@@ -49,9 +49,19 @@ namespace MyatN_HW1
         {
             string choice;
             bool exit = false;
-
+            string text;
             string stringColor = StrClass(3); //find 3rd word
-            Console.WriteLine("You entered through the door. You are at the corridor glowing a bright {0} color.", stringColor);
+
+
+            Setup.RandColor("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                            "~                  Mansion                  ~\n" +
+                            "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            text = string.Format("You opened the door with a loud resounding screech. You entered through the door.\n " +
+                                 "There is a blinding light stunning you for a brief moment. You soon opened your eyes and \n" +
+                                 "looked inside. You are now at the vast corridor glowing a bright {0} color."
+                                 , stringColor);
+
+            Setup.ColorChange(3, text);
             do
             {
                 Console.WriteLine("\nYou see 5 rooms within your vicinity. You should probably check each of them out\nThey are:\n\t1 The Kitchen\n\t" +

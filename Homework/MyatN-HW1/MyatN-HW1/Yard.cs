@@ -41,7 +41,7 @@ namespace MyatN_HW1
                     "One day, you have decided to explore the outskirts of the Mansion in which the Mystical Grotto appeared in. \n" +
                     "You have reached the gates of the Mansion. Looking from outside, you see a lush garden. Despite the Mansion\n" +
                     "being abandoned for an indeterminate amount of time, it is surprisely kept.");
-            Console.WriteLine("\nTo proceed, you must absolve yourself and move your legs. How many steps are you going to move?");
+            Console.WriteLine("\n\nTo proceed, you must absolve yourself and move your legs. How many steps are you going to move?");
             //Read the user step input in and convert it to an integer
             int userNumOfSteps = 0;
             bool valid = false; //reset to false
@@ -117,6 +117,8 @@ namespace MyatN_HW1
                                   "the door somehow magically opened for you.\n"
                                   , name, diceRoll, deathDoor);
                 Setup.ColorChange(4, text);
+                Setup.Quit();
+                Setup.PressToClear(true);
                 //continues
             }
             else
@@ -129,7 +131,6 @@ namespace MyatN_HW1
                 Setup.ColorChange(6, text);
                 Environment.Exit(0);
             }
-            Setup.PressToClear(true);
         }
 
     }

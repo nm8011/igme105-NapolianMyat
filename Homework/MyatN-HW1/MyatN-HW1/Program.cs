@@ -61,7 +61,6 @@ namespace MyatN_HW1
             Yard.DeathDoor(name, diceRoll, deathDoor);
 
             //Ask if player wants to continue or quit
-            Setup.Quit();
 
             Mansion.UpperFloor();
 

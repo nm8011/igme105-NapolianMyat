@@ -182,9 +182,9 @@ namespace MyatN_HW1
         public static void Quit()
         {
             string response;
-            Console.WriteLine("You are faced with a difficult decision.");
+            Console.WriteLine("\n\nYou are faced with a difficult decision.");
             Console.WriteLine("Do you wish to quit or continue? Enter 'Q' to quit or anything else to continue");
-            Setup.ColorChange(10, response = Console.ReadLine().Trim().Substring(0).ToUpper()); //substring 0 allows for null
+            response = Setup.UserInput().Substring(0).ToUpper(); //substring 0 allows for null
             if (string.IsNullOrEmpty(response)) //if user input is null meaning they press "Enter"
             {
                 Console.WriteLine("You've decided to continue. Good Luck Adventurer!");
@@ -199,7 +199,7 @@ namespace MyatN_HW1
                 }
                 else
                 {
-                    Console.WriteLine("Your persistence is pathetic. You have decided to quit adventuring.");
+                    Console.WriteLine("Your persistence is pathetic. You have decided to quit adventuring. Goodbye.");
                     Environment.Exit(0);
                 }
                 PressToClear(true);
