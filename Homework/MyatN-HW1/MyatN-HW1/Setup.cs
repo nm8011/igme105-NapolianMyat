@@ -233,6 +233,7 @@ namespace MyatN_HW1
         /// 8.) Yellow
         /// 9.) White
         /// 10.) Cyan
+        /// 11.) Cyan UserInput
         /// </summary>
         /// <param name="num"></param>
         /// <returns></returns>
@@ -306,7 +307,15 @@ namespace MyatN_HW1
                 case 10:
                     {
                         Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.WriteLine(message);
+                        Console.Write(message);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    }
+                case 11:
+                    {
+                        Console.Write(message);
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.ReadLine().Trim();
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
                     }
