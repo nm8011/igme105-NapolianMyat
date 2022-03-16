@@ -22,5 +22,48 @@ namespace MyatN_HW1
 {
     static class Animal2
     {
+        public static void DragonWish()
+        {
+            bool correct = false;
+            string response;
+            Console.WriteLine("The Dragon desires something of your possession. He demands you give it to him.\n" +
+                "What could it be? What will you give him?\n\t" +
+                "A.) The 5 cent in your pocket\n\t" +
+                "B.) Your math homework\n\t" +
+                "C.) The slimjim in your jacket");
+            do
+            {
+                response = Setup.UserInput().ToUpper();
+                switch(response)
+                {
+                    case "A":
+                        {
+                            Console.WriteLine("Thats correct! All dragons innately desire treasures and wealth\n" +
+                                "5 cent is still wealth. What a cheap dragon, wont even let you keep it.");
+                            correct = true;
+                            break;
+                        }
+                    case "B":
+                        {
+                            Setup.GameEnd("D", "The dragon is enraged. It thinks you're mocking him. In it's fury it slashes at you.");
+                            break;
+                        }
+                    case "C":
+                        {
+                            Console.WriteLine("The dragon muses at your kindness. Although the dragon enjoys slimjims,\n" +
+                                "It is not hungry at the moment. It desires something else. What will you give him?");
+                            correct = false;
+                            break;
+                        }
+                    default:
+                        {
+                            Setup.ColorChange(3, "That is not an option");
+                            correct = false;//loops back
+                            break;
+                        }
+                }
+            }
+            while (correct != true);
+        }
     }
 }

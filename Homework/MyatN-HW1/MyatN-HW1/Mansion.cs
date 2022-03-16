@@ -126,9 +126,6 @@ namespace MyatN_HW1
                     default://if not valid input prompt again
                         {
                             Console.WriteLine("\nOops! You have not picked an available option. Please pick again.");
-                            //Console.WriteLine("You see 6 rooms within your vicinity. You should probably check each of them out\nThey are:\n\t1 The Kitchen\n\t" +
-                            //        "2 The Bed Room\n\t3 The Living Room\n\t4 The Library\n\t5 The Guest Room\n\t6 The Basement\n\nWhich one do you wish to visit?");
-                            //Setup.UserInput(choice = Console.ReadLine().Trim());
                             exit = false;
                             break;
                         }
