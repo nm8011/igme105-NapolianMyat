@@ -65,9 +65,6 @@ namespace MyatN_HW1
             // User starts here – ask for basic information such as user name.
             //•	Ask the user for their name, read it in and save it (It is used multiple times throughout the game)
             Console.Write("Please enter your character name: ");
-            //Console.ForegroundColor = ConsoleColor.Cyan;
-            //name = Console.ReadLine().Trim();
-            //Console.ForegroundColor = ConsoleColor.White;
 
             name = Setup.UserInput();
             do
@@ -87,6 +84,8 @@ namespace MyatN_HW1
                 }
             }
             while (valid == false);
+            //Cap first letter, lowercase rest
+            name = (name.Substring(0,1).ToUpper()) + name.Substring(1, name.Length-1).ToLower();
             return name;
         }
         /// <summary>
@@ -248,7 +247,6 @@ namespace MyatN_HW1
         /// 8.) Yellow
         /// 9.) White
         /// 10.) Cyan
-        /// 11.) Cyan UserInput
         /// </summary>
         /// <param name="num"></param>
         /// <returns></returns>
@@ -323,14 +321,6 @@ namespace MyatN_HW1
                     {
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.Write(message);
-                        Console.ForegroundColor = ConsoleColor.White;
-                        break;
-                    }
-                case 11:
-                    {
-                        Console.Write(message);
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.ReadLine().Trim();
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
                     }

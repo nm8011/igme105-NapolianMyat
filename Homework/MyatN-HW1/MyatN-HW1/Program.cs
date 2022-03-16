@@ -37,7 +37,6 @@ namespace MyatN_HW1
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             //Basic Info - HW1
             Setup.Welcome(); //Welcome the user
-
             name = Setup.GetName(); //Ask for user name
 
             Setup.Rules(); //Explain the rules
