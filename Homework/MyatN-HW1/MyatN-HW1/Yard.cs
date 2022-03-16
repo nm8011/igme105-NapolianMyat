@@ -117,7 +117,7 @@ namespace MyatN_HW1
                                   "the door somehow magically opened for you.\n"
                                   , name, diceRoll, deathDoor);
                 Setup.ColorChange(4, text);
-                Setup.Quit();
+                Setup.GameEnd("Q", null);
                 Setup.PressToClear(true);
                 //continues
             }

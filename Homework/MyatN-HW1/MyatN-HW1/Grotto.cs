@@ -35,7 +35,7 @@ namespace MyatN_HW1
                 "You look down and see that you are walking on marshlands-like environemnt. You see a \n" +
                 "door across the way. but your feet has sunken into the marsh and you are immobilize.");
 
-            Setup.Quit(); //ask if to quit before presenting what to do.
+            Setup.GameEnd("Q", null); //ask if to quit before presenting what to do.
             Console.WriteLine("You have chosen not to quit. You begin to access the situation.");
 
 
@@ -54,8 +54,7 @@ namespace MyatN_HW1
                         }
                     case "2":
                         {
-                            Console.WriteLine("You died because you picked the wrong option. Game over!");
-                            Environment.Exit(0);
+                            Setup.GameEnd("D", "You have picked the wrong option");
                             break;
                         }
                     default:
@@ -72,7 +71,7 @@ namespace MyatN_HW1
 
             Console.WriteLine("Wonderful, you made it off the marshmallows, just to find yourself staring at a chocolate fudge river that fills the entire room. \n" +
                 "Now how are we going to get across this to the next room you can see across the river?.");
-            Setup.Quit();
+            Setup.GameEnd("Q", null);
 
             do
             {
@@ -115,7 +114,7 @@ namespace MyatN_HW1
             //Floor 3
             Console.WriteLine("You come across a room littered with treasures and gold. It is sparkling so bright, you could actually be blinded.\n" +
                 "You also noticed a door.");
-            Setup.Quit();
+            Setup.GameEnd("Q", null);
 
             do
             {
@@ -153,7 +152,7 @@ namespace MyatN_HW1
             //Floor 4/ Last one to completion
             Console.WriteLine("Good job on making it here this far!. You're the very first surviver.\n");
             Console.WriteLine("Now the room you are at is rumbling, the grotto is collapsing.");
-            Setup.Quit();
+            Setup.GameEnd("Q", null);
             Console.WriteLine("You must solve the solve the enchantment " +
                 "on the secret door to teleport to the exit.");
             //will set up randoms later but for now ....

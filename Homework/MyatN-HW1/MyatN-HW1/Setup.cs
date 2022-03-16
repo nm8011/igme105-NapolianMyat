@@ -176,34 +176,49 @@ namespace MyatN_HW1
         }
 
         /// <summary>
-        /// Prompt whether player wants to quit the game or continue
-        /// 	If exiting the game, you must allow the game player to see all the messages on the screen that they lost before the window closes
+        /// EndGame(Option Q||D + message)
+        /// Q: Prompt whether player wants to quit the game or continue, 
+        /// D: EndGame cuz player dies
         /// </summary>
-        public static void Quit()
+        public static void GameEnd(string option, string message)
         {
-            string response;
-            Console.WriteLine("\n\nYou are faced with a difficult decision.");
-            Console.WriteLine("Do you wish to quit or continue? Enter 'Q' to quit or anything else to continue");
-            response = Setup.UserInput().Substring(0).ToUpper(); //substring 0 allows for null
-            if (string.IsNullOrEmpty(response)) //if user input is null meaning they press "Enter"
+            switch (option)
             {
-                Console.WriteLine("You've decided to continue. Good Luck Adventurer!");
-            }
-            else
-            {
-                response = response.Substring(0, 1).ToUpper().Trim();//user senitize
-                if (response != "Q")
-                {
-                    //code continues
-                    Console.WriteLine("You've decided to continue. Good Luck Adventurer!");
-                }
-                else
-                {
-                    Console.WriteLine("Your persistence is pathetic. You have decided to quit adventuring. Goodbye.");
-                    Environment.Exit(0);
-                }
-                PressToClear(true);
-            }
+                case "Q":
+                    {
+                        string response;
+                        Console.WriteLine("\n\nYou are faced with a difficult decision.");
+                        Console.WriteLine("Do you wish to quit or continue? Enter 'Q' to quit or anything else to continue");
+                        response = Setup.UserInput().Substring(0).ToUpper(); //substring 0 allows for null
+                        if (string.IsNullOrEmpty(response)) //if user input is null meaning they press "Enter"
+                        {
+                            Console.WriteLine("You've decided to continue. Good Luck Adventurer!");
+                        }
+                        else
+                        {
+                            response = response.Substring(0, 1).ToUpper().Trim();//user senitize
+                            if (response != "Q")
+                            {
+                                //code continues
+                                Console.WriteLine("You've decided to continue. Good Luck Adventurer!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your persistence is pathetic. You have decided to quit adventuring. Goodbye.");
+                                Environment.Exit(0);
+                            }
+                            PressToClear(true);
+                        }
+                        break;
+                    }
+                case "D":
+                    {
+                        Console.WriteLine(message);
+                        Console.WriteLine("You have died. Game over!");
+                        Environment.Exit(0);
+                        break;
+                    }
+        }
         }
 
         /// <summary>
@@ -318,16 +333,6 @@ namespace MyatN_HW1
                 ColorChange(randColor, message.Substring(i, 1));
                 i++;
             }
-        }
-
-
-        /// <summary>
-        /// Game Over
-        /// </summary>
-        /// <param name="message"></param>
-        public static void GameEnd(string message)
-        {
-
         }
 
         /// <summary>
