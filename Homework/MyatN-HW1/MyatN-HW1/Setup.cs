@@ -77,8 +77,8 @@ namespace MyatN_HW1
                 {
                     //will loop again and ask for valid name
                     valid = false;
-                    Console.WriteLine("Sorry, you have not inputted a name. Please input a valid name!");
-                    Setup.ColorChange(10, name = Console.ReadLine().Trim());
+                    Console.Write("Sorry, you have not inputted a name. Please input a valid name!\n>");
+                    name = UserInput();
                 }
                 else
                 {
@@ -97,6 +97,7 @@ namespace MyatN_HW1
         {
             //Variables
             string playGame;
+            bool valid = false;
 
             //Greetings
             //•	Provide the initial narration, using the name provided by the user.
@@ -105,24 +106,38 @@ namespace MyatN_HW1
             Console.WriteLine("Are you ready to play (Y/N)?");
             Console.Write("> ");
             Console.ForegroundColor = ConsoleColor.White;
-            playGame = UserInput().ToUpper(); //trim/toupper senitize userinput
 
             //In case player enters yes or no instead of y or n
-            if (playGame == "YES" || playGame == "NO")
+            do
             {
-                if (playGame == "NO")
+                playGame = UserInput().ToUpper(); //trim/toupper senitize userinput
+                if (playGame == "YES" || playGame == "NO")
                 {
-                    Console.Clear();
-                    Console.WriteLine("\n*sigh*.... we asked for a 'Y' or an 'N'");
-                    Console.WriteLine("Anywhoo, You have decided you are not ready to play the game.\nCome again when you are ready. :)");
-                    Environment.Exit(0); //exits program
+                    if (playGame == "NO")
+                    {
+                        Console.Clear();
+                        Console.WriteLine("\n*sigh*.... we asked for a 'Y' or an 'N'");
+                        Console.WriteLine("Anywhoo, You have decided you are not ready to play the game.\nCome again when you are ready. :)");
+                        Environment.Exit(0); //exits program
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n*sigh*.... we asked for a 'Y' or an 'N'");
+                        valid = true;
+                    }
+                    playGame = playGame.Substring(0, 1);
+                }
+                else if (string.IsNullOrEmpty(playGame))
+                {
+                    Console.Write("Please enter a valid response!\n>");
+                    valid = false;
                 }
                 else
                 {
-                    Console.WriteLine("\n*sigh*.... we asked for a 'Y' or an 'N'");
+                    valid = true;
                 }
-                playGame = playGame.Substring(0, 1);
             }
+            while (valid == false);
 
             //test
             //Console.WriteLine(playGame);
@@ -332,6 +347,8 @@ namespace MyatN_HW1
 
         /// <summary>
         /// Clear input for asthetic purposes
+        /// true to clear
+        /// false just to print readkey
         /// </summary>
         public static void PressToClear(bool wantToClear)
         {
