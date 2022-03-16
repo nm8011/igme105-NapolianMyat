@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 /// <summary>
 /// Napolian Myat
-/// Project: Homework2
+/// Project: Homework3
 /// Date: 01/31/2022
-/// Modified: 02/21/2022
+/// Modified: 03/02/2022
 /// Purpose: Extension of hw1
 /// For this homework, we will begin creating our Text Adventure using:
 ///•	Random class
@@ -14,6 +14,9 @@ using System.Text;
 ///•	Nested If Statements
 ///•	Switch Statements
 ///•	Loops
+///•	Method Overloading / Variable Scope
+///•	Method parameters returning Values
+///•	Classes
 /// </summary>
 namespace MyatN_HW1
 {
@@ -45,15 +48,25 @@ namespace MyatN_HW1
         public static void UpperFloor()
         {
             string choice;
-            bool exit = false;
-
+            bool exit;
+            string text;
             string stringColor = StrClass(3); //find 3rd word
-            Console.WriteLine("You entered through the door. You are at the corridor glowing a bright {0} color.", stringColor);
+
+
+            Setup.RandColor("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                            "~                  Mansion                  ~\n" +
+                            "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            text = string.Format("You opened the door with a loud resounding screech. You entered through the door.\n " +
+                                 "There is a blinding light stunning you for a brief moment. You soon opened your eyes and \n" +
+                                 "looked inside. You are now at the vast corridor glowing a bright {0} color."
+                                 , stringColor);
+
+            Setup.ColorChange(3, text);
             do
             {
                 Console.WriteLine("\nYou see 5 rooms within your vicinity. You should probably check each of them out\nThey are:\n\t1 The Kitchen\n\t" +
                     "2 The BedRoom\n\t3 The LivingRoom\n\t4 The Library\n\t5 The GuestRoom.\nWhich one do you wish to visit?");
-                Setup.UserInput(choice = Console.ReadLine().Trim());
+                Setup.ColorChange(10, choice = Console.ReadLine().Trim());
                 switch (choice)
                 {
                     case "1":

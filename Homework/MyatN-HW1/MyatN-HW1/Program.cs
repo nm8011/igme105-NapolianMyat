@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 /// <summary>
 /// Napolian Myat
-/// Project: Homework2
+/// Project: Homework3
 /// Date: 01/31/2022
-/// Modified: 02/21/2022
+/// Modified: 03/02/2022
 /// Purpose: Extension of hw1
 /// For this homework, we will begin creating our Text Adventure using:
 ///•	Random class
@@ -13,6 +14,9 @@ using System.Collections.Generic;
 ///•	Nested If Statements
 ///•	Switch Statements
 ///•	Loops
+///•	Method Overloading / Variable Scope
+///•	Method parameters returning Values
+///•	Classes
 /// </summary>
 namespace MyatN_HW1
 {
@@ -33,12 +37,12 @@ namespace MyatN_HW1
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             //Basic Info - HW1
             Setup.Welcome(); //Welcome the user
-
+            
             name = Setup.GetName(); //Ask for user name
 
             Setup.Rules(); //Explain the rules
 
-            Setup.PlayGame(); //Ask whether to play the game or not
+            Setup.PlayGame(name); //Ask whether to play the game or not
 
             Yard.GetToDoor(numOfSteps); //const num of steps to door
 
@@ -57,7 +61,6 @@ namespace MyatN_HW1
             Yard.DeathDoor(name, diceRoll, deathDoor);
 
             //Ask if player wants to continue or quit
-            Setup.Quit();
 
             Mansion.UpperFloor();
 

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 /// <summary>
 /// Napolian Myat
-/// Project: Homework2
+/// Project: Homework3
 /// Date: 01/31/2022
-/// Modified: 02/21/2022
+/// Modified: 03/02/2022
 /// Purpose: Extension of hw1
 /// For this homework, we will begin creating our Text Adventure using:
 ///•	Random class
@@ -14,6 +14,9 @@ using System.Text;
 ///•	Nested If Statements
 ///•	Switch Statements
 ///•	Loops
+///•	Method Overloading / Variable Scope
+///•	Method parameters returning Values
+///•	Classes
 /// </summary>
 namespace MyatN_HW1
 {
@@ -40,7 +43,7 @@ namespace MyatN_HW1
             {
                 Console.WriteLine("\nYou look around and found the following in the room. \n\t1.) A rope is hanging from the ceiling.\n" +
                   "\t2.) A blow torch is sitting next to you. \n\t3.) A herb is right next to you\nWhat would you like to do?");
-                Setup.UserInput(response = Console.ReadLine().ToUpper().Trim());
+                Setup.ColorChange(10, response = Console.ReadLine().ToUpper().Trim());
                 switch (response)
                 {
                     case "1":
@@ -75,7 +78,7 @@ namespace MyatN_HW1
             {
                 Console.WriteLine("You looked around and see:\n\t 1.) A board \n\t2.) A stick \n\t3.) A switch on the wall.\n" +
               "Which bad choice will you make this time?");
-                Setup.UserInput(response = Console.ReadLine().ToUpper().Trim());
+                Setup.ColorChange(10, response = Console.ReadLine().ToUpper().Trim());
                 switch (response)
                 {
                     case "1":
@@ -117,7 +120,7 @@ namespace MyatN_HW1
             do
             {
                 Console.WriteLine("What would you like to do?\n\t1.)Stashed the treasures\n\t2.) Ignore and go to door");
-                Setup.UserInput(response = Console.ReadLine().ToUpper().Trim());
+                Setup.ColorChange(10, response = Console.ReadLine().ToUpper().Trim());
                 switch (response)
                 {
                     case "1":
@@ -158,7 +161,7 @@ namespace MyatN_HW1
             do
             {
                 Console.WriteLine("What is 8 x 12?\n\t1.) {0}\n\t2.) 100 \n\t3.) 88", answer);
-                Setup.UserInput(response = Console.ReadLine().ToUpper().Trim());
+                Setup.ColorChange(10, response = Console.ReadLine().ToUpper().Trim());
                 switch (response)
                 {
                     case "1":
