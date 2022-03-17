@@ -61,7 +61,7 @@ namespace MyatN_HW1
             {
                 while (steps < numOfSteps)
                 {
-                    Console.WriteLine("You are short of steps. You have not reached the Mansion yet. No rush. You are enjoying the \n" +
+                    Console.Write("You are short of steps. You have not reached the Mansion yet. No rush. You are enjoying the \n" +
                         "environment around the Mansion which is pristine and serene.\n" +
                     "How many more steps will you take?\n>");
                     response = Setup.UserInput();
@@ -69,8 +69,15 @@ namespace MyatN_HW1
                     steps = steps + userNumOfSteps;
                     remainingSteps = Math.Abs(numOfSteps - steps);
                 }
-                Console.WriteLine("You would have walked past the door by {0} steps if you had kept going. \n" +
-                    "You have stopped at the door.", remainingSteps);
+                if (steps == 50)
+                {
+                    Console.WriteLine("You have arrived at the door!");
+                }
+                else
+                {
+                    Console.WriteLine("You would have walked past the door by {0} steps if you had kept going. \n" +
+                        "You have stopped at the door.", remainingSteps);
+                }
             }
             //userinput == const
             else
@@ -114,13 +121,15 @@ namespace MyatN_HW1
             if (diceRoll > deathDoor)
             {
                 success = true;
+                
                 text = string.Format("\n{0} rolled a {1}. The bare minimum roll is {2}. Lady Luck shines upon you, \n" +
                                   "the slot machine delivers the key in a pod to you.\n"
-                                  , name, diceRoll, deathDoor);
+                                  , name, diceRoll, deathDoor + 1);
                 Setup.ColorChange(4, text);
-                FrontDoorChallenge();
-                Setup.GameEnd("Q", null);
-                Setup.PressToClear(true);
+                //FrontDoorChallenge();
+                //Setup.GameEnd("Q", null);
+                //Setup.PressToClear(true);
+
                 //continues
             }
             else
@@ -130,11 +139,11 @@ namespace MyatN_HW1
                                   "\nget the key. You then resorted to picklocking. After numerous attempts to picklock the door." +
                                   "\nSensing your vain stubborn efforts, as if to mock you the mysterious entity behind the Grotto " +
                                   "\nexploded the doors blasting you to oblivion.\n"
-                                  , name, diceRoll, deathDoor);
-                Setup.GameEnd("D", text);
+                                  , name, diceRoll, deathDoor + 1);
+                Setup.ColorChange(6, text);
             }
             return success;
-        }
+        } 
 
         /// <summary>
         /// 
@@ -143,11 +152,11 @@ namespace MyatN_HW1
         {
             string choice;
             bool success = false;
-            Console.WriteLine("\nBefore you could open the door, 2 fabled creatures appeared before you from\n" +
+            Console.Write("\nBefore you could open the door, 2 fabled creatures appeared before you from\n" +
                 "seemingly nowhere. They prompt you to choose one of them to access the door.\n" +
                 "Did you think it was going to be that easy? Which will you choose?" +
                 "\n\tA.) The Sphinx" +
-                "\n\tB.) The Dragon");
+                "\n\tB.) The Dragon\n>");
             do
             {
                 choice = Setup.UserInput().ToUpper();
@@ -167,7 +176,7 @@ namespace MyatN_HW1
                         }
                     default:
                         {
-                            Setup.ColorChange(3,"That is not an option");
+                            Setup.ColorChange(6,"That is not an option");
                             success = false;
                             break;
                         }

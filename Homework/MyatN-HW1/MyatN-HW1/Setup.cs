@@ -155,9 +155,17 @@ namespace MyatN_HW1
         {
 
             Random myrand = new Random();
+            int rand1 = RollDie(min, max);
+            int rand2 = DieRoll(1,7, 2);
+            return rand1 + rand2;
+        }
+        public static int DieRoll(int min, int max, int numOfDice)
+        {
+
+            Random myrand = new Random();
             int rand1 = myrand.Next(min, max);
             int rand2 = myrand.Next(min, max);
-            return rand1 + rand2;
+            return (rand1 + rand2)*numOfDice/numOfDice;
         }
         public static int RollDie(int min, int max)
         {
@@ -184,7 +192,7 @@ namespace MyatN_HW1
                         response = Setup.UserInput().Substring(0).ToUpper(); //substring 0 allows for null
                         if (string.IsNullOrEmpty(response)) //if user input is null meaning they press "Enter"
                         {
-                            Console.WriteLine("You've decided to continue. Good Luck Adventurer!");
+                            Console.WriteLine("You've decided to continue. Good Luck Adventurer!" + message);
                         }
                         else
                         {
@@ -192,7 +200,7 @@ namespace MyatN_HW1
                             if (response != "Q")
                             {
                                 //code continues
-                                Console.WriteLine("You've decided to continue. Good Luck Adventurer!");
+                                Console.WriteLine("You've decided to continue. Good Luck Adventurer!" + message);
                             }
                             else
                             {
@@ -390,12 +398,12 @@ namespace MyatN_HW1
                 }
                 else// if can, take the value
                 {
-                    intResponse = int.Parse(response);
                     valid = true;
                     //nth
                 }
             }
             while (valid != true);
+            int.Parse(response);
             return intResponse;
         }
         /// <summary>

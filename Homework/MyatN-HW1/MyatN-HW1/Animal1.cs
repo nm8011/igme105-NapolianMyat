@@ -30,11 +30,11 @@ namespace MyatN_HW1
                 "forward. However, answer wrongly, you will be doomed. The riddle is:\n\t\t");
             do
             {
-                Console.WriteLine("What can bring back the dead; make you cry, make you laugh, make you young;\n\t" +
-                "is born in an instant, yet lasts a lifetime.\n" +
+                Setup.ColorChange(3, "\n\t\tWhat can bring back the dead; make you cry, make you \n\t" +
+                    "laugh, make you young; is born in an instant, yet lasts a lifetime.\n" +
                 "A.) Love\n" +
                 "B.) Memory\n" +
-                "C.) Desire");
+                "C.) Desire\n>");
                 answer = Setup.UserInput().ToUpper();
                 switch (answer)
                 {
@@ -43,7 +43,7 @@ namespace MyatN_HW1
                             Console.WriteLine("Wrong! Love can make you cry, make you laugh, make you feel young, can be \n" +
                                 "born in an instant, can last a lifetime. However, it cannot bring back\n" +
                                 "the dead. ");
-                            Setup.GameEnd("D", "The Sphinx finds you to be appetizing. He has devoured you.");
+                            Setup.GameEnd("D", "The Sphinx finds you to be appetizing. He has devoured you."); //death
 
                             break;
                         }
@@ -52,7 +52,7 @@ namespace MyatN_HW1
                             Console.WriteLine("Correct! People can live on in memories, can last a lifetime, make you young, laugh,\n" +
                                 "cry, and be born in an instant. The Sphinx laments at you getting it correct.\n" +
                                 "You are allowed to pass.");
-                            correct = true;
+                            correct = true; //loops back, dragon ask for something else
                             break;
                         }
                     case "C":
@@ -63,13 +63,15 @@ namespace MyatN_HW1
                         }
                     default:
                         {
-                            Setup.ColorChange(3,"That is not an option");
+                            Setup.ColorChange(6,"That is not an option\n");
                             correct = false;//loops back
                             break;
                         }
                 }
             }
             while (correct != true);
+            Setup.PressToClear(true);
+
         }
     }
 }

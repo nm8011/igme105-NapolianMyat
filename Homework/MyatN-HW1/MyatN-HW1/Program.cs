@@ -52,22 +52,23 @@ namespace MyatN_HW1
             //	Incorporate the player name in the door note.  
             Yard.Note(name);
 
-            
+
             //check diceRoll
             //  *x>4, door opens
             //  *x<=4 player dies
             //if door opens, can proceed, otherwise die
             success = Yard.FrontDoor(name, deathDoor);
-            if(success == true)
+            if (success == true)
             {
-
+                Yard.FrontDoorChallenge();
+                Setup.GameEnd("Q", null);
+                Setup.PressToClear(true);
             }
             else
             {
+                Setup.GameEnd("D", null);
 
             }
-
-            //Ask if player wants to continue or quit
 
             Mansion.UpperFloor();
 
