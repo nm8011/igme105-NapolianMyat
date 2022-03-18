@@ -56,17 +56,18 @@ namespace MyatN_HW1
             Setup.RandColor("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
                             "~                  Mansion                  ~\n" +
                             "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-            text = string.Format("You opened the door with a loud resounding screech. You entered through the door.\n " +
+            text = string.Format("You opened the door with a loud resounding screech. You entered through the door.\n" +
                                  "There is a blinding light stunning you for a brief moment. You soon opened your eyes and \n" +
-                                 "looked inside. You are now at the vast corridor glowing a bright {0} color."
-                                 , stringColor);
+                                 "looked inside. You are now at the vast corridor glowing a bright {0} color. \n" +
+                                 "As you scanned the Mansion with your eyes in discretion, you made a keen observation."
+                                 , stringColor.ToLower());
 
             Setup.ColorChange(3, text);
             do
             {
-                Console.WriteLine("\nYou see 5 rooms within your vicinity. You should probably check each of them out\nThey are:\n\t1 The Kitchen\n\t" +
-                    "2 The BedRoom\n\t3 The LivingRoom\n\t4 The Library\n\t5 The GuestRoom.\nWhich one do you wish to visit?");
-                Setup.ColorChange(10, choice = Console.ReadLine().Trim());
+                Console.Write("\nYou see 5 rooms labeled within your vicinity. You should probably check each of them out\nThey are:\n\t1 The Kitchen\n\t" +
+                    "2 The BedRoom\n\t3 The LivingRoom\n\t4 The Library\n\t5 The GuestRoom.\nWhich one do you wish to visit?\n>");
+                choice = Setup.UserInput();
                 switch (choice)
                 {
                     case "1":
@@ -126,15 +127,14 @@ namespace MyatN_HW1
                     default://if not valid input prompt again
                         {
                             Console.WriteLine("\nOops! You have not picked an available option. Please pick again.");
-                            //Console.WriteLine("You see 6 rooms within your vicinity. You should probably check each of them out\nThey are:\n\t1 The Kitchen\n\t" +
-                            //        "2 The Bed Room\n\t3 The Living Room\n\t4 The Library\n\t5 The Guest Room\n\t6 The Basement\n\nWhich one do you wish to visit?");
-                            //Setup.UserInput(choice = Console.ReadLine().Trim());
                             exit = false;
                             break;
                         }
                 }
             }
-            while (exit == false);
+            while (exit != true);
+            Setup.PressToClear(true);
+
 
         }
     }

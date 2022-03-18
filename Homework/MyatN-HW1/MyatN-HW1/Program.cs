@@ -33,11 +33,12 @@ namespace MyatN_HW1
             //Random
             int diceRoll;
             int deathDoor = 1; //made it 1 so debugging is not so annoying, suppose to be 4
+            string text;
+            bool success;
 
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             //Basic Info - HW1
             Setup.Welcome(); //Welcome the user
-
             name = Setup.GetName(); //Ask for user name
 
             Setup.Rules(); //Explain the rules
@@ -51,16 +52,23 @@ namespace MyatN_HW1
             //	Incorporate the player name in the door note.  
             Yard.Note(name);
 
-            //o	Create code to simulate dice rolls.  
-            //roll 2 dice
-            diceRoll = Setup.RollDice(1, 7); //to get 2 dice roll of 1-6 added together
+
             //check diceRoll
             //  *x>4, door opens
             //  *x<=4 player dies
             //if door opens, can proceed, otherwise die
-            Yard.DeathDoor(name, diceRoll, deathDoor);
+            success = Yard.FrontDoor(name, deathDoor);
+            if (success == true)
+            {
+                Yard.FrontDoorChallenge();
+                Setup.GameEnd("Q", null);
+                Setup.PressToClear(true);
+            }
+            else
+            {
+                Setup.GameEnd("D", null);
 
-            //Ask if player wants to continue or quit
+            }
 
             Mansion.UpperFloor();
 
