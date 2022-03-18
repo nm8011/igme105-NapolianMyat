@@ -23,23 +23,19 @@ namespace MyatN_HW1
     static class Setup
     {
         /// <summary>
-        /// Introduce the game
+        /// Introduce the game name
         /// </summary>
         public static void Welcome()
         {
             //leave it black
             Console.BackgroundColor = ConsoleColor.Black;
 
-            string welcome;
-            int i = 0;
-            welcome = "Welcome to Mystical Grotto";
+            RandColor("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                           "~        Welcome to Mystical Grotton        ~ " +
+                         "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
 
-            while (i < welcome.Length)
-            {
-                RandColor(welcome.Substring(i, 1));
-                i++;
-            }
-            Console.WriteLine("\n__________________________________________\n");
+            
+            //Console.WriteLine("\n__________________________________________\n");
         }
         /// <summary>
         /// Tell player how to play the game
@@ -47,10 +43,13 @@ namespace MyatN_HW1
         public static void Rules()
         {
             // Section to setup initial storyline
+            //change font color
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             //•	Provide instructions for how to play the game
-            Console.WriteLine("\tMystical Grotto is an interactive text based game.\nDuring the game you will" +
-                " be asked for decisions and to enter input.\nYou will be provided with all that you need to know as you play " +
-                "the game\nand will only require a keyboard to play. Enjoy the adventure!\n");
+            Console.WriteLine("\tMystical Grotto is an interactive text based game. During\n" +
+                               "the game you will be asked for decisions and to enter input. You\n" +
+                               "will be provided with all that you need to know as you play the\n" +
+                               "game and will only require a keyboard to play. Enjoy the adventure!\n");
             Console.ForegroundColor = ConsoleColor.White;//change color back
 
         }
@@ -63,87 +62,86 @@ namespace MyatN_HW1
             //Variables
             string name;
             bool valid = false;
+            string response;
             // User starts here – ask for basic information such as user name.
             //•	Ask the user for their name, read it in and save it (It is used multiple times throughout the game)
             Console.Write("Please enter your character name: ");
-            Setup.UserInput(name = Console.ReadLine().Trim());
-            do
-            {
-                //user press 'enter'
-                if (string.IsNullOrEmpty(name))
-                {
-                    //will loop again and ask for valid name
-                    valid = false;
-                    Console.WriteLine("Sorry, you have not inputted a name. Please input a valid name!");
-                    Setup.UserInput(name = Console.ReadLine().Trim());
-                }
-                else
-                {
-                    //exits loop
-                    valid = true;
-                }
-            }
-            while (valid == false);
-            //Greetings
-            //•	Provide the initial narration, using the name provided by the user.
-            //change font color
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("Nice to meet you, {0} I hope you are prepared to perish in a dark damp lair!\n", name);
+
+            response = Setup.UserInput();
+            name = Setup.UserStringValidation(response, "Please enter a name");
+            //Cap first letter, lowercase rest
+            name = (name.Substring(0,1).ToUpper()) + name.Substring(1, name.Length-1).ToLower();
             return name;
         }
         /// <summary>
         /// Get 'Y'es or 'N'o to play the game or not 
         /// </summary>
         /// <returns></returns>
-        public static void PlayGame()
+        public static void PlayGame(string name)
         {
             //Variables
             string playGame;
+            bool valid = false;
+
+            //Greetings
+            //•	Provide the initial narration, using the name provided by the user.
+            Console.WriteLine("Nice to meet you {0}. I hope you are prepared to perish in a dark damp lair!\n", name);
             //•	Add a section inquiring if the user wants to start playing the game and asking for a Y/ N response.
             Console.WriteLine("Are you ready to play (Y/N)?");
-            Console.Write(">");
+            Console.Write("> ");
             Console.ForegroundColor = ConsoleColor.White;
-            Setup.UserInput(playGame = Console.ReadLine().Trim().ToUpper()); //trim/toupper senitize userinput
 
             //In case player enters yes or no instead of y or n
-            if (playGame == "YES" || playGame == "NO")
+            do
             {
-                if (playGame == "NO")
+                playGame = UserInput().ToUpper();
+                playGame = UserStringValidation(playGame, "Please enter 'Y'es or 'N'o"); //trim/toupper senitize userinput
+                if (playGame == "YES" || playGame == "NO")
                 {
-                    Console.Clear();
-                    Console.WriteLine("\n*sigh*.... we asked for a 'Y' or an 'N'");
-                    Console.WriteLine("Anywhoo, You have decided you are not ready to play the game.\nCome again when you are ready. :)");
-                    Environment.Exit(0); //exits program
+                    if (playGame == "NO")
+                    {
+                        Console.Clear();
+                        Console.WriteLine("\n*sigh*.... we asked for a 'Y' or an 'N'");
+                        GameEnd("", "\nAnywhoo, You have decided you are not ready to play the game.\nCome again when you are ready. :)\n");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n*sigh*.... we asked for a 'Y' or an 'N'");
+                        valid = true;
+                    }
+                    playGame = playGame.Substring(0, 1);
                 }
                 else
                 {
-                    Console.WriteLine("You braved yourself forward and decided to commence your adventure.");
-                    Console.WriteLine("You have long since heard of rumors of the mysterious Mystical Grotto where no man has returned from. \n" +
-                        "One day, you have decided to explore the outskirts of the Mansion in which the Mystical Grotto appeared in. \n" +
-                        "You have reached the gates of the Mansion. Looking from outside, you see a lush garden. Despite the Mansion\n" +
-                        "being abandoned for an indeterminate amount of time, it is surprisely kept.");
+                    valid = true;
                 }
-                playGame = playGame.Substring(0, 1);
-
             }
+            while (valid == false);
+
             //test
             //Console.WriteLine(playGame);
             if (playGame != "Y")
             {
-                Console.Clear();
-                Console.WriteLine("You did not enter 'Y'es. You have decided you are not ready to play the game.\nCome again when you are ready. :)");
-                Environment.Exit(0);
-                //They gave us anything BUT Y
+                playGame = playGame.Substring(0, 1).ToUpper();
+                if (playGame == "Y")
+                {
+                    Console.WriteLine("You did not enter 'Y'es. However, we detected a 'Y' in your input and will take it as a 'Y'es");
+                }
+                else
+                {
+                    GameEnd("", "\nYou did not enter 'Y'es. You have decided you are not ready to play the game.\nCome again when you are ready. :)\n");
+                    //They gave us anything BUT Y
+                }
             }
             else
             {
-                Console.WriteLine("You braved yourself forward and decided to commence your adventure.");
-                Console.WriteLine("You have long since heard of rumors of the mysterious Mystical Grotto where no man has returned from. \n" +
-                        "One day, you have decided to explore the outskirts of the Mansion in which the Mystical Grotto appeared in. \n" +
-                        "You have reached the gates of the Mansion. Looking from outside, you see a lush garden. Despite the Mansion\n" +
-                        "being abandoned for an indeterminate amount of time, it is surprisely kept.");
+                Console.WriteLine("Regardless, you braved yourself forward and decided to commence your adventure.");
                 //nth code continues
             }
+
+            playGame = playGame.Substring(0, 1);
+
+            PressToClear(true);
         }
 
         /// <summary>
@@ -157,9 +155,17 @@ namespace MyatN_HW1
         {
 
             Random myrand = new Random();
+            int rand1 = RollDie(min, max);
+            int rand2 = DieRoll(1,7, 2);
+            return rand1 + rand2;
+        }
+        public static int DieRoll(int min, int max, int numOfDice)
+        {
+
+            Random myrand = new Random();
             int rand1 = myrand.Next(min, max);
             int rand2 = myrand.Next(min, max);
-            return rand1 + rand2;
+            return (rand1 + rand2)*numOfDice/numOfDice;
         }
         public static int RollDie(int min, int max)
         {
@@ -169,68 +175,80 @@ namespace MyatN_HW1
             return rand;
         }
 
-
         /// <summary>
-        /// Prompt whether player wants to quit the game or continue
-        /// 	If exiting the game, you must allow the game player to see all the messages on the screen that they lost before the window closes
+        /// EndGame(Option Q||D + message)
+        /// Q: Prompt whether player wants to quit the game or continue, 
+        /// D: EndGame cuz player dies
         /// </summary>
-        public static void Quit()
+        public static void GameEnd(string option, string message)
         {
-            string response;
-            Console.WriteLine("You are faced with a difficult decision.");
-            Console.WriteLine("Do you wish to quit or continue? Enter 'Q' to quit or anything else to continue");
-            Setup.UserInput(response = Console.ReadLine().Trim().Substring(0).ToUpper()); //substring 0 allows for null
-            if (string.IsNullOrEmpty(response)) //if user input is null meaning they press "Enter"
+            switch (option)
             {
-                Console.WriteLine("You've decided to continue. Good Luck Adventurer!");
-
-            }
-            else
-            {
-                response = response.Substring(0, 1).ToUpper().Trim();//user senitize
-                if (response != "Q")
-                {
-                    //code continues
-                    Console.WriteLine("You've decided to continue. Good Luck Adventurer!");
-                }
-                else
-                {
-                    Console.WriteLine("Your persistence is pathetic. You have decided to quit adventuring.");
-                    Environment.Exit(0);
-                }
-            }
-
-
+                case "Q":
+                    {
+                        string response;
+                        Console.WriteLine("\n\nYou are faced with a difficult decision.");
+                        Console.WriteLine("Do you wish to quit or continue? Enter 'Q' to quit or anything else to continue");
+                        response = Setup.UserInput().Substring(0).ToUpper(); //substring 0 allows for null
+                        if (string.IsNullOrEmpty(response)) //if user input is null meaning they press "Enter"
+                        {
+                            Console.WriteLine("You've decided to continue. Good Luck Adventurer!" + message);
+                        }
+                        else
+                        {
+                            response = response.Substring(0, 1).ToUpper().Trim();//user senitize
+                            if (response != "Q")
+                            {
+                                //code continues
+                                Console.WriteLine("You've decided to continue. Good Luck Adventurer!" + message);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your persistence is pathetic. You have decided to quit adventuring. Goodbye.");
+                                Environment.Exit(0);
+                            }
+                            PressToClear(true);
+                        }
+                        break;
+                    }
+                case "D":
+                    {
+                       
+                        ColorChange(6, message);
+                        ColorChange(6, "\nYou have died. The last adventure you'll be getting is the one to hell!\n" +
+                            "   ^  ^    \n" +
+                            "  (o｀~｀)o=E  \n");
+                        Environment.Exit(0);
+                        break;
+                    }
+                default:
+                    {
+                        ColorChange(6, message);
+                        Environment.Exit(0);
+                        break;
+                    }
         }
+        }
+
         /// <summary>
-        /// Will get color
+        /// Change color
+        /// 1.) Blue
+        /// 2.) Red
+        /// 3.) DarkYellow
+        /// 4.) Green
+        /// 5.) Magenta
+        /// 6.) DarkRed
+        /// 7.) DarkGreen
+        /// 8.) Yellow
+        /// 9.) White
+        /// 10.) Cyan
         /// </summary>
         /// <param name="num"></param>
         /// <returns></returns>
-        public static void RandColor(string message)
+        public static void ColorChange(int color, string message)
         {
             //variable
-            int color = Setup.RollDie(1,6);
-            //string
-            //int num = Setup.RollDice(1, 6);
-            ////	Create a constant string with 8 colors separated by a comma
-            //const string MY_COLORS = "Blue,Red,DarkYellow,Green,Magenta";
-            //string tempword = MY_COLORS;
-            //int find = MY_COLORS.IndexOf(",");
-            //int i = 1;
-            //while (i < num)
-            //{
-            //    find = tempword.IndexOf(",");
-            //    tempword = tempword.Substring(find + 1, tempword.Length - find - 1);
-            //    //test
-            //    //Console.WriteLine(tempword);
-            //    i++;
-            //}
-            //tempword = tempword.Substring(0, tempword.IndexOf(","));
-            ////Console.WriteLine(tempword);
-            //return tempword;
-
-            switch(color)
+            switch (color)
             {
                 case 1:
                     {
@@ -267,33 +285,158 @@ namespace MyatN_HW1
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
                     }
+                case 6:
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.Write(message);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    }
+                case 7:
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.Write(message);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    }
+                case 8:
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.Write(message);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    }
+                case 9:
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write(message);
+                        break;
+                    }
+                case 10:
+                    {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.Write(message);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                    }
                 default:
                     {
                         Console.Write("oops");
                         break;
                     }
             }
-            
         }
 
         /// <summary>
-        /// Changes user input color to cyan
+        /// Rainbow Color print
         /// </summary>
         /// <param name="message"></param>
-        public static void UserInput(string message)
+        public static void RandColor(string message)
+        {
+            int randColor;
+
+            int i = 0;
+            while (i < message.Length)
+            {
+                randColor = Setup.RollDie(1, 9);
+                ColorChange(randColor, message.Substring(i, 1));
+                i++;
+            }
+        }
+
+        /// <summary>
+        /// Clear input for asthetic purposes
+        /// true to clear
+        /// false just to print readkey
+        /// </summary>
+        public static void PressToClear(bool wantToClear)
+        {
+            bool clear = wantToClear;
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+
+            //lazy so if I want to use readkey but not clear add bool != true
+            if (clear == true)
+            {
+                Console.Clear();
+            }
+        }
+
+        /// <summary>
+        /// UserInput = cyan
+        /// Trim() included
+        /// </summary>
+        /// <returns></returns>
+        public static string UserInput()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(message);
+            string input = Console.ReadLine().Trim();
             Console.ForegroundColor = ConsoleColor.White;
-
+            return input;
         }
 
-
-        public static void GameEnd(string message)
+        /// <summary>
+        /// Takes response and tryparse it until valid
+        /// </summary>
+        /// <param name="wrong"></param>
+        /// <returns></returns>
+        public static int UserIntValidation(string response, string message)
         {
+            bool valid = false;
+            int intResponse = 0;
+            do
+            {
+                valid = int.TryParse(response, out int result);//takes response and try to parse to int
 
+                if (valid == false)//if cannot, ask again
+                {
+                    Setup.ColorChange(6, "You have not enter a valid answer. ");
+                    Setup.ColorChange(6, message);
+                    Console.Write("\n>");
+
+                    response = Setup.UserInput();
+                }
+                else// if can, take the value
+                {
+                    valid = true;
+                    //nth
+                }
+            }
+            while (valid != true);
+            int.Parse(response);
+            return intResponse;
         }
-
+        /// <summary>
+        /// Takes response and check for empty spaces and enter
+        /// Accept error message and print it and reprompt until correct
+        /// </summary>
+        /// <param name="response"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public static string UserStringValidation(string response, string message)
+        {
+            bool valid = false;
+            do
+            {
+                //user press 'enter'
+                if (string.IsNullOrEmpty(response))
+                {
+                    //will loop again and ask for valid name
+                    Setup.ColorChange(6, "You have not enter a valid answer. ");
+                    Setup.ColorChange(6, message);
+                    Console.Write("\n>");
+                    response = Setup.UserInput();
+                }
+                else
+                {
+                    //exits loop
+                    valid = true;
+                }
+            }
+            while (valid != true);
+            return response;
+        }
+        
         //No methods beyond here
     }
 }
