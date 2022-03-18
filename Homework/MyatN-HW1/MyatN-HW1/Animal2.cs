@@ -33,13 +33,14 @@ namespace MyatN_HW1
                 "C.) The slimjim in your jacket\n>");
             do
             {
-                response = Setup.UserInput().ToUpper().Substring(0,1);
+                response = Setup.UserInput().ToUpper();
                 switch(response)
                 {
                     case "A":
                         {
-                            Console.WriteLine("Thats correct! All dragons innately desire treasures and wealth\n" +
-                                "5 cent is still wealth. What a cheap dragon, wont even let you keep it.");
+                            Setup.ColorChange(4,"Thats correct! All dragons innately desire treasures and wealth.\n" +
+                                "5 cent is still wealth. What a cheap dragon, wont even spare your 5 cent.\n" +
+                                "You are allowed to pass.");
                             correct = true;
                             break;
                         }
@@ -51,7 +52,10 @@ namespace MyatN_HW1
                     case "C":
                         {
                             Console.Write("The dragon muses at your kindness. Although the dragon enjoys slimjims for bedtime snacks,\n" +
-                                "It is not hungry at the moment. It desires something else. What will you give him?\n>");
+                                "It is not hungry at the moment. It desires something else. What will you give him?\n\t" +
+                                "A.) The 5 cent in your pocket\n\t" +
+                                "B.) Your math homework\n\t" +
+                                "C.) The slimjim in your jacket\n>");
                             correct = false;
                             break;
                         }
@@ -64,7 +68,6 @@ namespace MyatN_HW1
                 }
             }
             while (correct != true);
-            Setup.PressToClear(true);
 
         }
     }

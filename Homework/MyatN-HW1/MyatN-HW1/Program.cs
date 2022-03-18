@@ -26,7 +26,7 @@ namespace MyatN_HW1
         static void Main(string[] args)
         {
             //Variables
-            string name;    //save user name
+            string name = null;    //null so when i debug, i can run part codes without error
             //Create a constant value for the number of steps required to get from the driveway to the house.
             //(You can select your own positive integer value as the total number of steps as long as it is less than 100).
             const int numOfSteps = 50;
@@ -37,38 +37,38 @@ namespace MyatN_HW1
             bool success;
 
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            //Basic Info - HW1
-            Setup.Welcome(); //Welcome the user
-            name = Setup.GetName(); //Ask for user name
+            ////basic info - hw1
+            //Setup.Welcome(); //welcome the user
+            //name = Setup.GetName(); //ask for user name
 
-            Setup.Rules(); //Explain the rules
+            //Setup.Rules(); //Explain the rules
 
-            Setup.PlayGame(name); //Ask whether to play the game or not
+            //Setup.PlayGame(name); //Ask whether to play the game or not
 
-            Yard.GetToDoor(numOfSteps); //const num of steps to door
+            //Yard.GetToDoor(numOfSteps); //const num of steps to door
 
-            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            //Arrive at door - HW2
-            //	Incorporate the player name in the door note.  
-            Yard.Note(name);
+            ////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            ////Arrive at door - HW2
+            ////	Incorporate the player name in the door note.  
+            //Yard.Note(name);
 
 
             //check diceRoll
             //  *x>4, door opens
             //  *x<=4 player dies
             //if door opens, can proceed, otherwise die
-            success = Yard.FrontDoor(name, deathDoor);
-            if (success == true)
-            {
-                Yard.FrontDoorChallenge();
-                Setup.GameEnd("Q", null);
-                Setup.PressToClear(true);
-            }
-            else
-            {
-                Setup.GameEnd("D", null);
+            //success = Yard.FrontDoor(name, deathDoor);
+            //if (success == true)
+            //{
+            //    Yard.FrontDoorChallenge();
+            //    Setup.GameEnd("Q", null);
+            //    Setup.PressToClear(true);
+            //}
+            //else
+            //{
+            //    Setup.GameEnd("D", null);
 
-            }
+            //}
 
             Mansion.UpperFloor();
 

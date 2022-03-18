@@ -61,14 +61,10 @@ namespace MyatN_HW1
         {
             //Variables
             string name;
-            bool valid = false;
-            string response;
             // User starts here – ask for basic information such as user name.
             //•	Ask the user for their name, read it in and save it (It is used multiple times throughout the game)
-            Console.Write("Please enter your character name: ");
+            name = Setup.StringValidation("Please enter your character name: ");
 
-            response = Setup.UserInput();
-            name = Setup.UserStringValidation(response, "Please enter a name");
             //Cap first letter, lowercase rest
             name = (name.Substring(0,1).ToUpper()) + name.Substring(1, name.Length-1).ToLower();
             return name;
@@ -87,20 +83,14 @@ namespace MyatN_HW1
             //•	Provide the initial narration, using the name provided by the user.
             Console.WriteLine("Nice to meet you {0}. I hope you are prepared to perish in a dark damp lair!\n", name);
             //•	Add a section inquiring if the user wants to start playing the game and asking for a Y/ N response.
-            Console.WriteLine("Are you ready to play (Y/N)?");
-            Console.Write("> ");
-            Console.ForegroundColor = ConsoleColor.White;
-
             //In case player enters yes or no instead of y or n
             do
             {
-                playGame = UserInput().ToUpper();
-                playGame = UserStringValidation(playGame, "Please enter 'Y'es or 'N'o"); //trim/toupper senitize userinput
+                playGame = StringValidation("Are you ready to play (Y/N)?").ToUpper(); //trim/toupper senitize userinput
                 if (playGame == "YES" || playGame == "NO")
                 {
                     if (playGame == "NO")
                     {
-                        Console.Clear();
                         Console.WriteLine("\n*sigh*.... we asked for a 'Y' or an 'N'");
                         GameEnd("", "\nAnywhoo, You have decided you are not ready to play the game.\nCome again when you are ready. :)\n");
                     }
@@ -187,7 +177,7 @@ namespace MyatN_HW1
                 case "Q":
                     {
                         string response;
-                        Console.WriteLine("\n\nYou are faced with a difficult decision.");
+                        Console.WriteLine("\nYou are faced with a difficult decision.");
                         Console.WriteLine("Do you wish to quit or continue? Enter 'Q' to quit or anything else to continue");
                         response = Setup.UserInput().Substring(0).ToUpper(); //substring 0 allows for null
                         if (string.IsNullOrEmpty(response)) //if user input is null meaning they press "Enter"
@@ -352,7 +342,7 @@ namespace MyatN_HW1
         public static void PressToClear(bool wantToClear)
         {
             bool clear = wantToClear;
-            Console.WriteLine("Press any key to continue");
+            Console.WriteLine("\nPress any key to continue");
             Console.ReadKey();
 
             //lazy so if I want to use readkey but not clear add bool != true
@@ -380,21 +370,20 @@ namespace MyatN_HW1
         /// </summary>
         /// <param name="wrong"></param>
         /// <returns></returns>
-        public static int UserIntValidation(string response, string message)
+        public static int IntValidation(string message)
         {
-            bool valid = false;
-            int intResponse = 0;
+            bool valid;
+            string response;
             do
             {
+                Console.Write(message + "\n>");
+                response = UserInput();
                 valid = int.TryParse(response, out int result);//takes response and try to parse to int
-
                 if (valid == false)//if cannot, ask again
                 {
-                    Setup.ColorChange(6, "You have not enter a valid answer. ");
-                    Setup.ColorChange(6, message);
-                    Console.Write("\n>");
+                    ColorChange(6, "You have not enter a valid int.");
+                    valid = false;
 
-                    response = Setup.UserInput();
                 }
                 else// if can, take the value
                 {
@@ -403,8 +392,7 @@ namespace MyatN_HW1
                 }
             }
             while (valid != true);
-            int.Parse(response);
-            return intResponse;
+            return int.Parse(response);
         }
         /// <summary>
         /// Takes response and check for empty spaces and enter
@@ -413,24 +401,24 @@ namespace MyatN_HW1
         /// <param name="response"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        public static string UserStringValidation(string response, string message)
+        public static string StringValidation(string message)
         {
-            bool valid = false;
+            bool valid;
+            string response;
             do
             {
-                //user press 'enter'
-                if (string.IsNullOrEmpty(response))
+                Console.Write(message + "\n>");
+                response = UserInput(); //change user input to cyan for differentiation
+                if (string.IsNullOrEmpty(response))//if cannot, ask again
                 {
-                    //will loop again and ask for valid name
-                    Setup.ColorChange(6, "You have not enter a valid answer. ");
-                    Setup.ColorChange(6, message);
-                    Console.Write("\n>");
-                    response = Setup.UserInput();
+                    Setup.ColorChange(6, "\nYou have not enter a valid answer. Please try again.\n");
+                    valid = false;
+
                 }
-                else
+                else// if can, take the value
                 {
-                    //exits loop
                     valid = true;
+                    //nth
                 }
             }
             while (valid != true);
