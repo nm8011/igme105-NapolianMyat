@@ -37,13 +37,12 @@ namespace MyatN_HW1
                     "You have reached the gates of the Mansion. Looking from outside, you see a lush garden. Despite the Mansion\n" +
                     "being abandoned for an indeterminate amount of time, it is surprisely kept. You feel a compelling force to\n" +
                     "enter.");
-            Console.Write("\n\nTo proceed, you must absolve yourself and move your legs. How many steps are you going to move?\n>");
+            string text = ("\n\nTo proceed, you must absolve yourself and move your legs. How many steps are you going to move?");
             //Read the user step input in and convert it to an integer
             int userNumOfSteps = 0;
             string response;
 
-            response = Setup.UserInput();
-            userNumOfSteps = Setup.UserIntValidation(response, "Please enter an integer");
+            userNumOfSteps = Setup.IntValidation(text);
 
             //Calculations for over and under the number of required steps created and used in output. 
             int steps = userNumOfSteps;
@@ -61,11 +60,10 @@ namespace MyatN_HW1
             {
                 while (steps < numOfSteps)
                 {
-                    Console.Write("You are short of steps. You have not reached the Mansion yet. No rush. You are enjoying the \n" +
+                    text = ("You are short of steps. You have not reached the Mansion yet. No rush. You are enjoying the \n" +
                         "environment around the Mansion which is pristine and serene.\n" +
-                    "How many more steps will you take?\n>");
-                    response = Setup.UserInput();
-                    userNumOfSteps = Setup.UserIntValidation(response, "Please enter an integer");
+                    "How many more steps will you take?");
+                    userNumOfSteps = Setup.IntValidation(text);
                     steps = steps + userNumOfSteps;
                     remainingSteps = Math.Abs(numOfSteps - steps);
                 }
@@ -98,10 +96,17 @@ namespace MyatN_HW1
                               "\nthere is a note at the door. You read it, it says: "
                 , name);
 
-            Setup.ColorChange(3,"\n\t\tWelcome, adventurer. As you have probably noticed, the door is currently lock." +
-                                "\n\tFortune favours the bold. The only known method of unlocking the door is rolling" +
-                                "\n\tthe slot machine locating next to the door. If you roll unluckily, you will perish." +
-                                "\n\tIf you roll luckily, the key will pop out. You will be leaving your fate... up to fate.\n\n");
+            Setup.ColorChange(3,"\t _____________________________________________________________________\n" +
+                                "\t|\t                                                              |\n" +
+                                "\t|\tWelcome, adventurer. As you have probably noticed,            |\n" +
+                                "\t|\tthe door is currently lock. Fortune favours the bold.         |\n" +
+                                "\t|\tThe only known method of unlocking the door is rolling        |\n" +
+                                "\t|\tthe slot machine locating next to the door. If you            |\n" +
+                                "\t|\troll unluckily, you will perish. If you roll luckily,         |\n" +
+                                "\t|\tthe key will pop out. You will be leaving your fate...        |\n" +
+                                "\t|\tup to fate.                                                   |\n" +
+                                "\t|\t                                                              |\n" +
+                                "\t _____________________________________________________________________\n\n");
             Setup.PressToClear(false);
         }
 
@@ -118,13 +123,13 @@ namespace MyatN_HW1
             //o	Create code to simulate dice rolls.  
             //roll 2 dice
             diceRoll = Setup.RollDice(1, 7); //to get 2 dice roll of 1-6 added together
-            if (diceRoll > deathDoor)
+            if (diceRoll >= deathDoor)
             {
                 success = true;
                 
                 text = string.Format("\n{0} rolled a {1}. The bare minimum roll is {2}. Lady Luck shines upon you, \n" +
                                   "the slot machine delivers the key in a pod to you.\n"
-                                  , name, diceRoll, deathDoor + 1);
+                                  , name, diceRoll, deathDoor);
                 Setup.ColorChange(4, text);
                 //FrontDoorChallenge();
                 //Setup.GameEnd("Q", null);
@@ -139,7 +144,7 @@ namespace MyatN_HW1
                                   "\nget the key. You then resorted to picklocking. After numerous attempts to picklock the door." +
                                   "\nSensing your vain stubborn efforts, as if to mock you the mysterious entity behind the Grotto " +
                                   "\nexploded the doors blasting you to oblivion.\n"
-                                  , name, diceRoll, deathDoor + 1);
+                                  , name, diceRoll, deathDoor);
                 Setup.ColorChange(6, text);
             }
             return success;
@@ -154,11 +159,12 @@ namespace MyatN_HW1
             bool success = false;
             Console.Write("\nBefore you could open the door, 2 fabled creatures appeared before you from\n" +
                 "seemingly nowhere. They prompt you to choose one of them to access the door.\n" +
-                "Did you think it was going to be that easy? Which will you choose?" +
-                "\n\tA.) The Sphinx" +
-                "\n\tB.) The Dragon\n>");
+                "Did you think it was going to be that easy?\n");
             do
             {
+                Console.Write("\nWhich will you choose? " +
+                "\n\tA.) The Sphinx" +
+                "\n\tB.) The Dragon\n>");
                 choice = Setup.UserInput().ToUpper();
                 switch(choice)
                 {
@@ -176,7 +182,7 @@ namespace MyatN_HW1
                         }
                     default:
                         {
-                            Setup.ColorChange(6,"That is not an option");
+                            Setup.ColorChange(6,"That is not an option\n");
                             success = false;
                             break;
                         }

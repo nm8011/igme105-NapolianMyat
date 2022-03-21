@@ -29,7 +29,7 @@ namespace MyatN_HW1
         public static void DungeonFloors()
         {
             //Floor 1
-            string response;
+            int response;
             bool exit = false;
             string text;
 
@@ -50,20 +50,19 @@ namespace MyatN_HW1
 
             do
             {
-                Console.Write("\nYou look around and found the following in the marsh. \n\t1.) A rope with a hook is lying around\n" +
-                  "\t2.) A stick is protruding from the ground. \n\t3.) A herb is right next to you\nWhat would you like to do?\n>");
-                response = Setup.UserInput().ToUpper();
-                Setup.UserIntValidation(response, "Please select a valid NUMBERED option.");
+                Console.Write("");
+                response = Setup.IntValidation("\nYou look around and found the following in the marsh. \n\t1.) A rope with a hook is lying around\n" +
+                  "\t2.) A stick is protruding from the ground. \n\t3.) A herb is right next to you\nWhat would you like to do?\n > ");
                 switch (response)
                 {
-                    case "1":
+                    case 1:
                         {
                             Console.WriteLine("\nYou used the rope to hook onto a nearby tree and pull yourself across\n" +
                                 "You made it across the place with relative ease and came out unharmed!");
                             exit = true;
                             break;
                         }
-                    case "2":
+                    case 2:
                         {
                             Setup.GameEnd("D", "\nYou used the stick to maneauver around. However, the stick broke before you\n" +
                                 "reach the exit, you begin to sink faster due to your eratic movement.\n" +
@@ -90,26 +89,24 @@ namespace MyatN_HW1
 
             do
             {
-                Console.WriteLine("\n\t 1.) A driftboard \n\t2.) A stick \n\t3.) A flashlight.\n" +
-              "Which item will you use this time?");
                 Setup.GameEnd("Q", null);
-                response = Setup.UserInput().ToUpper();
-                Setup.UserIntValidation(response, "Please select a valid NUMBERED option.");
+                response = Setup.IntValidation("\n\t 1.) A driftboard \n\t2.) A stick \n\t3.) A flashlight.\n" +
+              "Which item will you use this time?");
 
                 switch (response)
                 {
-                    case "1":
+                    case 1:
                         {
                             Setup.GameEnd("D", "\nYou attempted to paddle across the river. However, the board was too small \n" +
                                 "and you underestimated your own weight. You drowned.\n");
                             break;
                         }
-                    case "2":
+                    case 2:
                         {
                             Setup.GameEnd("D", "");
                             break;
                         }
-                    case "3":
+                    case 3:
                         {
                             Console.WriteLine("You used your flashlight to observed the wall with more scrutiny. You could\n" +
                                 "see a tiny passage, small, but enough for you to grasp a foothold and make it across\n" +
@@ -135,18 +132,16 @@ namespace MyatN_HW1
 
             do
             {
-                Console.WriteLine("What would you like to do?\n\t1.)Stashed the treasures\n\t2.) Ignore and go to the exit door");
-                response = Setup.UserInput().ToUpper();
-                Setup.UserIntValidation(response, "Please select a valid NUMBERED option.");
+                response = Setup.IntValidation("\nWhat would you like to do?\n\t1.)Stashed the treasures\n\t2.) Ignore and go to the exit door");
                 switch (response)
                 {
-                    case "1":
+                    case 1:
                         {
                             Setup.GameEnd("D", "Ignoring your experience thus far, You have been blinded by greed. Everything was an illusion.\n" +
                                 "You feel into a deathtrap by a nightmare. You have died");
                             break;
                         }
-                    case "2":
+                    case 2:
                         {
                             Console.WriteLine("Recollecting your experience thus far. You know there is never such a thing as\n" +
                                 "a free meal. You ignored all the riched and have escaped to the next room.");
@@ -177,25 +172,24 @@ namespace MyatN_HW1
             int answer = 8 * 12;
             do
             {
-                Console.WriteLine("What is 8 x 12?\n\t1.) {0}\n\t2.) 20 \n\t3.) 88", answer);
-                response = Setup.UserInput();
-                Setup.UserIntValidation(response, "Please select a valid NUMBERED option.");
+                text = string.Format("What is 8 x 12?\n\t1.) {0}\n\t2.) 20 \n\t3.) 88", answer);
+                response = Setup.IntValidation(text);
                 switch (response)
                 {
-                    case "1":
+                    case 1:
                         {
                             Setup.GameEnd("G", "You have escaped. You finished the adventure and came out intact. Bravo.\n" +
                                 "As a reward for your surely tasking efforts, youve been registered as the first informed of the next\n" +
                                 "Mystical Grotto.");
                             break;
                         }
-                    case "2":
+                    case 2:
                         {
                             text = string.Format("Wrong answers.The correct answer is { 0 }", answer);
                             Setup.GameEnd("D", text);
                             break;
                         }
-                    case "3":
+                    case 3:
                         {
                             text = string.Format("Wrong answers.The correct answer is { 0 }", answer);
                             Setup.GameEnd("D", text);
