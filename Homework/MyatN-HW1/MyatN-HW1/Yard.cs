@@ -69,7 +69,7 @@ namespace MyatN_HW1
                     steps = steps + userNumOfSteps;
                     remainingSteps = Math.Abs(numOfSteps - steps);
                 }
-                if (steps == 50)
+                if (steps == numOfSteps)
                 {
                     Console.WriteLine("You have arrived at the door!");
                 }
