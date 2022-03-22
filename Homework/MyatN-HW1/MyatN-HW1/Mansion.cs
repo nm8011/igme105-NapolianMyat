@@ -131,7 +131,6 @@ namespace MyatN_HW1
                         }
                     case "4": //library
                         {
-                            string response;
                             if (l == 0)
                             {
                                 Setup.ColorChange(3, "\nThe Library has a ladder leading up to the top of the shelves. As you checked out \nthe area, you notice a bunch of potions. " +

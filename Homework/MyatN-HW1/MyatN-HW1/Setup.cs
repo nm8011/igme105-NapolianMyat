@@ -20,8 +20,12 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
+
     static class Setup
     {
+        //PROPERTIES
+
+
         /// <summary>
         /// Introduce the game name
         /// </summary>
