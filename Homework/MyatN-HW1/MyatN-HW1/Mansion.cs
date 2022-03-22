@@ -72,7 +72,7 @@ namespace MyatN_HW1
                 {
                     case "1":
                         {
-                            Console.WriteLine("\nYou notice in the kitchen some items that could be essential to your adventure. " +
+                            Setup.ColorChange(3,"\nYou notice in the kitchen some items that could be essential to your adventure. " +
                                 "\nThe kitchen is very bright and lively with a fridge mounted right in the middle. \nYou looked inside the fridge and found" +
                                 "an abundant of food and water. \nYou also located a cutting board nearby"); //get shield & food, water
                             exit = false;
@@ -80,7 +80,7 @@ namespace MyatN_HW1
                         }
                     case "2":
                         {
-                            Console.WriteLine("\nYou entered the Bed Room. The living room has a TV that is playing some channels\n" +
+                            Setup.ColorChange(3,"\nYou entered the Bed Room. The living room has a TV that is playing some channels\n" +
                                 "you are not familiar with, as well as jazz music playing in the background. There is a set of \n" +
                                 "headphones connected to a disc player."); //will need maybe to block noise(dmg from sound), less dmg over time so without, the player
                                                                            //will lose a certain amount of hp each round or step or whatev(not decided)
@@ -90,7 +90,7 @@ namespace MyatN_HW1
                         }
                     case "3":
                         {
-                            Console.WriteLine("\nThe Living room is neatly organized, there is a sweet scent in the air. Hey theres some \nmarshmellows attach to a fire poker" +
+                            Setup.ColorChange(3,"\nThe Living room is neatly organized, there is a sweet scent in the air. Hey theres some \nmarshmellows attach to a fire poker" +
                                 "As you tried to pick the marshmellows, you got a cut. Luckily you \ndid not lose any health points. You observed that the " +
                                 "fire poker is oddly sharp. \nThat might prove handy. "); //weapon, fight against minions and boss later, otherwise fistfights dmg will be halved.
                             exit = false;
@@ -98,7 +98,7 @@ namespace MyatN_HW1
                         }
                     case "4":
                         {
-                            Console.WriteLine("\nThe Library has a ladder leading up to the top of the shelves. As you checked out \nthe area, you notice a bunch of potions." +
+                            Setup.ColorChange(3, "\nThe Library has a ladder leading up to the top of the shelves. As you checked out \nthe area, you notice a bunch of potions." +
                                 "Theres a note nearby. You read it:" +
                                 "\n\"To whomever it concerns,\n\t" +
                                 "Take great discretion towards what I am about to tell you. The maze you will face will have great amount of danger. I have prepared\n" +
@@ -108,7 +108,8 @@ namespace MyatN_HW1
                             Console.WriteLine("You got down and noticed a sculpture nearby a pillar. Based on your recollection of how most hidden rooms are, \n" +
                                 "it probably hides a secret passage. You yanked the scupture. Mechanism start to spin. The room rumbles and revealed\n" +
                                 "a hidden door. Its the door to the basement.");
-                            Console.WriteLine("\nThe basement is emmitting a murderous hue. You entered and the door behind you is \nshut tight with a loud slam. You tried to backout but no amount of hammering will open this door.\n" +
+                            Console.WriteLine("\nThe basement is emmitting a murderous hue. You entered and the door behind you is " +
+                                "\nshut tight with a loud slam. You tried to backout but no amount of hammering will open this door.\n" +
                                "\nYou must persist forward."); //introduce basement dungeon floors
                             exit = true;
                             break;
