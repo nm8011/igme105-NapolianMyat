@@ -106,7 +106,7 @@ namespace MyatN_HW1
                                 "\t|\tthe key will pop out. You will be leaving your fate...        |\n" +
                                 "\t|\tup to fate.                                                   |\n" +
                                 "\t|\t                                                              |\n" +
-                                "\t _____________________________________________________________________\n\n");
+                                "\t|_____________________________________________________________________|\n\n");
             Setup.PressToClear(false);
         }
 
