@@ -100,7 +100,6 @@ namespace MyatN_HW1
                 {
                     if (playGame == "NO")
                     {
-                        Console.Clear();
                         Console.WriteLine("\n*sigh*.... we asked for a 'Y' or an 'N'");
                         GameEnd("", "\nAnywhoo, You have decided you are not ready to play the game.\nCome again when you are ready. :)\n");
                     }
