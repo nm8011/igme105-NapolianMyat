@@ -24,53 +24,107 @@ namespace MyatN_HW1
     {
 
         /// <summary>
-        /// Having an authors block so story is not original yet. Will use this until I figure something more unique and interesting
+        /// DungeonFloors
         /// </summary>
         public static void DungeonFloors()
         {
-            //Floor 1
-            int response;
-            bool exit = false;
-            string text;
-
+            //Grotto
             Setup.RandColor("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
                             "~                The Grotto                 ~\n" +
                             "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-            text = string.Format("As you enter the secret room, you noticed the spider cobwebs blocking your way.\n" +
-                "You realize that no one has been here in quite a while. You look down and see that \n" +
-                "you are in a marshlands-like environment. You see a door across the way. but \n" +
-                "your feet has sunken into the marsh and you are immobilize.");
+            //Ask to continue
+            Steps();
+            Console.Clear();
+            //Floor1: Marshland
+            Setup.RandColor("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                            "~          The Grotto: Marshland            ~\n" +
+                            "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            Marshland();
+            Console.Clear();
+
+            //Floor2: River
+            Setup.RandColor("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                            "~             The Grotto: River             ~\n" +
+                            "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            River();
+            Console.Clear();
+
+            //Floor3: TreasureRoom
+            Setup.RandColor("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                            "~          The Grotto: TreasureRoom         ~\n" +
+                            "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            TreasureRoom();
+            Console.Clear();
+
+            //Floor4/ Last one til completion
+            Setup.RandColor("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+                            "~         The Grotto: EnchantedDoor         ~\n" +
+                            "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+            EnchantedDoor();
+            Console.Clear();
+
+
+        }
+        public static void Steps()
+        {
+            Setup.ColorChange(3, "As you enter the secret room, you noticed spider cobwebs blocking your way.\n" +
+                           "You come to a realization that no one has been here in quite a while. You\n" +
+                           "look down and could make out some stepstones and underneath it, pure darkness.");
+            Console.Write("\nDo you want to take those steps down?");
+            Setup.GameEnd("Q", "");
+        }
+        /// <summary>
+        /// Floor1 - Marshland
+        /// Use logic
+        /// </summary>
+        public static void Marshland()
+        {
+            int response;
+            bool exit = false;
+            string text = string.Format("You took that step down and stumbled. You fell to the ground. \n" +
+                "You look down and see that you are in a marshlands-like environment. \n" +
+                "You see a door across the way. but your feet has sunken into the marsh\n" +
+                "and you are immobilize, slowly sinking in deeper.\n");
 
             Setup.ColorChange(3, text);
 
             //ik we suppose to prompt for quitting for every userentry but that doesnt appear to be asthetic to me so
             //im doing it where I want it to be an option
-            Setup.GameEnd("Q", "\nYou begin to access the situation\n"); //ask if to quit before presenting what to do.
+            Console.WriteLine("You begin to access the situation");
 
 
             do
             {
-                Console.Write("");
                 response = Setup.IntValidation("\nYou look around and found the following in the marsh. \n\t1.) A rope with a hook is lying around\n" +
-                  "\t2.) A stick is protruding from the ground. \n\t3.) A herb is right next to you\nWhat would you like to do?\n > ");
+                  "\t2.) A stick is protruding from the ground. \n\t3.) A mushroom is right next to you\nWhat would you like to do?");
                 switch (response)
                 {
                     case 1:
                         {
-                            Console.WriteLine("\nYou used the rope to hook onto a nearby tree and pull yourself across\n" +
+                            Setup.ColorChange(4, "You used the rope to hook onto a nearby tree and pull yourself across\n" +
                                 "You made it across the place with relative ease and came out unharmed!");
                             exit = true;
                             break;
                         }
                     case 2:
                         {
-                            Setup.GameEnd("D", "\nYou used the stick to maneauver around. However, the stick broke before you\n" +
+                            Setup.GameEnd("D", "You used the stick to maneauver around. However, the stick broke before you\n" +
                                 "reach the exit, you begin to sink faster due to your eratic movement.\n" +
                                 "You begin to suffocate slowly but surely.");
                             break;
-                        }                                   
+                        }
+                    case 3:
+                        {
+                            Setup.GameEnd("D", "who do you think you are? Mario? Did you think you would get\n" +
+                                "a power up or something? You have eaten a schroom and then you\n" +
+                                "began to hallucinate that your surroundings are a big fluff of\n" +
+                                "pillows. You are smothered by the softness. Slowly sinking to\n" +
+                                "your doom. You're gonna sleep alright. An eternal one.");
+                            break;
+                        }
                     default:
                         {
+                            Setup.ColorChange(6, "That is not an available option");
                             exit = false;
                             break;
                         }
@@ -78,9 +132,15 @@ namespace MyatN_HW1
             }
             while (exit == false);
             Setup.GameEnd("Q", null);
-            exit = false;
-            //Floor 2
-
+        }
+        /// <summary>
+        /// Floor2: River
+        /// Outsmart the system
+        /// </summary>
+        public static void River()
+        {
+            int response;
+            bool exit = false;
             Setup.ColorChange(3, "\nWonderful, you made it off the submerging marshlands, now you are at a surging river blasting\n" +
                 "fragments of woodpieces from who knows where. You looked to where the water leads to\n" +
                 "You could make out a wall with underneath a deep dark chasm, however its a bit dark to\n" +
@@ -89,8 +149,7 @@ namespace MyatN_HW1
 
             do
             {
-                Setup.GameEnd("Q", null);
-                response = Setup.IntValidation("\n\t 1.) A driftboard \n\t2.) A stick \n\t3.) A flashlight.\n" +
+                response = Setup.IntValidation("\n\t1.) A driftboard \n\t2.) A stick \n\t3.) A flashlight.\n" +
               "Which item will you use this time?");
 
                 switch (response)
@@ -124,9 +183,16 @@ namespace MyatN_HW1
             while (exit == false);
             Setup.GameEnd("Q", null);
 
-            exit = false;
-            //Floor 3
-            Console.WriteLine("You come across a room littered with treasures and gold. It is sparkling so bright, you could actually be blinded.\n" +
+        }
+        /// <summary>
+        /// Floor3: TreasureRoom
+        /// Resist Temptation for treasures
+        /// </summary>
+        public static void TreasureRoom()
+        {
+            int response;
+            bool exit = false;
+            Console.WriteLine("\nYou come across a room littered with treasures and gold. It is sparkling so bright, you could actually be blinded.\n" +
                 "You also noticed a exit doorway.");
             Setup.GameEnd("Q", null);
 
@@ -159,20 +225,26 @@ namespace MyatN_HW1
             while (exit == false);
             Setup.GameEnd("Q", null);
 
-            exit = false;
-
-            //Floor 4/ Last one to completion
+        }
+        /// <summary>
+        /// Floor4: EnchantedDoor
+        /// Solve mathematical equation
+        /// </summary>
+        public static void EnchantedDoor()
+        {
+            int response;
+            bool exit = false;
             Console.WriteLine("Congratulations on making it here this far!. You're the very first surviver.\n");
             Console.WriteLine("Now the room you are at is rumbling, the grotto is collapsing.");
             Console.WriteLine("You must solve the solve the enchantment on the secret door \n" +
                 "to teleport to the final exit. Otherwise, you will perish.");
 
             //will set up randoms later but for now ....
-
             int answer = 8 * 12;
+
             do
             {
-                text = string.Format("What is 8 x 12?\n\t1.) {0}\n\t2.) 20 \n\t3.) 88", answer);
+                string text = string.Format("What is 8 x 12?\n\t1.) {0}\n\t2.) 20 \n\t3.) 88", answer);
                 response = Setup.IntValidation(text);
                 switch (response)
                 {
@@ -207,5 +279,6 @@ namespace MyatN_HW1
             }
             while (exit == false);
         }
+        //NO METHOD OUTSIDE HERE
     }
 }

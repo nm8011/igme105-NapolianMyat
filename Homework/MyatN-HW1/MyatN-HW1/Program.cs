@@ -70,7 +70,7 @@ namespace MyatN_HW1
 
             //}
 
-            Mansion.UpperFloor();
+            //Mansion.UpperFloor();
 
             Grotto.DungeonFloors();
 
