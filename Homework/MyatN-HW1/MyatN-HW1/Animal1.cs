@@ -28,15 +28,15 @@ namespace MyatN_HW1
             bool correct = false;
             Console.WriteLine("The Sphinx has a riddle for you. If you solve it correctly you can continue\n" +
                 "forward. However, answer wrongly, you will be doomed. The riddle is:\n");
-            Setup.ColorChange(3, " ______________________________________________________________\n" +
-                    "|                                                              |\n" +
-                    "|\tWhat can bring back the dead; make you cry, make you   |\n" +
-                    "|\tyoung; is born in an instant, yet lasts a lifetime.    |\n" +
-                    "|\t    A.) Love                                           |\n" +
-                    "|\t    B.) Memory                                         |\n" +
-                    "|\t    C.) Desire                                         |\n" +
-                    "|\t                                                       |\n" +
-                    " ______________________________________________________________\n");
+            Setup.ColorChange(3, "\t ______________________________________________________________\n" +
+                    "\t|                                                              |\n" +
+                    "\t|\tWhat can bring back the dead; make you cry, make you   |\n" +
+                    "\t|\tyoung; is born in an instant, yet lasts a lifetime.    |\n" +
+                    "\t|\t    A.) Love                                           |\n" +
+                    "\t|\t    B.) Memory                                         |\n" +
+                    "\t|\t    C.) Desire                                         |\n" +
+                    "\t|\t                                                       |\n" +
+                    "\t|______________________________________________________________|\n");
             do
             {
 

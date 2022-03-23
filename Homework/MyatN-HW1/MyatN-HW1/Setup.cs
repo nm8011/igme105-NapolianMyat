@@ -20,8 +20,12 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
+
     static class Setup
     {
+        //PROPERTIES
+
+
         /// <summary>
         /// Introduce the game name
         /// </summary>
@@ -182,7 +186,7 @@ namespace MyatN_HW1
                         response = Setup.UserInput().Substring(0).ToUpper(); //substring 0 allows for null
                         if (string.IsNullOrEmpty(response)) //if user input is null meaning they press "Enter"
                         {
-                            Console.WriteLine("You've decided to continue. Good Luck Adventurer!" + message);
+                            ColorChange(4,"You've decided to continue. Good Luck Adventurer!" + message);
                         }
                         else
                         {
@@ -190,14 +194,13 @@ namespace MyatN_HW1
                             if (response != "Q")
                             {
                                 //code continues
-                                Console.WriteLine("You've decided to continue. Good Luck Adventurer!" + message);
+                                ColorChange(4,"You've decided to continue. Good Luck Adventurer!" + message);
                             }
                             else
                             {
-                                Console.WriteLine("Your persistence is pathetic. You have decided to quit adventuring. Goodbye.");
+                                ColorChange(6, "\nYour persistence is pathetic. You have decided to quit adventuring. Goodbye.");
                                 Environment.Exit(0);
                             }
-                            PressToClear(true);
                         }
                         break;
                     }
@@ -424,7 +427,7 @@ namespace MyatN_HW1
             while (valid != true);
             return response;
         }
-        
+
         //No methods beyond here
     }
 }

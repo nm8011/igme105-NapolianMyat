@@ -47,15 +47,15 @@ namespace MyatN_HW1
 
             //Yard.GetToDoor(numOfSteps); //const num of steps to door
 
-            ////~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            ////Arrive at door - HW2
-            ////	Incorporate the player name in the door note.  
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            //Arrive at door - HW2
+            //	Incorporate the player name in the door note.  
             //Yard.Note(name);
 
 
             //check diceRoll
-            //  *x>4, door opens
-            //  *x<=4 player dies
+            //  *x > 4, door opens
+            //  *x <= 4 player dies
             //if door opens, can proceed, otherwise die
             //success = Yard.FrontDoor(name, deathDoor);
             //if (success == true)
