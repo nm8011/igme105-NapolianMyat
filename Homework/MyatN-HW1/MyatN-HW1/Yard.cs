@@ -20,13 +20,27 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
-    static class Yard
+
+    class Yard
     {
+        //VARIABLES
+        const int NUM_OF_STEPS = 50;
+        const int DEATH_DOOR = 1; //made it 1 so debugging is not so annoying, suppose to be 4
+        static string Setup.name;
+
+
+        static private string Name
+        {
+            get { return Setup.name; }
+            set { name = value; }
+        }
+        //PROPERTIES
+
         /// <summary>
         /// User arrive to door of house
         /// </summary>
         /// <param name="numOfSteps"></param>
-        public static void GetToDoor(int numOfSteps)
+        public static void GetToDoor()
         {
             //Ask the user for how many steps to move.
             Setup.RandColor("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
@@ -40,34 +54,33 @@ namespace MyatN_HW1
             string text = ("\n\nTo proceed, you must absolve yourself and move your legs. How many steps are you going to move?");
             //Read the user step input in and convert it to an integer
             int userNumOfSteps = 0;
-            string response;
 
             userNumOfSteps = Setup.IntValidation(text);
 
             //Calculations for over and under the number of required steps created and used in output. 
             int steps = userNumOfSteps;
-            int remainingSteps = Math.Abs(numOfSteps - steps);
+            int remainingSteps = Math.Abs(NUM_OF_STEPS - steps);
 
 
             //user input is greater
-            if (steps > numOfSteps)
+            if (steps > NUM_OF_STEPS)
             {
                 Console.WriteLine("You would have walked past the door by {0} steps if you had kept going. \n" +
                     "You have stopped at the door.", remainingSteps);
             }
             //user input less than
-            else if (steps < numOfSteps)
+            else if (steps < NUM_OF_STEPS)
             {
-                while (steps < numOfSteps)
+                while (steps < NUM_OF_STEPS)
                 {
                     text = ("You are short of steps. You have not reached the Mansion yet. No rush. You are enjoying the \n" +
                         "environment around the Mansion which is pristine and serene.\n" +
                     "How many more steps will you take?");
                     userNumOfSteps = Setup.IntValidation(text);
                     steps = steps + userNumOfSteps;
-                    remainingSteps = Math.Abs(numOfSteps - steps);
+                    remainingSteps = Math.Abs(NUM_OF_STEPS - steps);
                 }
-                if (steps == numOfSteps)
+                if (steps == NUM_OF_STEPS)
                 {
                     Console.WriteLine("You have arrived at the door!");
                 }
@@ -89,7 +102,7 @@ namespace MyatN_HW1
         /// 	Incorporate the player name in the door note.  
         /// </summary>
         /// <param name="name"></param>
-        public static void Note(string name)
+        public static void Note()
         {
             Console.WriteLine("\nGreetings, {0}. The door is currently locked and can only be opened with a key.\n" +
                               "For some reason there is also a slot machine near the entryway. You also noticed " +
@@ -115,7 +128,7 @@ namespace MyatN_HW1
         /// </summary>
         /// <param name="name"></param>
         /// <param name="diceRoll"></param>
-        public static bool FrontDoor(string name, int deathDoor)
+        public static void FrontDoor()
         {
             string text;
             bool success;
@@ -123,13 +136,13 @@ namespace MyatN_HW1
             //o	Create code to simulate dice rolls.  
             //roll 2 dice
             diceRoll = Setup.RollDice(1, 7); //to get 2 dice roll of 1-6 added together
-            if (diceRoll >= deathDoor)
+            if (diceRoll >= DEATH_DOOR)
             {
                 success = true;
                 
                 text = string.Format("\n{0} rolled a {1}. The bare minimum roll is {2}. Lady Luck shines upon you, \n" +
                                   "the slot machine delivers the key in a pod to you.\n"
-                                  , name, diceRoll, deathDoor);
+                                  , Name, diceRoll, DEATH_DOOR);
                 Setup.ColorChange(4, text);
                 //FrontDoorChallenge();
                 //Setup.GameEnd("Q", null);
@@ -144,10 +157,24 @@ namespace MyatN_HW1
                                   "\nget the key. You then resorted to picklocking. After numerous attempts to picklock the door." +
                                   "\nSensing your vain stubborn efforts, as if to mock you the mysterious entity behind the Grotto " +
                                   "\nexploded the doors blasting you to oblivion.\n"
-                                  , name, diceRoll, deathDoor);
+                                  , Name, diceRoll, DEATH_DOOR);
                 Setup.ColorChange(6, text);
             }
-            return success;
+            //check diceRoll
+            //  *x > 4, door opens
+            //  *x <= 4 player dies
+            //if door opens, can proceed, otherwise die
+            if (success == true)
+            {
+                Yard.FrontDoorChallenge();
+                Setup.GameEnd("Q", null);
+                Setup.PressToClear(true);
+            }
+            else
+            {
+                Setup.GameEnd("D", null);
+
+            }
         } 
 
         /// <summary>
