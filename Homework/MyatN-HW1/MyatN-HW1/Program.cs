@@ -28,27 +28,20 @@ namespace MyatN_HW1
 
         static void Main(string[] args)
         {
-            
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            ////basic info - hw1
             //Setup.Welcome(); //welcome the user
+
             Setup.GetName(); //ask for user name
 
             Setup.Rules(); //Explain the rules
 
             Setup.PlayGame(); //Ask whether to play the game or not
 
+            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             Yard.GetToDoor(); //const num of steps to door
 
-            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            //Arrive at door - HW2
-            //	Incorporate the player name in the door note.  
-            Yard.Note();
+            Yard.Note(); //Incorporate the player name in the door note.  
 
-            //check diceRoll
-            //  *x > 4, door opens
-            //  *x <= 4 player dies
-            //if door opens, can proceed, otherwise die
             Yard.FrontDoor();
             
             Mansion.UpperFloor();

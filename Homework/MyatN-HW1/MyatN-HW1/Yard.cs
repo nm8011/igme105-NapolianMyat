@@ -29,14 +29,10 @@ namespace MyatN_HW1
         //VARIABLES
         const int NUM_OF_STEPS = 50;
         const int DEATH_DOOR = 1; //made it 1 so debugging is not so annoying, suppose to be 4
-        static string Setup.name;
+        //access setup.name variable
+        private static string name = Setup.Name;
 
 
-        static private string Name
-        {
-            get { return Setup.name; }
-            set { name = value; }
-        }
         //PROPERTIES
 
         /// <summary>
@@ -127,7 +123,11 @@ namespace MyatN_HW1
         }
 
         /// <summary>
-        /// 	If exiting the game, you must allow the game player to see all the messages on the screen that they lost before the window closes.
+        /// If exiting the game, you must allow the game player to see all the messages on the screen that they lost before the window closes.
+        /// check diceRoll
+        ///  *x > 4, door opens
+        ///  *x <= 4 player dies
+        ///if door opens, can proceed, otherwise die
         /// </summary>
         /// <param name="name"></param>
         /// <param name="diceRoll"></param>
@@ -145,7 +145,7 @@ namespace MyatN_HW1
                 
                 text = string.Format("\n{0} rolled a {1}. The bare minimum roll is {2}. Lady Luck shines upon you, \n" +
                                   "the slot machine delivers the key in a pod to you.\n"
-                                  , Name, diceRoll, DEATH_DOOR);
+                                  , name, diceRoll, DEATH_DOOR);
                 Setup.ColorChange(4, text);
                 //FrontDoorChallenge();
                 //Setup.GameEnd("Q", null);
@@ -160,7 +160,7 @@ namespace MyatN_HW1
                                   "\nget the key. You then resorted to picklocking. After numerous attempts to picklock the door." +
                                   "\nSensing your vain stubborn efforts, as if to mock you the mysterious entity behind the Grotto " +
                                   "\nexploded the doors blasting you to oblivion.\n"
-                                  , Name, diceRoll, DEATH_DOOR);
+                                  , name, diceRoll, DEATH_DOOR);
                 Setup.ColorChange(6, text);
             }
             //check diceRoll

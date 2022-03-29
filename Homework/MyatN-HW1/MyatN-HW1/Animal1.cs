@@ -23,7 +23,7 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
-    static class Animal1
+    class Animal1
     {
         public static void SphinxRiddle()
         {

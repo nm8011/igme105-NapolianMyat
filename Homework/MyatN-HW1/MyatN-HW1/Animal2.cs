@@ -23,7 +23,7 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
-    static class Animal2
+    class Animal2
     {
         public static void DragonWish()
         {

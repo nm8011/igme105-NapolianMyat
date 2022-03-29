@@ -23,6 +23,7 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
+    
 
      static class Setup
     {
@@ -30,16 +31,14 @@ namespace MyatN_HW1
         //null so when i debug, i can run part codes without error
         //Create a constant value for the number of steps required to get from the driveway to the house.
         //(You can select your own positive integer value as the total number of steps as long as it is less than 100).
-        static string name;
+        private static string name = null;
 
         //PROPERTIES
-        static private string Name
+        public static string Name
         {
             get { return name; }
-            set { name = value; }
         }
 
-        //PROPERTIES
 
 
         /// <summary>
