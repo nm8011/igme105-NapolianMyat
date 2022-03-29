@@ -24,8 +24,21 @@ using System.Text;
 namespace MyatN_HW1
 {
 
-    static class Setup
+     static class Setup
     {
+        //VARIABLES
+        //null so when i debug, i can run part codes without error
+        //Create a constant value for the number of steps required to get from the driveway to the house.
+        //(You can select your own positive integer value as the total number of steps as long as it is less than 100).
+        static string name;
+
+        //PROPERTIES
+        static private string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
         //PROPERTIES
 
 
@@ -66,8 +79,6 @@ namespace MyatN_HW1
         /// <returns></returns>
         public static string GetName()
         {
-            //Variables
-            string name;
             // User starts here – ask for basic information such as user name.
             //•	Ask the user for their name, read it in and save it (It is used multiple times throughout the game)
             name = Setup.StringValidation("Please enter your character name: ");
@@ -80,7 +91,7 @@ namespace MyatN_HW1
         /// Get 'Y'es or 'N'o to play the game or not 
         /// </summary>
         /// <returns></returns>
-        public static void PlayGame(string name)
+        public static void PlayGame()
         {
             //Variables
             string playGame;

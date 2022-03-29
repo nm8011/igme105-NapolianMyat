@@ -203,7 +203,7 @@ namespace MyatN_HW1
             bool exit; //
             do
             {
-                Console.WriteLine("\nThe door to the basement is open.");
+                Setup.ColorChange(3,"\nThe door to the basement is open.");
                 response = Setup.StringValidation("\nDo you wish to enter? (Y/N)").ToUpper();
                 if (response == "N")
                 {
@@ -213,9 +213,9 @@ namespace MyatN_HW1
                 }
                 else if (response == "Y")
                 {
-                        Console.WriteLine("\nThe basement is emmitting a murderous hue. You entered and the door behind you is " +
-                            "\nshut tight with a loud slam. You tried to backout but no amount of hammering will open this door.\n" +
-                            "\nYou must persist forward."); //introduce basement dungeon floors);
+                    Setup.ColorChange(3, "\nThe basement is emmitting a murderous hue. You entered and the door behind you is " +
+                        "\nshut tight with a loud slam. You tried to backout but no amount of hammering will open this door.\n");
+                    Console.Write("\nYou must persist forward."); //introduce basement dungeon floors);
                         valid = true;
                     exit = true;
                 }
