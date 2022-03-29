@@ -32,11 +32,17 @@ namespace MyatN_HW1
         //Create a constant value for the number of steps required to get from the driveway to the house.
         //(You can select your own positive integer value as the total number of steps as long as it is less than 100).
         private static string name = null;
-
+        private static bool dead;
+        
         //PROPERTIES
         public static string Name
         {
             get { return name; }
+        }
+        public static bool Dead
+        {
+            get { return dead; }
+            set { dead = value; }
         }
 
 
@@ -187,8 +193,9 @@ namespace MyatN_HW1
         /// Q: Prompt whether player wants to quit the game or continue, 
         /// D: EndGame cuz player dies
         /// </summary>
-        public static void GameEnd(string option, string message)
+        public static bool GameEnd(string option, string message)
         {
+            bool dead = false;
             switch (option)
             {
                 case "Q":
@@ -200,6 +207,7 @@ namespace MyatN_HW1
                         if (string.IsNullOrEmpty(response)) //if user input is null meaning they press "Enter"
                         {
                             ColorChange(4,"You've decided to continue. Good Luck Adventurer!" + message);
+                            dead = false;
                         }
                         else
                         {
@@ -208,10 +216,12 @@ namespace MyatN_HW1
                             {
                                 //code continues
                                 ColorChange(4,"You've decided to continue. Good Luck Adventurer!" + message);
+                                dead = false;
                             }
                             else
                             {
                                 ColorChange(6, "\nYour persistence is pathetic. You have decided to quit adventuring. Goodbye.");
+                                dead = true;
                                 Environment.Exit(0);
                             }
                         }
@@ -224,16 +234,19 @@ namespace MyatN_HW1
                         ColorChange(6, "\nYou have died. The last adventure you'll be getting is the one to hell!\n" +
                             "   ^  ^    \n" +
                             "  (o｀~｀)o=E  \n");
+                        dead = true;
                         Environment.Exit(0);
                         break;
                     }
                 default:
                     {
                         ColorChange(6, message);
+                        dead = true;
                         Environment.Exit(0);
                         break;
                     }
-        }
+            }
+            return dead;
         }
 
         /// <summary>

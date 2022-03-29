@@ -31,22 +31,25 @@ namespace MyatN_HW1
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             //Setup.Welcome(); //welcome the user
 
-            Setup.GetName(); //ask for user name
+            while (Setup.Dead != true)
+            {
+                    Setup.GetName(); //ask for user name
 
-            Setup.Rules(); //Explain the rules
+                    Setup.Rules(); //Explain the rules
 
-            Setup.PlayGame(); //Ask whether to play the game or not
+                    Setup.PlayGame(); //Ask whether to play the game or not
 
-            //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            Yard.GetToDoor(); //const num of steps to door
+                    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    Yard.GetToDoor(); //const num of steps to door
 
-            Yard.Note(); //Incorporate the player name in the door note.  
+                    Yard.Note(); //Incorporate the player name in the door note.  
 
-            Yard.FrontDoor();
-            
-            Mansion.UpperFloor();
+                    Yard.FrontDoor();
 
-            Grotto.DungeonFloors();
+                    Mansion.UpperFloor();
+
+                    Grotto.DungeonFloors();
+            }
 
             
             
