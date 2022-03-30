@@ -23,7 +23,6 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
-
     class Yard
     {
         //VARIABLES
@@ -31,9 +30,11 @@ namespace MyatN_HW1
         const int DEATH_DOOR = 1; //made it 1 so debugging is not so annoying, suppose to be 4
         //access setup.name variable
         private static string name = Setup.Name;
-
-
+        static Creature dragon = new Creature();
+        static Creature sphinx = new Creature();
         //PROPERTIES
+
+
 
         /// <summary>
         /// User arrive to door of house
@@ -52,7 +53,7 @@ namespace MyatN_HW1
                     "enter.");
             string text = ("\n\nTo proceed, you must absolve yourself and move your legs. How many steps are you going to move?");
             //Read the user step input in and convert it to an integer
-            int userNumOfSteps = 0;
+            int userNumOfSteps;
 
             userNumOfSteps = Setup.IntValidation(text);
 
@@ -188,8 +189,16 @@ namespace MyatN_HW1
             string choice;
             bool success = false;
             Console.Write("\nBefore you could open the door, 2 fabled creatures appeared before you from\n" +
-                "seemingly nowhere. They prompt you to choose one of them to access the door.\n" +
-                "Did you think it was going to be that easy?\n");
+                "seemingly nowhere.\n");
+            Console.WriteLine("There is a {0} Dragon with {1} sharp horns and exhaling violent grunts and snorts at times.\n" +
+                "It goes by the name \"{2}\""
+                , dragon.CreatureColor, dragon.Feature, dragon.Name);
+            Console.WriteLine("There is a {0} Sphinx with {1} ferocious claws and that is looking at you with gazes that \n" +
+                "is akin to one would look at tender juicy meat. It goes by the name \"{2}\""
+                ,sphinx.CreatureColor, sphinx.Feature, sphinx.Name);
+            
+                Console.WriteLine("They prompt you to choose one of them to access the door.\n" + 
+                    "Did you think it was going to be that easy?\n");
             do
             {
                 Console.Write("\nWhich will you choose? " +
@@ -200,13 +209,13 @@ namespace MyatN_HW1
                 {
                     case "A":
                         {
-                            Animal1.SphinxRiddle();
+                            Creature.SphinxRiddle();
                             success = true;
                             break;
                         }
                     case "B":
                         {
-                            Animal2.DragonWish();
+                            Creature.DragonWish();
                             success = true;
                             break;
                         }

@@ -33,20 +33,20 @@ namespace MyatN_HW1
         //(You can select your own positive integer value as the total number of steps as long as it is less than 100).
         private static string name = null;
         private static bool dead;
-        
+
         //PROPERTIES
-        public static string Name
-        {
-            get { return name; }
-        }
+        public static string Name {get { return name; } }
         public static bool Dead
         {
             get { return dead; }
-            set { dead = value; }
+            set 
+            { dead = value; 
+                if (dead == true)
+                {
+                    Environment.Exit(0);
+                }
+            }
         }
-
-
-
         /// <summary>
         /// Introduce the game name
         /// </summary>
@@ -168,11 +168,11 @@ namespace MyatN_HW1
         {
 
             Random myrand = new Random();
-            int rand1 = RollDie(min, max);
-            int rand2 = DieRoll(1,7, 2);
+            int rand1 = randGen(min, max);
+            int rand2 = DiceRoll(1,7, 2);
             return rand1 + rand2;
         }
-        public static int DieRoll(int min, int max, int numOfDice)
+        public static int DiceRoll(int min, int max, int numOfDice)
         {
 
             Random myrand = new Random();
@@ -180,7 +180,7 @@ namespace MyatN_HW1
             int rand2 = myrand.Next(min, max);
             return (rand1 + rand2)*numOfDice/numOfDice;
         }
-        public static int RollDie(int min, int max)
+        public static int randGen(int min, int max)
         {
 
             Random myrand = new Random();
@@ -202,12 +202,12 @@ namespace MyatN_HW1
                     {
                         string response;
                         Console.WriteLine("\nYou are faced with a difficult decision.");
-                        Console.WriteLine("Do you wish to quit or continue? Enter 'Q' to quit or anything else to continue");
+                        Console.WriteLine("Do you wish to quit or continue? Enter 'Q' to quit or anything else to continue" + message);
                         response = Setup.UserInput().Substring(0).ToUpper(); //substring 0 allows for null
                         if (string.IsNullOrEmpty(response)) //if user input is null meaning they press "Enter"
                         {
-                            ColorChange(4,"You've decided to continue. Good Luck Adventurer!" + message);
-                            dead = false;
+                            ColorChange(4,"You've decided to continue. Good Luck Adventurer!");
+                            Setup.Dead = false;
                         }
                         else
                         {
@@ -215,14 +215,13 @@ namespace MyatN_HW1
                             if (response != "Q")
                             {
                                 //code continues
-                                ColorChange(4,"You've decided to continue. Good Luck Adventurer!" + message);
-                                dead = false;
+                                ColorChange(4,"You've decided to continue. Good Luck Adventurer!");
+                                Setup.Dead = false;
                             }
                             else
                             {
                                 ColorChange(6, "\nYour persistence is pathetic. You have decided to quit adventuring. Goodbye.");
-                                dead = true;
-                                Environment.Exit(0);
+                                Setup.Dead = true;
                             }
                         }
                         break;
@@ -234,15 +233,13 @@ namespace MyatN_HW1
                         ColorChange(6, "\nYou have died. The last adventure you'll be getting is the one to hell!\n" +
                             "   ^  ^    \n" +
                             "  (o｀~｀)o=E  \n");
-                        dead = true;
-                        Environment.Exit(0);
+                        Setup.Dead = true;
                         break;
                     }
                 default:
                     {
                         ColorChange(6, message);
-                        dead = true;
-                        Environment.Exit(0);
+                        Setup.Dead = true;
                         break;
                     }
             }
@@ -357,7 +354,7 @@ namespace MyatN_HW1
             int i = 0;
             while (i < message.Length)
             {
-                randColor = Setup.RollDie(1, 9);
+                randColor = Setup.randGen(1, 9);
                 ColorChange(randColor, message.Substring(i, 1));
                 i++;
             }

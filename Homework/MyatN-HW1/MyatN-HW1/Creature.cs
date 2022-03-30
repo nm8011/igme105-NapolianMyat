@@ -23,8 +23,48 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
-    class Animal1
+    class Creature
     {
+        //VARIABLES
+        private int[] featureArr = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; //fangs/horns
+        private int feature;
+        private string[] nameArr = new string[] { "Tucker", "Caboose", "Sarge", "Simmon", "Donut", "Grif", "Texas", "Lopez", "Church", "Junior"};
+        private string name;
+        private string[] creatureColorArr = new string[] { "Purple", "Green", "Orange", "Red", "Blue", "Yellow", "Indigo", "White", "Black", "Grey"};
+        private string creatureColor;
+
+        public int Feature
+        {
+            get { return feature; }
+        }
+        public string Name
+        {
+            get { return name; }
+        }
+        public string CreatureColor
+        {
+            get { return creatureColor; }
+        }
+
+
+        //CONSTRUCTORS
+        /// <summary>
+        /// Sphinx
+        /// </summary>
+        /// <param name="claws"></param>
+        /// <param name="name"></param>
+        /// <param name="creatureColor"></param>
+        public Creature()
+        {
+            this.feature = featureArr[Setup.randGen(0, featureArr.Length)];
+            this.name = nameArr[Setup.randGen(0, nameArr.Length)];
+            this.creatureColor = creatureColorArr[Setup.randGen(0, nameArr.Length)];
+        }
+
+        //METHODS
+        /// <summary>
+        /// Sphinx Challenge
+        /// </summary>
         public static void SphinxRiddle()
         {
             string answer;
@@ -75,6 +115,57 @@ namespace MyatN_HW1
                     default:
                         {
                             Setup.ColorChange(6,"That is not an option\n");
+                            correct = false;//loops back
+                            break;
+                        }
+                }
+            }
+            while (correct != true);
+
+        }
+        /// <summary>
+        /// Dragon Challenge
+        /// </summary>
+        public static void DragonWish()
+        {
+            bool correct = false;
+            string response;
+            Console.Write("The Dragon desires something of your possession. He demands you give it to him.\n" +
+                "What could it be? What will you give him?\n\t" +
+                "A.) The 5 cent in your pocket\n\t" +
+                "B.) Your math homework\n\t" +
+                "C.) The slimjim in your jacket\n>");
+            do
+            {
+                response = Setup.UserInput().ToUpper();
+                switch (response)
+                {
+                    case "A":
+                        {
+                            Setup.ColorChange(4, "Thats correct! All dragons innately desire treasures and wealth.\n" +
+                                "5 cent is still wealth. What a cheap dragon, wont even spare your 5 cent.\n" +
+                                "You are allowed to pass.");
+                            correct = true;
+                            break;
+                        }
+                    case "B":
+                        {
+                            Setup.GameEnd("D", "The dragon is enraged. It thinks you're mocking him. In it's fury it slashes at you.");
+                            break;
+                        }
+                    case "C":
+                        {
+                            Console.Write("The dragon muses at your kindness. Although the dragon enjoys slimjims for bedtime snacks,\n" +
+                                "It is not hungry at the moment. It desires something else. What will you give him?\n\t" +
+                                "A.) The 5 cent in your pocket\n\t" +
+                                "B.) Your math homework\n\t" +
+                                "C.) The slimjim in your jacket\n>");
+                            correct = false;
+                            break;
+                        }
+                    default:
+                        {
+                            Setup.ColorChange(6, "That is not an option!\n");
                             correct = false;//loops back
                             break;
                         }
