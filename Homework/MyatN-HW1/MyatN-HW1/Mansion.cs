@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 /// <summary>
 /// Napolian Myat
-/// Project: Homework3
+/// Project: Homework4
 /// Date: 01/31/2022
-/// Modified: 03/02/2022
+/// Modified: 03/29/2022
 /// Purpose: Extension of hw1
 /// For this homework, we will begin creating our Text Adventure using:
 ///•	Random class
@@ -17,6 +17,9 @@ using System.Text;
 ///•	Method Overloading / Variable Scope
 ///•	Method parameters returning Values
 ///•	Classes
+///•	Class Properties
+///•	Arrays
+///•	Lists and Dictionaries
 /// </summary>
 namespace MyatN_HW1
 {
@@ -59,7 +62,8 @@ namespace MyatN_HW1
             text = string.Format("You opened the door with a loud resounding screech. You entered through the door.\n" +
                                  "There is a blinding light stunning you for a brief moment. You soon opened your eyes and \n" +
                                  "looked inside. You are now at the vast corridor glowing a bright {0} color. \n" +
-                                 "As you scanned the Mansion with your eyes in discretion, you made a keen observation."
+                                 "As you scanned the Mansion with your eyes in discretion, you made a keen observation." +
+                                 "\nYou see 5 rooms labeled within your vicinity. You should probably check each of them out\n"
                                  , stringColor.ToLower());
 
             Setup.ColorChange(3, text);
@@ -74,8 +78,8 @@ namespace MyatN_HW1
             int m = 0; //fifth room
             do
             {
-                Console.Write("\nYou see 5 rooms labeled within your vicinity. You should probably check each of them out\nThey are:\n\t1 The Kitchen\n\t" +
-                    "2 The BedRoom\n\t3 The LivingRoom\n\t4 The Library\n\t5 The GuestRoom.\nWhich one do you wish to visit?\n>");
+                Console.Write("\nWhich room do you wish to visit?\n\t1 The Kitchen\n\t" +
+                    "2 The BedRoom\n\t3 The LivingRoom\n\t4 The Library\n\t5 The GuestRoom.\n>");
                 choice = Setup.UserInput();
                 switch (choice)
                 {
@@ -86,11 +90,13 @@ namespace MyatN_HW1
                                 Setup.ColorChange(3, "\nYou notice in the kitchen some items that could be essential to your adventure. " +
                                 "\nThe kitchen is very bright and lively with a fridge mounted right in the middle. \nYou looked inside the fridge and found" +
                                 "an abundant of food and water. \nYou also located a cutting board nearby"); //get shield & food, water
+                                Setup.GameEnd("Q", " to explore other rooms");
+
                                 i++;
                             }
                             else
                             {
-                                Setup.ColorChange(6, "You have already visited this room. Choose another.");
+                                Setup.ColorChange(6, "You have already visited this room. Choose another.\n");
                             }
                             exit = false;
                             break;
@@ -103,11 +109,13 @@ namespace MyatN_HW1
                                     "you are not familiar with, as well as jazz music playing in the background. There is a set of \n" +
                                     "headphones connected to a disc player."); //will need maybe to block noise(dmg from sound), less dmg over time so without, the player
                                                                                //will lose a certain amount of hp each round or step or whatev(not decided)
+                                Setup.GameEnd("Q", " to explore other rooms");
                                 j++;
+
                             }
                             else
                             {
-                                Setup.ColorChange(6, "You have already visited this room. Choose another.");
+                                Setup.ColorChange(6, "You have already visited this room. Choose another.\n");
                             }
                             exit = false;
 
@@ -120,11 +128,12 @@ namespace MyatN_HW1
                                 Setup.ColorChange(3, "\nThe Living room is neatly organized, there is a sweet scent in the air. Hey theres some \nmarshmellows attach to a fire poker" +
                                     "As you tried to pick the marshmellows, you got a cut. Luckily you \ndid not lose any health points. You observed that the " +
                                     "fire poker is oddly sharp. \nThat might prove handy. "); //weapon, fight against minions and boss later, otherwise fistfights dmg will be halved.
+                                Setup.GameEnd("Q", " to explore other rooms");
                                 k++;
                             }
                             else
                             {
-                                Setup.ColorChange(6, "You have already visited this room. Choose another.");
+                                Setup.ColorChange(6, "You have already visited this room. Choose another.\n");
                             }
                             exit = false;
                             break;
@@ -168,11 +177,12 @@ namespace MyatN_HW1
                                     "and found a secret suitcase. You need a key to open it. Good thing \na key is right besides the nightstand. You used it to open the case. \nPerfect match! " +
                                     "You checked the contents. There is a sturdy but surprisely nimble cloth\ninside. Hey! That might make you more resiliant.");//armour, maybe add some options to choose from
                                                                                                                                                                  //can halves dmg taken?
+                                Setup.GameEnd("Q", " to explore other rooms");
                                 m++;
                             }
                             else
                             {
-                                Setup.ColorChange(6, "You have already visited this room. Choose another.");
+                                Setup.ColorChange(6, "You have already visited this room. Choose another.\n");
 
                             }
 
@@ -226,5 +236,6 @@ namespace MyatN_HW1
             while (valid != true);
             return exit;
         }
+
     }
-}
+    }

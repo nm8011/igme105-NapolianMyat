@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 /// <summary>
 /// Napolian Myat
-/// Project: Homework3
+/// Project: Homework4
 /// Date: 01/31/2022
-/// Modified: 03/02/2022
+/// Modified: 03/29/2022
 /// Purpose: Extension of hw1
 /// For this homework, we will begin creating our Text Adventure using:
 ///•	Random class
@@ -17,9 +17,13 @@ using System.Text;
 ///•	Method Overloading / Variable Scope
 ///•	Method parameters returning Values
 ///•	Classes
+///•	Class Properties
+///•	Arrays
+///•	Lists and Dictionaries
 /// </summary>
 namespace MyatN_HW1
 {
+    
 
      static class Setup
     {
@@ -27,18 +31,22 @@ namespace MyatN_HW1
         //null so when i debug, i can run part codes without error
         //Create a constant value for the number of steps required to get from the driveway to the house.
         //(You can select your own positive integer value as the total number of steps as long as it is less than 100).
-        static string name;
+        private static string name = null;
+        private static bool dead;
 
         //PROPERTIES
-        static private string Name
+        public static string Name {get { return name; } }
+        public static bool Dead
         {
-            get { return name; }
-            set { name = value; }
+            get { return dead; }
+            set 
+            { dead = value; 
+                if (dead == true)
+                {
+                    Environment.Exit(0);
+                }
+            }
         }
-
-        //PROPERTIES
-
-
         /// <summary>
         /// Introduce the game name
         /// </summary>
@@ -160,11 +168,11 @@ namespace MyatN_HW1
         {
 
             Random myrand = new Random();
-            int rand1 = RollDie(min, max);
-            int rand2 = DieRoll(1,7, 2);
+            int rand1 = randGen(min, max);
+            int rand2 = DiceRoll(1,7, 2);
             return rand1 + rand2;
         }
-        public static int DieRoll(int min, int max, int numOfDice)
+        public static int DiceRoll(int min, int max, int numOfDice)
         {
 
             Random myrand = new Random();
@@ -172,7 +180,7 @@ namespace MyatN_HW1
             int rand2 = myrand.Next(min, max);
             return (rand1 + rand2)*numOfDice/numOfDice;
         }
-        public static int RollDie(int min, int max)
+        public static int randGen(int min, int max)
         {
 
             Random myrand = new Random();
@@ -185,19 +193,21 @@ namespace MyatN_HW1
         /// Q: Prompt whether player wants to quit the game or continue, 
         /// D: EndGame cuz player dies
         /// </summary>
-        public static void GameEnd(string option, string message)
+        public static bool GameEnd(string option, string message)
         {
+            bool dead = false;
             switch (option)
             {
                 case "Q":
                     {
                         string response;
                         Console.WriteLine("\nYou are faced with a difficult decision.");
-                        Console.WriteLine("Do you wish to quit or continue? Enter 'Q' to quit or anything else to continue");
+                        Console.WriteLine("Do you wish to quit or continue? Enter 'Q' to quit or anything else to continue" + message);
                         response = Setup.UserInput().Substring(0).ToUpper(); //substring 0 allows for null
                         if (string.IsNullOrEmpty(response)) //if user input is null meaning they press "Enter"
                         {
-                            ColorChange(4,"You've decided to continue. Good Luck Adventurer!" + message);
+                            ColorChange(4,"You've decided to continue. Good Luck Adventurer!");
+                            Setup.Dead = false;
                         }
                         else
                         {
@@ -205,12 +215,13 @@ namespace MyatN_HW1
                             if (response != "Q")
                             {
                                 //code continues
-                                ColorChange(4,"You've decided to continue. Good Luck Adventurer!" + message);
+                                ColorChange(4,"You've decided to continue. Good Luck Adventurer!");
+                                Setup.Dead = false;
                             }
                             else
                             {
                                 ColorChange(6, "\nYour persistence is pathetic. You have decided to quit adventuring. Goodbye.");
-                                Environment.Exit(0);
+                                Setup.Dead = true;
                             }
                         }
                         break;
@@ -222,16 +233,17 @@ namespace MyatN_HW1
                         ColorChange(6, "\nYou have died. The last adventure you'll be getting is the one to hell!\n" +
                             "   ^  ^    \n" +
                             "  (o｀~｀)o=E  \n");
-                        Environment.Exit(0);
+                        Setup.Dead = true;
                         break;
                     }
                 default:
                     {
                         ColorChange(6, message);
-                        Environment.Exit(0);
+                        Setup.Dead = true;
                         break;
                     }
-        }
+            }
+            return dead;
         }
 
         /// <summary>
@@ -342,7 +354,7 @@ namespace MyatN_HW1
             int i = 0;
             while (i < message.Length)
             {
-                randColor = Setup.RollDie(1, 9);
+                randColor = Setup.randGen(1, 9);
                 ColorChange(randColor, message.Substring(i, 1));
                 i++;
             }
