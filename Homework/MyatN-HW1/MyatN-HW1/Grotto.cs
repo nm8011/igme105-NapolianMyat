@@ -253,7 +253,7 @@ namespace MyatN_HW1
                 {
                     case 1:
                         {
-                            Setup.GameEnd("G", "You have escaped. You finished the adventure and came out intact. Bravo.\n" +
+                            Setup.GameEnd("W", "You have escaped. You finished the adventure and came out intact. Bravo.\n" +
                                 "As a reward for your surely tasking efforts, youve been registered as the first informed of the next\n" +
                                 "Mystical Grotto.");
                             break;

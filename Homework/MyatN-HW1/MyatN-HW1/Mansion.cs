@@ -25,6 +25,7 @@ namespace MyatN_HW1
 {
     static class Mansion
     {
+        private static bool dead = Setup.Dead;
         /// <summary>
         /// having trouble
         /// </summary>
@@ -48,7 +49,7 @@ namespace MyatN_HW1
             //Console.WriteLine(tempword);
             return tempword;
         }
-        public static void UpperFloor()
+        public static bool UpperFloor()
         {
             string choice;
             bool exit;
@@ -177,7 +178,7 @@ namespace MyatN_HW1
                                     "and found a secret suitcase. You need a key to open it. Good thing \na key is right besides the nightstand. You used it to open the case. \nPerfect match! " +
                                     "You checked the contents. There is a sturdy but surprisely nimble cloth\ninside. Hey! That might make you more resiliant.");//armour, maybe add some options to choose from
                                                                                                                                                                  //can halves dmg taken?
-                                Setup.GameEnd("Q", " to explore other rooms");
+                                dead = Setup.GameEnd("Q", " to explore other rooms");
                                 m++;
                             }
                             else
@@ -200,7 +201,7 @@ namespace MyatN_HW1
             }
             while (exit != true);
             Setup.PressToClear(true);
-
+            return Setup.Dead;
 
         }
         public static bool GoDungeon()

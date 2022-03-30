@@ -28,18 +28,24 @@ namespace MyatN_HW1
 
         static void Main(string[] args)
         {
+            //VARIABLE
+            bool dead = false;
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            while (Setup.Dead != true)
+            while (dead != true)
             {
+                if (dead == true)
+                {
+                    Environment.Exit(0);
+                }
                 Setup.Welcome(); //welcome the user
                 Setup.GetName(); //ask for user name
                 Setup.Rules(); //Explain the rules
                 Setup.PlayGame(); //Ask whether to play the game or not
                 Yard.GetToDoor(); //const num of steps to door
                 Yard.Note(); //Incorporate the player name in the door note.  
-                Yard.FrontDoor();
-                Mansion.UpperFloor();
-                Grotto.DungeonFloors();
+                dead = Yard.FrontDoor();
+                dead = Mansion.UpperFloor();
+                dead = Grotto.DungeonFloors();
             }
 
             //int i = 0;

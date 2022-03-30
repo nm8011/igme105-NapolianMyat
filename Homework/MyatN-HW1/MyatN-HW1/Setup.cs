@@ -40,7 +40,7 @@ namespace MyatN_HW1
         {
             get { return dead; }
             set 
-            { dead = value; 
+            { dead = value;
                 if (dead == true)
                 {
                     Environment.Exit(0);
@@ -233,6 +233,13 @@ namespace MyatN_HW1
                         ColorChange(6, "\nYou have died. The last adventure you'll be getting is the one to hell!\n" +
                             "   ^  ^    \n" +
                             "  (o｀~｀)o=E  \n");
+                        Setup.Dead = true;
+                        break;
+                    }
+                case "W":
+                    {
+
+                        ColorChange(4, message);
                         Setup.Dead = true;
                         break;
                     }
@@ -451,6 +458,10 @@ namespace MyatN_HW1
             return response;
         }
 
+        public static void GettingInformation()
+        {
+
+        }
         //No methods beyond here
     }
 }

@@ -32,6 +32,7 @@ namespace MyatN_HW1
         private static string name = Setup.Name;
         static Creature dragon = new Creature();
         static Creature sphinx = new Creature();
+        static bool dead;
         //PROPERTIES
 
 
@@ -132,7 +133,7 @@ namespace MyatN_HW1
         /// </summary>
         /// <param name="name"></param>
         /// <param name="diceRoll"></param>
-        public static void FrontDoor()
+        public static bool FrontDoor()
         {
             string text;
             bool success;
@@ -148,11 +149,6 @@ namespace MyatN_HW1
                                   "the slot machine delivers the key in a pod to you.\n"
                                   , name, diceRoll, DEATH_DOOR);
                 Setup.ColorChange(4, text);
-                //FrontDoorChallenge();
-                //Setup.GameEnd("Q", null);
-                //Setup.PressToClear(true);
-
-                //continues
             }
             else
             {
@@ -171,20 +167,21 @@ namespace MyatN_HW1
             if (success == true)
             {
                 Yard.FrontDoorChallenge();
-                Setup.GameEnd("Q", null);
+                dead = Setup.GameEnd("Q", null);
                 Setup.PressToClear(true);
             }
             else
             {
-                Setup.GameEnd("D", null);
+                dead = Setup.GameEnd("D", null);
 
             }
+            return dead;
         } 
 
         /// <summary>
         /// 
         /// </summary>
-        public static void FrontDoorChallenge()
+        public static bool FrontDoorChallenge()
         {
             string choice;
             bool success = false;
@@ -193,6 +190,8 @@ namespace MyatN_HW1
             Console.WriteLine("There is a {0} Dragon with {1} sharp horns and exhaling violent grunts and snorts at times.\n" +
                 "It goes by the name \"{2}\""
                 , dragon.CreatureColor, dragon.Feature, dragon.Name);
+            //ensure both creature do not share same name
+            Yard.CreatureNameCheck();
             Console.WriteLine("There is a {0} Sphinx with {1} ferocious claws and that is looking at you with gazes that \n" +
                 "is akin to one would look at tender juicy meat. It goes by the name \"{2}\""
                 ,sphinx.CreatureColor, sphinx.Feature, sphinx.Name);
@@ -209,13 +208,13 @@ namespace MyatN_HW1
                 {
                     case "A":
                         {
-                            Creature.SphinxRiddle();
+                            dead = Creature.SphinxRiddle();
                             success = true;
                             break;
                         }
                     case "B":
                         {
-                            Creature.DragonWish();
+                            dead = Creature.DragonWish();
                             success = true;
                             break;
                         }
@@ -228,8 +227,23 @@ namespace MyatN_HW1
                 }
             }
             while (success != true);
+            return dead;
         }
-
+        /// <summary>
+        /// Change sphinx name if it is same as dragon
+        /// </summary>
+        public static void CreatureNameCheck()
+        {
+            if(dragon.Name == sphinx.Name)
+            {
+                do
+                {
+                    int num = Setup.randGen(0, sphinx.NameArr.Length);
+                    sphinx.Name = sphinx.NameArr[num];
+                } while (dragon.Name != sphinx.Name);
+                
+            }
+        }
 
     }
 }
