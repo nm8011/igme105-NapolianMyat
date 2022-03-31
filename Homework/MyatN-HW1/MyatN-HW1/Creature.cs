@@ -26,7 +26,7 @@ namespace MyatN_HW1
     class Creature
     {
         //VARIABLES
-        private static bool dead;
+        private static bool dead = Setup.Dead;
 
         private int[] featureArr = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; //fangs/horns
         private int feature;
@@ -34,24 +34,19 @@ namespace MyatN_HW1
         private string name;
         private string[] creatureColorArr = new string[] { "Purple", "Green", "Orange", "Red", "Blue", "Yellow", "Indigo", "White", "Black", "Grey"};
         private string creatureColor;
+        private int[] numOfLegsArr = Setup.UserInformationArr;
+        private int numOfLegs;
 
-        public int Feature
-        {
-            get { return feature; }
-        }
+        //PROPERTIES
+        public int Feature{get { return feature; }}
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
-        public string[] NameArr
-        {
-            get { return nameArr; }
-        }
-        public string CreatureColor
-        {
-            get { return creatureColor; }
-        }
+        public string[] NameArr{get { return nameArr; }}
+        public string CreatureColor{get { return creatureColor; }}
+        public int NumOfLegs { get { return numOfLegs; } }
 
 
         //CONSTRUCTORS
@@ -66,6 +61,8 @@ namespace MyatN_HW1
             this.feature = featureArr[Setup.randGen(0, featureArr.Length)];
             this.name = nameArr[Setup.randGen(0, nameArr.Length)];
             this.creatureColor = creatureColorArr[Setup.randGen(0, nameArr.Length)];
+            this.numOfLegs = numOfLegsArr[Setup.randGen(0, numOfLegsArr.Length)];
+
         }
 
         //METHODS
@@ -99,7 +96,7 @@ namespace MyatN_HW1
                             Console.WriteLine("Wrong! Love can make you cry, make you laugh, make you feel young, can be \n" +
                                 "born in an instant, can last a lifetime. However, it cannot bring back\n" +
                                 "the dead. ");
-                            dead = Setup.GameEnd("D", "The Sphinx finds you to be appetizing. He has devoured you.\n" +
+                            Setup.GameEnd("D", "The Sphinx finds you to be appetizing. He has devoured you.\n" +
                                 "Since you are so adament that love can bring back the dead,\n" +
                                 "maybe love will bring you back. Most likely not."); //death
 
@@ -116,7 +113,7 @@ namespace MyatN_HW1
                     case "C":
                         {
                             Console.WriteLine("Not even remotely close");
-                            dead = Setup.GameEnd("D", "The Sphinx finds you to be appetizing. He has devoured you.");
+                            Setup.GameEnd("D", "The Sphinx finds you to be appetizing. He has devoured you.");
                             break;
                         }
                     default:
@@ -158,7 +155,7 @@ namespace MyatN_HW1
                         }
                     case "B":
                         {
-                            dead = Setup.GameEnd("D", "The dragon is enraged. It thinks you're mocking him. In it's fury it slashes at you.");
+                            Setup.GameEnd("D", "The dragon is enraged. It thinks you're mocking him. In it's fury it slashes at you.");
                             break;
                         }
                     case "C":

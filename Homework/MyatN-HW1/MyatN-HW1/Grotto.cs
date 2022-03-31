@@ -23,13 +23,15 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
-    static class Grotto
+    class Grotto
     {
+        //VARIABLE
+        private static bool dead = Setup.Dead;
 
         /// <summary>
         /// DungeonFloors
         /// </summary>
-        public static void DungeonFloors()
+        public static bool DungeonFloors()
         {
             //Grotto
             Setup.RandColor("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
@@ -65,7 +67,7 @@ namespace MyatN_HW1
                             "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
             EnchantedDoor();
             Console.Clear();
-
+            return dead;
 
         }
         public static void Steps()
