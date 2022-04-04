@@ -23,9 +23,7 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
-    
-
-     static class Setup
+    static class Setup
     {
         //VARIABLES
         //null so when i debug, i can run part codes without error
@@ -33,9 +31,12 @@ namespace MyatN_HW1
         //(You can select your own positive integer value as the total number of steps as long as it is less than 100).
         private static string name = null;
         private static bool dead;
-
+        private static int[] userInformationArr = new int[NUM_OF_USER_INFO];
+        private const int NUM_OF_USER_INFO = 10;
+        public static List<string> foodList;
+        public static int difficultyLevelChosen;
         //PROPERTIES
-        public static string Name {get { return name; } }
+        public static string Name { get { return name; } }            
         public static bool Dead
         {
             get { return dead; }
@@ -47,6 +48,22 @@ namespace MyatN_HW1
                 }
             }
         }
+        public static int DifficultyLevelChosen 
+        { 
+            get { return difficultyLevelChosen; }
+            set { difficultyLevelChosen = value; }
+        }
+
+        public static int[] UserInformationArr
+        {
+            get { return userInformationArr; }
+        }
+        public static List<string>FoodList
+        {
+            get { return foodList; }
+            set { foodList = value; }
+        }
+        //METHODS
         /// <summary>
         /// Introduce the game name
         /// </summary>
@@ -193,9 +210,8 @@ namespace MyatN_HW1
         /// Q: Prompt whether player wants to quit the game or continue, 
         /// D: EndGame cuz player dies
         /// </summary>
-        public static bool GameEnd(string option, string message)
+        public static void GameEnd(string option, string message)
         {
-            bool dead = false;
             switch (option)
             {
                 case "Q":
@@ -250,7 +266,6 @@ namespace MyatN_HW1
                         break;
                     }
             }
-            return dead;
         }
 
         /// <summary>
@@ -457,10 +472,163 @@ namespace MyatN_HW1
             while (valid != true);
             return response;
         }
-
-        public static void GettingInformation()
+        /// <summary>
+        /// Create a new method in your setup class to gather information from our user
+        /// </summary>
+        public static void GettingInformation(int minValueOFInput, int maxValueOfInput)
         {
+            //Variable
+            bool valid = false;
+            string text = string.Format("Please enter a number between {0}-{1}!", minValueOFInput, maxValueOfInput);
 
+            //•	 Explain that we are getting information to personalize the game to them.
+            //a.	Prompts the user for 10 integer numbers 
+            Console.WriteLine("Before we begin, we would like to ask you for some information\n" +
+                "to personalize the game for you. First we will ask you for {0} numbers between {1} and {2}"
+                ,NUM_OF_USER_INFO, minValueOFInput, maxValueOfInput);
+
+            ////////////////////////////////////////////////////////////
+            /////////////   Loop Until condition fulfilled  ////////////
+            ////////////////////////////////////////////////////////////
+            ///for validation of user input is within range of required
+            for (int i = 0; i < NUM_OF_USER_INFO; i++) //e.Your loop may NOT set the limit as a hard - coded number of 10
+            {
+                do
+                {
+                    ////d.	Store user values in the array
+                    userInformationArr[i] = IntValidation("\nEnter number: "); //b.	Verify all user entry is an integer value
+                    if (userInformationArr[i] >= minValueOFInput && userInformationArr[i] <= maxValueOfInput) //if userInput is within range
+                    {
+                        Console.WriteLine("You've entered {0} number(s) out of {1}", i + 1, NUM_OF_USER_INFO);
+                        valid = true;
+                    }
+                    else //else reprompt
+                    {
+                        ColorChange(6, text); //(re-prompting if necessary
+                        valid = false;
+                    }
+                } while (valid != true);
+            }
+
+            ///////////////////////////////////////////////////////////////
+            /////////   Print out info   //////////////////////////////////
+            ///////////////////////////////////////////////////////////////
+            Console.WriteLine("Thank you for inputting your {0} favorite numbers!\n You gave the following values:\n", NUM_OF_USER_INFO);
+            foreach (var num in userInformationArr)
+            {
+                Console.WriteLine(num);
+            }
+            Console.WriteLine("We'll use these later in the game.");
+        }
+        /// <summary>
+        /// •	Create UserFoodList method.
+        /// </summary>
+        /// <param name="userFoodList"></param>
+        public static List<string> UserFoodList(List<string> userFoodList, int minNumOfFood)
+        {
+            string response;
+            bool done = false;
+            //•	Create user description for the information we are asking for and ask user for input
+            Console.WriteLine("To customize your gaming experience a little more. \n" +
+                "We need you to enter 3 of your favorite food. \n" +
+                "You may enter as more if you wish. (1 per prompt).");
+            for (int i = 0; i < minNumOfFood; i++)
+            {
+                response = Setup.StringValidation("Please enter a food: ");
+                userFoodList.Add(response);
+            }
+            do
+            {
+                done = YesNoQuestions("Would you like to add another food? (Y/N)", null, "You decided not to enter anymore food");
+                if(done != true)
+                {
+                    response = Setup.StringValidation("\nPlease enter a food: ");//•Check that user entered string data and re-prompt if string is empty.
+                    userFoodList.Add(response);
+                }
+                
+                //•	Verify user input for both Y/N (done entering, or continue) – re-prompting if invalid
+            } while (done != true);
+            //Display the list of food entered by the user when they have said they are done 
+            Console.WriteLine("\nThanks for the list of food! You have entered:");
+            foreach (var food in userFoodList)
+            {
+                Console.WriteLine(food);
+            }
+            FoodList = userFoodList;
+            PressToClear(true);
+            return userFoodList;
+        }
+        /// <summary>
+        /// Prompt until user input Y/N
+        /// returns bool Y=false, N=true
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="yesStatement"></param>
+        /// <param name="noStatment"></param>
+        /// <returns></returns>
+        public static bool YesNoQuestions(string text, string yesStatement, string noStatment)
+        {
+            string response;
+            bool success = false;
+            bool decision = false;
+            do
+            {
+                response = StringValidation("\n" +text).ToUpper().Substring(0,1);
+                if(response == "Y")
+                {
+                    ColorChange(4, "\n" +yesStatement);
+                    decision = false;
+                    success = true;
+                }
+                else if(response == "N")
+                {
+                    ColorChange(6, "\n"+noStatment);
+                    decision = true;
+                    success = true;
+                }
+                else
+                {
+                    ColorChange(6, "\nYou did not input Y/N.");
+                    success = false;
+                }
+
+            } while (success != true);
+            return decision;
+        }
+        public static int DifficultyLevel()
+        {
+            int response;
+            bool success = false;
+           
+            do
+            {
+                Console.WriteLine("What difficulty level would you like to select for this game? (1-{0})", Yard.CreatureDictionary.Count);
+                response = Setup.IntValidation(null);
+                switch (response)
+                {
+                    case 1:
+                        {
+                            Console.WriteLine("You've selected Level {0} difficulty mode", response);
+                            success = true;
+
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.WriteLine("You've selected Level {0} difficulty mode", response);
+                            success = true;
+                            break;
+                        }
+                    default:
+                        {
+                            success = false;
+                            Console.WriteLine("Sorry that difficulty level is not available.");
+                            break;
+                        }
+                }
+            } while (success != true);
+            DifficultyLevelChosen = response;
+            return response;
         }
         //No methods beyond here
     }

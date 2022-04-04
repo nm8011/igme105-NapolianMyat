@@ -30,17 +30,18 @@ namespace MyatN_HW1
         {
             //VARIABLE
             bool dead = false;
+            //•	Create List in main program class
+            List<string> userItemsList = new List<string>();
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             while (dead != true)
             {
-                if (dead == true)
-                {
-                    Environment.Exit(0);
-                }
                 Setup.Welcome(); //welcome the user
                 Setup.GetName(); //ask for user name
                 Setup.Rules(); //Explain the rules
+                Setup.DifficultyLevel();
                 Setup.PlayGame(); //Ask whether to play the game or not
+                Setup.GettingInformation(1, 20);
+                userItemsList = Setup.UserFoodList(userItemsList, 3);//3min number of input
                 Yard.GetToDoor(); //const num of steps to door
                 Yard.Note(); //Incorporate the player name in the door note.  
                 dead = Yard.FrontDoor();
@@ -49,9 +50,9 @@ namespace MyatN_HW1
             }
 
             //int i = 0;
-            //while (Setup.Dead != true)
+            //while (dead != true)
             //{
-            //    Setup.Dead = Setup.Dead;
+            //    dead = Setup.Dead;
             //    switch (i++)
             //    {
             //        case 0:
@@ -66,17 +67,17 @@ namespace MyatN_HW1
             //            {
             //                Yard.GetToDoor(); //const num of steps to door
             //                Yard.Note(); //Incorporate the player name in the door note.  
-            //                Yard.FrontDoor();
+            //                dead = Yard.FrontDoor();
             //                break;
             //            }
             //        case 2:
             //            {
-            //                Mansion.UpperFloor();
+            //                dead = Mansion.UpperFloor();
             //                break;
             //            }
             //        case 3:
             //            {
-            //                Grotto.DungeonFloors();
+            //                dead = Grotto.DungeonFloors();
             //                break;
             //            }
             //        default:

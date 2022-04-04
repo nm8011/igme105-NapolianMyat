@@ -23,9 +23,11 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
-    static class Mansion
+    class Mansion
     {
+        //VARIABLE
         private static bool dead = Setup.Dead;
+        private static List<string> foodList = Setup.foodList;
         /// <summary>
         /// having trouble
         /// </summary>
@@ -88,9 +90,40 @@ namespace MyatN_HW1
                         {
                             if(i == 0)
                             {
+                                int randNum = Setup.randGen(0, foodList.Count);
                                 Setup.ColorChange(3, "\nYou notice in the kitchen some items that could be essential to your adventure. " +
                                 "\nThe kitchen is very bright and lively with a fridge mounted right in the middle. \nYou looked inside the fridge and found" +
                                 "an abundant of food and water. \nYou also located a cutting board nearby"); //get shield & food, water
+
+                                //First Location
+                                text = string.Format("\nOn the counters there are {0}. You are relishing in the fragrant aroma it is emitting.", foodList[randNum]);
+                                Setup.ColorChange(3, text);
+                                foodList.RemoveAt(randNum);
+
+                                //Second Location
+                                randNum = Setup.randGen(0, foodList.Count);
+                                text = string.Format("\nIn the fridge, there are {0}. It still seems warm. How magical", foodList[randNum]);
+                                Setup.ColorChange(3, text);
+                                foodList.RemoveAt(randNum);
+
+
+                                //Third Location
+                                randNum = Setup.randGen(0, foodList.Count);
+                                text = string.Format("\nOn the stove, there are {0}. Despite the still burning stove, it seems perfectly cooked", foodList[randNum]);
+                                Setup.ColorChange(3, text);
+                                foodList.RemoveAt(randNum);
+
+                                //The rest
+                                if (foodList.Count >= 1)
+                                {
+                                    Setup.ColorChange(3, "\n\nIn addition, on the dining table in the Kitchen, there \n" +
+                                        "are ");
+                                    foreach (var item in foodList)
+                                    {
+                                        Setup.ColorChange(3, item + ", ");
+                                    }
+                                    Setup.ColorChange(3, "and as well as some beverages set on the table;");
+                                }
                                 Setup.GameEnd("Q", " to explore other rooms");
 
                                 i++;
@@ -178,7 +211,7 @@ namespace MyatN_HW1
                                     "and found a secret suitcase. You need a key to open it. Good thing \na key is right besides the nightstand. You used it to open the case. \nPerfect match! " +
                                     "You checked the contents. There is a sturdy but surprisely nimble cloth\ninside. Hey! That might make you more resiliant.");//armour, maybe add some options to choose from
                                                                                                                                                                  //can halves dmg taken?
-                                dead = Setup.GameEnd("Q", " to explore other rooms");
+                                Setup.GameEnd("Q", " to explore other rooms");
                                 m++;
                             }
                             else
@@ -201,8 +234,7 @@ namespace MyatN_HW1
             }
             while (exit != true);
             Setup.PressToClear(true);
-            return Setup.Dead;
-
+            return dead;
         }
         public static bool GoDungeon()
         {

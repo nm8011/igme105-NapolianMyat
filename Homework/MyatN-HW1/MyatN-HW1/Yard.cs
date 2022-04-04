@@ -26,15 +26,40 @@ namespace MyatN_HW1
     class Yard
     {
         //VARIABLES
-        const int NUM_OF_STEPS = 50;
-        const int DEATH_DOOR = 1; //made it 1 so debugging is not so annoying, suppose to be 4
+        private const int NUM_OF_STEPS = 50;
+        private const int DEATH_DOOR = 1; //made it 1 so debugging is not so annoying, suppose to be 4
         //access setup.name variable
         private static string name = Setup.Name;
-        static Creature dragon = new Creature();
-        static Creature sphinx = new Creature();
-        static bool dead;
-        //PROPERTIES
+        //•	Create a dictionary to hold our animals/creatures
+        //I did creature, string b/c I want to find creatures type and name
+        private static Dictionary<Creature, string> creatureDictionary = new Dictionary<Creature, string>();
 
+        private static Creature dragon = new Creature();
+        private static Creature sphinx = new Creature();
+
+        private static bool dead = Setup.Dead;
+        //PROPERTIES
+        public static Dictionary<Creature, string> CreatureDictionary
+        {
+            get 
+            {
+                if (!creatureDictionary.ContainsKey(dragon))
+                {
+                    creatureDictionary.Add(dragon, dragon.Name);
+                }
+                if(!creatureDictionary.ContainsKey(sphinx))
+                {
+                                    creatureDictionary.Add(sphinx, sphinx.Name);
+
+                }
+                return creatureDictionary; 
+            }
+            set
+            {
+                creatureDictionary = value;
+            }
+
+        }
 
 
         /// <summary>
@@ -43,6 +68,7 @@ namespace MyatN_HW1
         /// <param name="numOfSteps"></param>
         public static void GetToDoor()
         {
+
             //Ask the user for how many steps to move.
             Setup.RandColor("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
                              "~                     Yard                  ~\n" +
@@ -167,12 +193,12 @@ namespace MyatN_HW1
             if (success == true)
             {
                 Yard.FrontDoorChallenge();
-                dead = Setup.GameEnd("Q", null);
+                Setup.GameEnd("Q", null);
                 Setup.PressToClear(true);
             }
             else
             {
-                dead = Setup.GameEnd("D", null);
+                Setup.GameEnd("D", null);
 
             }
             return dead;
@@ -185,48 +211,67 @@ namespace MyatN_HW1
         {
             string choice;
             bool success = false;
-            Console.Write("\nBefore you could open the door, 2 fabled creatures appeared before you from\n" +
-                "seemingly nowhere.\n");
-            Console.WriteLine("There is a {0} Dragon with {1} sharp horns and exhaling violent grunts and snorts at times.\n" +
-                "It goes by the name \"{2}\""
-                , dragon.CreatureColor, dragon.Feature, dragon.Name);
-            //ensure both creature do not share same name
             Yard.CreatureNameCheck();
-            Console.WriteLine("There is a {0} Sphinx with {1} ferocious claws and that is looking at you with gazes that \n" +
-                "is akin to one would look at tender juicy meat. It goes by the name \"{2}\""
-                ,sphinx.CreatureColor, sphinx.Feature, sphinx.Name);
-            
-                Console.WriteLine("They prompt you to choose one of them to access the door.\n" + 
-                    "Did you think it was going to be that easy?\n");
-            do
+            string text = string.Format("\nBefore you could open the door, {0} fabled creatures appeared before you from\n" +
+                "seemingly nowhere. ", Yard.CreatureDictionary.Count);
+            Setup.ColorChange(3, text);
+
+            if (Setup.DifficultyLevelChosen >= 1)
             {
-                Console.Write("\nWhich will you choose? " +
-                "\n\tA.) The Sphinx" +
-                "\n\tB.) The Dragon\n>");
-                choice = Setup.UserInput().ToUpper();
-                switch(choice)
-                {
-                    case "A":
-                        {
-                            dead = Creature.SphinxRiddle();
-                            success = true;
-                            break;
-                        }
-                    case "B":
-                        {
-                            dead = Creature.DragonWish();
-                            success = true;
-                            break;
-                        }
-                    default:
-                        {
-                            Setup.ColorChange(6,"That is not an option\n");
-                            success = false;
-                            break;
-                        }
-                }
+                text = string.Format("There is a {0} Dragon with {1} sharp horns and {3} legs. It is \n" +
+                    "exhaling violent grunts and snorts at times. It goes by the name \"{2}\". \n",
+                    dragon.CreatureColor, dragon.Feature, dragon.Name, dragon.NumOfLegs);
+                Setup.ColorChange(3, text);
             }
-            while (success != true);
+
+            if (Setup.DifficultyLevelChosen >= 2)
+            {
+                text = string.Format("There is a {0} Sphinx with {1} ferocious claws and {3} legs. It looking at you with gazes  \n" +
+                    "that is akin to one would look at tender juicy meat. It goes by the name \"{2}\".\n"
+                    , sphinx.CreatureColor, sphinx.Feature, sphinx.Name, sphinx.NumOfLegs);
+                Setup.ColorChange(3, text);
+            }
+            if (Setup.DifficultyLevelChosen == 1)
+            {
+                dead = Creature.DragonWish();
+            }
+
+
+            
+            if (Setup.DifficultyLevelChosen == 2)
+            {
+                Console.WriteLine("They prompt you to choose one of them to access the door.\n" +
+                    "Did you think it was going to be that easy?\n");
+                do
+                {
+                    Console.Write("\nWhich will you choose? " +
+                    "\n\tA.) The Sphinx" +
+                    "\n\tB.) The Dragon\n>");
+                    choice = Setup.UserInput().ToUpper();
+                    switch (choice)
+                    {
+                        case "A":
+                            {
+                                dead = Creature.SphinxRiddle();
+                                success = true;
+                                break;
+                            }
+                        case "B":
+                            {
+                                dead = Creature.DragonWish();
+                                success = true;
+                                break;
+                            }
+                        default:
+                            {
+                                Setup.ColorChange(6, "That is not an option\n");
+                                success = false;
+                                break;
+                            }
+                    }
+                }
+                while (success != true);
+            }
             return dead;
         }
         /// <summary>
