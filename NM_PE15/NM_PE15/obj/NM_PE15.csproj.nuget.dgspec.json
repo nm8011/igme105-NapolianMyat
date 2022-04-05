@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Profiles\\nm8011\\source\\repos\\igme105-NapolianMyat\\NM_PE15\\NM_PE15\\NM_PE15.csproj": {}
+    "C:\\Users\\myatn\\source\\Repos\\igme105-NapolianMyat\\NM_PE15\\NM_PE15\\NM_PE15.csproj": {}
   },
   "projects": {
-    "D:\\Profiles\\nm8011\\source\\repos\\igme105-NapolianMyat\\NM_PE15\\NM_PE15\\NM_PE15.csproj": {
+    "C:\\Users\\myatn\\source\\Repos\\igme105-NapolianMyat\\NM_PE15\\NM_PE15\\NM_PE15.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Profiles\\nm8011\\source\\repos\\igme105-NapolianMyat\\NM_PE15\\NM_PE15\\NM_PE15.csproj",
+        "projectUniqueName": "C:\\Users\\myatn\\source\\Repos\\igme105-NapolianMyat\\NM_PE15\\NM_PE15\\NM_PE15.csproj",
         "projectName": "NM_PE15",
-        "projectPath": "D:\\Profiles\\nm8011\\source\\repos\\igme105-NapolianMyat\\NM_PE15\\NM_PE15\\NM_PE15.csproj",
-        "packagesPath": "D:\\Profiles\\nm8011\\.nuget\\packages\\",
-        "outputPath": "D:\\Profiles\\nm8011\\source\\repos\\igme105-NapolianMyat\\NM_PE15\\NM_PE15\\obj\\",
+        "projectPath": "C:\\Users\\myatn\\source\\Repos\\igme105-NapolianMyat\\NM_PE15\\NM_PE15\\NM_PE15.csproj",
+        "packagesPath": "C:\\Users\\myatn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\myatn\\source\\Repos\\igme105-NapolianMyat\\NM_PE15\\NM_PE15\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "Z:\\IGMProfile\\AppData\\NuGet\\NuGet.Config",
+          "C:\\Users\\myatn\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
