@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Profiles\\nm8011\\source\\repos\\igme105-NapolianMyat\\NM_PE16\\NM_PE16\\NM_PE16.csproj",
-      "projectName": "NM_PE16",
-      "projectPath": "D:\\Profiles\\nm8011\\source\\repos\\igme105-NapolianMyat\\NM_PE16\\NM_PE16\\NM_PE16.csproj",
+      "projectUniqueName": "D:\\Profiles\\nm8011\\source\\repos\\igme105-NapolianMyat\\NM_PE17\\NM_PE17\\NM_PE17.csproj",
+      "projectName": "NM_PE17",
+      "projectPath": "D:\\Profiles\\nm8011\\source\\repos\\igme105-NapolianMyat\\NM_PE17\\NM_PE17\\NM_PE17.csproj",
       "packagesPath": "D:\\Profiles\\nm8011\\.nuget\\packages\\",
-      "outputPath": "D:\\Profiles\\nm8011\\source\\repos\\igme105-NapolianMyat\\NM_PE16\\NM_PE16\\obj\\",
+      "outputPath": "D:\\Profiles\\nm8011\\source\\repos\\igme105-NapolianMyat\\NM_PE17\\NM_PE17\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
