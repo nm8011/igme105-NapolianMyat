@@ -10,6 +10,13 @@ using System.Text;
 /// A Ship class will be defined. This class will be used as 
 /// the parent of the Warship and Transport classes. We will 
 /// then try to use polymorphism with some methods.
+/// /// Questions:
+/// 1.) The childclass(or object class) tostring is called
+/// For ship, the parent class tostring is called, for warship is the warship 
+/// tostring(which is the parent class tostring overridden to include it plus other aspect),
+/// for transport is transport tostring
+/// 2.) It can not find the method
+/// 3.) No b/c the method doesnt exist in transport only in warship.
 /// </summary>
 namespace NM_PE16
 {
