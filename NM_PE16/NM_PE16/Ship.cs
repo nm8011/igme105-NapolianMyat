@@ -33,7 +33,7 @@ namespace NM_PE16
         //CONSTRUCTOR
         /// <summary>
         /// 1. Create a Ship class (this will be the parent) with a parameterized constructor 
-        /// that takes a ship name, weight (in tons), and maximum speed as parameters.
+        /// that takes a ship name, weight (in tons), and maximum speed (in knots) as parameters.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="weight"></param>
@@ -48,12 +48,12 @@ namespace NM_PE16
         /// 4.	Override the ToString method to return a String containing the ship’s information.
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
+        public virtual string ToString()
         {
             string text = string.Format("\nShip Details" +
-                "\n\tShip Name: {0}" +
-                "\n\tWeight: {1}" +
-                "\n\tMax Speed: {2}"
+                "\n\tShip Name: The {0}" +
+                "\n\tWeight: {1} tons" +
+                "\n\tMax Speed: {2} knots"
                 , name, weight, maxSpeed);
             return text;
         }

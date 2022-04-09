@@ -39,5 +39,23 @@ namespace NM_PE16
         {
             this.numOfGun = numOfGun;
         }
+        /// <summary>
+        /// 4.	 Override the ToString method to return a String containing the Warship’s information. 
+        /// Use the parent class ToString method to get the three parent class attribute values.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return base.ToString()+string.Format("\n\tNumber of Guns: {0}", numOfGun);
+        }
+        /// <summary>
+        /// 5.	Add a Firing method that uses the number of guns attribute to print a message to the 
+        /// console about how many guns are firing. For example: “Firing 7 guns.” This method returns 
+        /// nothing and takes no parameters.
+        /// </summary>
+        public void Firing()
+        {
+            Console.WriteLine("Firing {0} guns.", numOfGun);
+        }
     }
 }
