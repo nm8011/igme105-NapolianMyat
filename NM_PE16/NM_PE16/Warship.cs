@@ -10,6 +10,13 @@ using System.Text;
 /// A Ship class will be defined. This class will be used as 
 /// the parent of the Warship and Transport classes. We will 
 /// then try to use polymorphism with some methods.
+/// /// Questions:
+/// 1.) The childclass(or object class) tostring is called
+/// For ship, the parent class tostring is called, for warship is the warship 
+/// tostring(which is the parent class tostring overridden to include it plus other aspect),
+/// for transport is transport tostring
+/// 2.) It can not find the method
+/// 3.) No b/c the method doesnt exist in transport only in warship.
 /// </summary>
 namespace NM_PE16
 {
@@ -38,6 +45,24 @@ namespace NM_PE16
         public Warship(string name, int weight, int maxSpeed, int numOfGun):base(name, weight, maxSpeed)
         {
             this.numOfGun = numOfGun;
+        }
+        /// <summary>
+        /// 4.	 Override the ToString method to return a String containing the Warship’s information. 
+        /// Use the parent class ToString method to get the three parent class attribute values.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return base.ToString()+string.Format("\n\tNumber of Guns: {0}", numOfGun);
+        }
+        /// <summary>
+        /// 5.	Add a Firing method that uses the number of guns attribute to print a message to the 
+        /// console about how many guns are firing. For example: “Firing 7 guns.” This method returns 
+        /// nothing and takes no parameters.
+        /// </summary>
+        public void Firing()
+        {
+            Console.WriteLine("Firing {0} guns.", numOfGun);
         }
     }
 }
