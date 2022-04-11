@@ -6,7 +6,7 @@
 /// Project: PE16 - Polymorphism 
 /// Purpose: Based on Feudal board game interface
 /// </summary>
-namespace NM_PE16
+namespace NM_PE17
 {
     class Test
     {
