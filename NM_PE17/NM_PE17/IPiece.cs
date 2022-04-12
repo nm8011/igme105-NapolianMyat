@@ -43,8 +43,10 @@ namespace NM_PE17
         /// <param name="yCord"></param>
         /// <param name="moveDirection"></param>
         /// <returns></returns>
-        public static int Move(int moveAmount)
+        public static int Move(string moveDir, int moveXCord)
         {
+            King king = new King(12,12);
+
             //int[] xyCord = new int[] { xCord, yCord };
             //if (moveDirection == "Vert")
             //{
