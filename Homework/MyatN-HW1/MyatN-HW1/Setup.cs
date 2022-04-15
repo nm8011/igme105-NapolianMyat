@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 /// <summary>
 /// Napolian Myat
-/// Project: Homework4
+/// Project: Homework5
 /// Date: 01/31/2022
 /// Modified: 03/29/2022
 /// Purpose: Extension of hw1
@@ -20,6 +20,10 @@ using System.Text;
 ///•	Class Properties
 ///•	Arrays
 ///•	Lists and Dictionaries
+///•	Abstraction
+///•	Inheritance
+///•	Polymorphism
+///•	Interfaces
 /// </summary>
 namespace MyatN_HW1
 {
