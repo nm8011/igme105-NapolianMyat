@@ -27,7 +27,27 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
-    class BlueSkunk
+    class BlueSkunk:AtomicFireballSkunk
     {
+        private const int skillLevel = 2;
+        public BlueSkunk() : base(skillLevel)
+        {
+        }
+
+        public override void Attack()
+        {
+            bool success;
+            success = IsAttackSuccessful();
+            if (success == true)
+            {
+                Console.WriteLine("Attack was successful");
+                Console.WriteLine("Blue Skunk throws iceball killing you");
+                Setup.GameEnd("D", "null");
+            }
+            else
+            {
+                Console.WriteLine("Attack was not successful");
+            }
+        }
     }
 }

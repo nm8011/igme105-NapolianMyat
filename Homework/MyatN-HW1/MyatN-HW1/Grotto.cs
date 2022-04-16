@@ -31,7 +31,6 @@ namespace MyatN_HW1
     {
         //VARIABLE
         private static bool dead = Setup.Dead;
-
         /// <summary>
         /// DungeonFloors
         /// </summary>
@@ -148,17 +147,27 @@ namespace MyatN_HW1
         /// </summary>
         public static void River()
         {
+            int rollOf1And2 = Setup.RollDice(1, 3);
             int response;
             bool exit = false;
+            RedSkunk redSkunk = new RedSkunk();
+            BlueSkunk blueSkunk = new BlueSkunk();
             Setup.ColorChange(3, "\nWonderful, you made it off the submerging marshlands, now you are at a surging river blasting\n" +
                 "fragments of woodpieces from who knows where. You looked to where the water leads to\n" +
                 "You could make out a wall with underneath a deep dark chasm, however its a bit dark to\n" +
                 "see. Now how are you going to get across this river to the next area you can see across\n" +
                 "the wide river?. You looked around and see:");
-
+            if(rollOf1And2 == 1)
+            {
+                Console.WriteLine("There is a RedSkunk.");
+            }
+            else 
+            { 
+                Console.WriteLine("There is a BlueSkunk"); 
+            }
             do
             {
-                response = Setup.IntValidation("\n\t1.) A driftboard \n\t2.) A stick \n\t3.) A flashlight.\n" +
+                response = Setup.IntValidation("\n\t1.) A driftboard \n\t2.) A stick \n\t3.) A flashlight.\n\t4.) Touch the animal\n" +
               "Which item will you use this time?");
 
                 switch (response)
@@ -180,6 +189,18 @@ namespace MyatN_HW1
                                 "see a tiny passage, small, but enough for you to grasp a foothold and make it across\n" +
                                 "You safely made your way across leaning on the way.");
                             exit = true;
+                            break;
+                        }
+                    case 4:
+                        {
+                            if (rollOf1And2 == 1)
+                            {
+                                redSkunk.Attack();
+                            }
+                            else
+                            {
+                                blueSkunk.Attack();
+                            }
                             break;
                         }
                     default:
