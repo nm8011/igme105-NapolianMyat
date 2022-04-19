@@ -1,0 +1,14 @@
+C:\Users\myatn\source\Repos\igme105-NapolianMyat\NM_PE19\NM_PE19\bin\Debug\netcoreapp3.1\NM_PE19.exe
+C:\Users\myatn\source\Repos\igme105-NapolianMyat\NM_PE19\NM_PE19\bin\Debug\netcoreapp3.1\NM_PE19.deps.json
+C:\Users\myatn\source\Repos\igme105-NapolianMyat\NM_PE19\NM_PE19\bin\Debug\netcoreapp3.1\NM_PE19.runtimeconfig.json
+C:\Users\myatn\source\Repos\igme105-NapolianMyat\NM_PE19\NM_PE19\bin\Debug\netcoreapp3.1\NM_PE19.runtimeconfig.dev.json
+C:\Users\myatn\source\Repos\igme105-NapolianMyat\NM_PE19\NM_PE19\bin\Debug\netcoreapp3.1\NM_PE19.dll
+C:\Users\myatn\source\Repos\igme105-NapolianMyat\NM_PE19\NM_PE19\bin\Debug\netcoreapp3.1\NM_PE19.pdb
+C:\Users\myatn\source\Repos\igme105-NapolianMyat\NM_PE19\NM_PE19\obj\Debug\netcoreapp3.1\NM_PE19.csproj.AssemblyReference.cache
+C:\Users\myatn\source\Repos\igme105-NapolianMyat\NM_PE19\NM_PE19\obj\Debug\netcoreapp3.1\NM_PE19.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\myatn\source\Repos\igme105-NapolianMyat\NM_PE19\NM_PE19\obj\Debug\netcoreapp3.1\NM_PE19.AssemblyInfoInputs.cache
+C:\Users\myatn\source\Repos\igme105-NapolianMyat\NM_PE19\NM_PE19\obj\Debug\netcoreapp3.1\NM_PE19.AssemblyInfo.cs
+C:\Users\myatn\source\Repos\igme105-NapolianMyat\NM_PE19\NM_PE19\obj\Debug\netcoreapp3.1\NM_PE19.csproj.CoreCompileInputs.cache
+C:\Users\myatn\source\Repos\igme105-NapolianMyat\NM_PE19\NM_PE19\obj\Debug\netcoreapp3.1\NM_PE19.dll
+C:\Users\myatn\source\Repos\igme105-NapolianMyat\NM_PE19\NM_PE19\obj\Debug\netcoreapp3.1\NM_PE19.pdb
+C:\Users\myatn\source\Repos\igme105-NapolianMyat\NM_PE19\NM_PE19\obj\Debug\netcoreapp3.1\NM_PE19.genruntimeconfig.cache
