@@ -27,21 +27,32 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
-    abstract class AtomicFireballSkunk
+    abstract class AtomicFireballSkunk : Iedible
     {
         //Variable
         //•	Create a private int attribute of attackSkill in your parent class (AtomicFireballSkunk in my example).
         private int attackSkill;
 
+        /// <summary>
+        /// In order to use the attackSkill from our inherited classes, we need to create a constructor to allow 
+        /// the passing of the information between the parent and child classes
+        /// </summary>
+        /// <param name="attackSkill"></param>
         public AtomicFireballSkunk(int attackSkill)
         {
             this.attackSkill = attackSkill;
         }
-        public virtual void Attack()
+        /// <summary>
+        /// •	Create an Attack method in your parent creature class 
+        /// </summary>
+        public virtual bool Attack()
         {
+            return true;
         }
         /// <summary>
-        /// •	•	Create a parent class method called IsAttackSuccessful.  This will be used to determine if the attack is successful or failed.  Create this as a protected method that returns a Boolean.  that is abstract.  We will have our two creature classes that we chose to be children classes implement them.  
+        /// •Create a parent class method called IsAttackSuccessful.  
+        /// This will be used to determine if the attack is successful or failed.  
+        /// Create this as a protected method that returns a Boolean.  
         /// </summary>
         /// <returns></returns>
         protected virtual bool IsAttackSuccessful() 
@@ -50,6 +61,8 @@ namespace MyatN_HW1
             //roll a dice between 1 and 6 and look at the parent attackSkill 
             int randomNum = rand.Next(1, 7);
             bool success;
+            //If the attackSkill is greater than or equal to the dice roll
+            //the attack is successful.  
             if (attackSkill >= randomNum)
             {
                 success = true;
@@ -58,6 +71,7 @@ namespace MyatN_HW1
             {
                 success = false;
             }
+            //This result is then returned to the caller. 
             return success; 
         }
     }

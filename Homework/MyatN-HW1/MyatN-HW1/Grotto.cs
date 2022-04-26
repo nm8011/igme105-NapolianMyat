@@ -147,28 +147,21 @@ namespace MyatN_HW1
         /// </summary>
         public static void River()
         {
+            //o	Create a random object for a dice roll where the result will be 1 -2
+            //(Alternatively you can use your dice throw method in your yard class).
             int rollOf1And2 = Setup.RollDice(1, 3);
             int response;
             bool exit = false;
-            RedSkunk redSkunk = new RedSkunk();
-            BlueSkunk blueSkunk = new BlueSkunk();
             Setup.ColorChange(3, "\nWonderful, you made it off the submerging marshlands, now you are at a surging river blasting\n" +
                 "fragments of woodpieces from who knows where. You looked to where the water leads to\n" +
                 "You could make out a wall with underneath a deep dark chasm, however its a bit dark to\n" +
                 "see. Now how are you going to get across this river to the next area you can see across\n" +
-                "the wide river?. You looked around and see:");
-            if(rollOf1And2 == 1)
-            {
-                Console.WriteLine("There is a RedSkunk.");
-            }
-            else 
-            { 
-                Console.WriteLine("There is a BlueSkunk"); 
-            }
+                "the wide river?. You looked around and see: A driftboard, a stick, a flashlight, and a skunk");
+          
             do
             {
-                response = Setup.IntValidation("\n\t1.) A driftboard \n\t2.) A stick \n\t3.) A flashlight.\n\t4.) Touch the animal\n" +
-              "Which item will you use this time?");
+                response = Setup.IntValidation("\n\t1.) Use a driftboard \n\t2.) Use a stick \n\t3.) Use a flashlight.\n\t4.) Touch the animal\n" +
+              "What will you do this time?");
 
                 switch (response)
                 {
@@ -193,13 +186,26 @@ namespace MyatN_HW1
                         }
                     case 4:
                         {
+                            //o	Modify your description of the area to include that you see either 1 of your child classes based upon the roll.  
                             if (rollOf1And2 == 1)
                             {
-                                redSkunk.Attack();
+                                RedSkunk redSkunk = new RedSkunk();
+                                //o	If the adventurer chooses to touch the creature, we are calling our attack method in the child class
+                                bool attackSucceeded = redSkunk.Attack();
+                                if(attackSucceeded)
+                                {
+                                    Setup.GameEnd("D", "null");
+                                }
                             }
                             else
                             {
-                                blueSkunk.Attack();
+                                BlueSkunk blueSkunk = new BlueSkunk();
+                                //o	If the adventurer chooses to touch the creature, we are calling our attack method in the child class
+                                bool attackSucceeded = blueSkunk.Attack();
+                                if (attackSucceeded)
+                                {
+                                    Setup.GameEnd("D", "null");
+                                }
                             }
                             break;
                         }
@@ -223,12 +229,13 @@ namespace MyatN_HW1
             int response;
             bool exit = false;
             Console.WriteLine("\nYou come across a room littered with treasures and gold. It is sparkling so bright, you could actually be blinded.\n" +
-                "You also noticed a exit doorway.");
+                "You also noticed an alligator nearby and an exit doorway.");
+            ChocolateAlligator alligator = new ChocolateAlligator(100);
             Setup.GameEnd("Q", null);
 
             do
             {
-                response = Setup.IntValidation("\nWhat would you like to do?\n\t1.)Stashed the treasures\n\t2.) Ignore and go to the exit door");
+                response = Setup.IntValidation("\nWhat would you like to do?\n\t1.) Stashed the treasures\n\t2.) Ignore and go to the exit door\n\t3.) Go near the alligator");
                 switch (response)
                 {
                     case 1:
@@ -242,6 +249,12 @@ namespace MyatN_HW1
                             Console.WriteLine("Recollecting your experience thus far. You know there is never such a thing as\n" +
                                 "a free meal. You ignored all the riched and have escaped to the next room.");
                             exit = true;
+                            break;
+                        }
+                    case 3:
+                        {
+                            ChocolateAlligator.Attack();
+                            Console.WriteLine("You escaped to the next room.");
                             break;
                         }
 

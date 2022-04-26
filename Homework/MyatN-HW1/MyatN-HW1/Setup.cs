@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 /// <summary>
 /// Napolian Myat
 /// Project: Homework5
@@ -27,6 +28,9 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
+    //READ IN FILE - OPEN FILE
+    //SAVE FILE - OPEN FILE, WRITE IN FILE
+    
     static class Setup
     {
         //VARIABLES
@@ -39,8 +43,10 @@ namespace MyatN_HW1
         private const int NUM_OF_USER_INFO = 10;
         public static List<string> foodList;
         public static int difficultyLevelChosen;
+        public static string fileName = "SaveFile.txt";
         //PROPERTIES
-        public static string Name { get { return name; } }            
+        public static string Name { get { return name; } }       
+        public static string FileName { get { return fileName; } }
         public static bool Dead
         {
             get { return dead; }
@@ -68,6 +74,72 @@ namespace MyatN_HW1
             set { foodList = value; }
         }
         //METHODS
+        public static bool doesFileExist()
+        {
+            if(File.Exists(fileName))
+            {
+                return true;
+            }
+            else { return false; }
+        }
+        public static void askToSave(string saveLine)
+        {
+            bool save = Setup.YesNoQuestions("Do you wish to save?", "You saved your progress.", "You did not save.");
+            if (save == true)
+            {
+                Setup.WriteStream(saveLine);
+            }
+            else
+            {
+                Console.WriteLine("If you die or quit, you will start from the beginning.");
+            }
+        }
+        public static void WriteStream(string saveLine)
+        {
+            try
+            {
+                Stream saveFile = File.OpenWrite(fileName);
+                StreamWriter sw = new StreamWriter(saveFile);
+                //If they select save, prompt them that any previous save points of theirs will be overwritten.
+                Console.WriteLine("Selecting save will overwrite all previous save points.");
+                bool answer = Setup.YesNoQuestions("Do you wish to continue?", "You have selected to save.", "You denied.");
+                if (answer == true)
+                {
+                    File.Delete(fileName);
+                    saveFile = File.OpenWrite(fileName);
+                    sw = new StreamWriter(saveFile);
+                    sw.WriteLine(saveLine);
+                    sw.Close();
+                }
+                else
+                {
+                    Console.WriteLine("You did not save your progress. This means you will start from the beginning" +
+                        "\nif you wish to play again.");
+                }
+
+            }
+            catch (IOException x)
+            {
+                Console.WriteLine("Error creating file: " + x.Message);
+                Environment.Exit(0);
+            }
+        }
+        public static string ReadStream()
+        {
+            string line = null;
+            try
+            {
+                StreamReader sr = new StreamReader(fileName);
+                line = sr.ReadLine();
+            }
+            catch (IOException x)
+            {
+                Console.WriteLine("Error reading file: " + x.Message);
+                Environment.Exit(0);
+            }
+            return line;
+
+        }
         /// <summary>
         /// Introduce the game name
         /// </summary>

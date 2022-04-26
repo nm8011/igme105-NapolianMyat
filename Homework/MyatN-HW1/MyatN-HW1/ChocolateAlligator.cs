@@ -27,7 +27,35 @@ using System.Text;
 /// </summary>
 namespace MyatN_HW1
 {
-    class ChocolateAlligator
+    class ChocolateAlligator : Iedible
     {
+        //ATTRIBUTE
+        private int numOfTeeth;
+
+        //CONSTRUCTOR
+        public ChocolateAlligator(int numOfTeeth)
+        {
+            this.numOfTeeth = numOfTeeth;
+            Console.WriteLine("The alligator looks ancient and has {0} number of razorsharp teeth " +
+                "with numerous scars", numOfTeeth);
+        }
+        //METHOD
+        public static bool Attack()
+        {
+            bool dead = false;
+            int randValue = Setup.randGen(1, 3);
+            if(randValue == 1)
+            {
+                Console.WriteLine("The alligator charges at you and attacks you snapping you in half.");
+                dead = true;
+                Setup.GameEnd("D", null);
+            }
+            else
+            {
+                Console.WriteLine("The alligator charges at you but you manage to evade in time.");
+            }
+
+            return dead;
+        }
     }
 }
